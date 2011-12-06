@@ -1,29 +1,34 @@
 <?php
-    class MySQL implements Singleton{
-    	
-    	private static $link=NULL;
-		
-		function getInstance(){
-			if(self::$link==NULL){
-				self::$link=new self;
-			}
-			return self::$link;		
-		}
-		
-		protected function __construct(){
-			$host="localhost";
-			$nombreUsuario="root";
-			$password="";
-			$basededatos="preguntasus"; 
-			
-			try{
-				$this->link = mysqli($host,$nombreUsuario,$password);
-				mysql_select_db($basededatos);
-			}catch (Exception $e){
-				die("No se puedo realizar la conexion");
-			}
-			
-			
-		}
+
+class MySQL {
+
+    protected $enlace;
+
+    public function __construct() {
+        $host = "localhost";
+        $nombreUsuario = "root";
+        $password = "";
+        $basededatos = "preguntasus";
+
+        try {
+            $this->enlace = new mysqli($host, $nombreUsuario, $password, $basededatos);
+        } catch (Exception $e) {
+            die("No se puedo realizar la conexion");
+        }
     }
+
+    public function query($consulta) {
+         $resultado = $this->enlace->query($consulta);
+        if ($resultado == NULL) {
+            die($enlace->error);
+        }
+        return $resultado;
+    }
+    
+    public function __destruct() {
+        $this->enlace->close();
+    }
+
+}
+
 ?>
