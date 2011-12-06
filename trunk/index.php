@@ -38,9 +38,8 @@ echo show::mostrar("cabecera");
         </div>
     </div>
     <?php
-    show::mostrar("pie");
+    echo show::mostrar("pie");
     ?>
-</body>
 <?php
-show::mostrar("pieHTML");
+echo show::mostrar("pieHTML");
 ?>
