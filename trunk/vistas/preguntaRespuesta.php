@@ -23,11 +23,12 @@ echo show::mostrar("cabecera");
 		<div id="respuesta">
 			
 			<table border="1" summary="Tabla para las respuestas">
-				<h3 class="rotuloComun">Las Respuestas publicadas son:</h3>
+				<h3 class="rotuloComun">Las Respuestas publicadas para esta pregunta son:</h3>
 				<th>USUARIO</th>
 				<th>RESPUESTA</th>
 				<tr>
 					<td>NOMBRE DE USUARIO</td>
+					
 					<td>TEXTO DE LA RESPUESTA</td>
 				</tr>
 			</table>			
