@@ -3,9 +3,13 @@ require "lib/autoloader.php";
 echo show::mostrar("cabeceraHTML");
 echo show::mostrar("cabecera");
 
-//$el=new ElementoImpl();
-//foreach($el as $e){
-//    print_r($e->current());
+$el=new ElementoImpl();
+$el->getById(1);
+
+echo $el->__get("titulo");
+
+//foreach ($el as $linea){
+//   echo "<p>a".$linea->__get("titulo");
 //}
 
 ?>

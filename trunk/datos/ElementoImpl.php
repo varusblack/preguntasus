@@ -5,6 +5,8 @@ class ElementoImpl implements Elemento, Iterator {
     private $atributos = array();
     private $conexion;
     private $resultados=array();
+    private $numResultados;
+    private $posicion;
 
     public function __construct() {
         $this->conexion = new MySQL();
@@ -39,12 +41,26 @@ class ElementoImpl implements Elemento, Iterator {
     public function getAll() {
         $consulta = "SELECT * FROM elemento";
         $resultado = $this->conexion->query($consulta);
+        $this->numResultados=$resultado->num_rows;
+        
         while($registro=$resultado->fetch_array(MYSQLI_ASSOC)){
             $this->resultados[]=$registro;
         }
+        $this->posicion=0;
+        $this->atributos=$this->resultados[$this->posicion];
+        
     }
 
     public function getById($id) {
+        $consulta="SELECT * FROM elemento WHERE id=$id";
+        $resultado = $this->conexion->query($consulta);
+        $this->numResultados=$resultado->num_rows;
+        
+        while($registro=$resultado->fetch_array(MYSQLI_ASSOC)){
+            $this->resultados[]=$registro;
+        }
+        $this->posicion=0;
+        $this->atributos=$this->resultados[$this->posicion];
         
     }
 
@@ -57,24 +73,31 @@ class ElementoImpl implements Elemento, Iterator {
     }
 
     public function current() {
-        return $this->resultados->current();
-        
+        return $this;
     }
 
     public function key() {
-        return $this->resultados->key();
+        return $this->posicion;
     }
 
     public function next() {
-        $this->resultados->next();
+        $this->posicion++;
     }
 
     public function rewind() {
-        rewind($this->resultados);
+        $this->posicion=0;
     }
 
     public function valid() {
-        $this->resultados->valid();
+        $ret=$this->posicion<$this->numResultados;
+        if($ret){
+            $this->atributos=$this->resultados[$this->posicion];
+        }
+        return $ret;
+    }
+    
+    public function getNumElementos() {
+        return $this->numResultados;
     }
 
 }

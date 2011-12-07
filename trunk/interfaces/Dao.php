@@ -11,6 +11,8 @@ interface DAO {
     public function update($elemento);
 
     public function delete($elemento);
+    
+    public function getNumElementos();
 }
 
 ?>
