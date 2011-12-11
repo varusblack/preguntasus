@@ -1,15 +1,19 @@
 <?php
 
-class UsuarioImpl implements DAO {
+class UsuarioImpl implements Usuario{
 
     private $atributos = array();
 
-    function __construct($nombre=NULL, $apellidos=NULL, $fechanacimiento=NULL) {
-        $this->atributos["email"] = $email;
-        $this->atributos["password"] = $password;
-        $this->atributos["nombre"] = $nombre;
-        $this->atributos["apellidos"] = $apellidos;
-        $this->atributos["fechanacimiento"] = $fechanacimiento;
+    function __construct() {
+        $this->atributos["email"] = NULL;
+        $this->atributos["password"] = NULL;
+		$this->atributos["fecharegistro"] = NULL;
+		$this->atributos["preguntasrealizadas"] = NULL;
+		$this->atributos["preguntasrespondidas"] = NULL;
+		$this->atributos["puntos"] = NULL;
+        $this->atributos["nombre"] = NULL;
+        $this->atributos["apellidos"] = NULL;
+        $this->atributos["fechanacimiento"] = NULL;
     }
 
     public function __get($atributo) {

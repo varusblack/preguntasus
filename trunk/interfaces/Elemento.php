@@ -1,10 +1,7 @@
 <?php
 
-interface Elemento extends DAO{
+interface Elemento {
 
-    function encontrarRespuestas(Elemento $elemento);
-
-    function encontrarElementosDeUsuario(Usuario $usuario);
 }
 
 ?>
