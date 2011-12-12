@@ -1,7 +1,7 @@
 <?php
 
 
-class VisitaDAOImpl implements VisitaDAO {
+class VotacionDAOImpl implements VotacionDAO {
 
     private $conexion;
 
@@ -9,8 +9,8 @@ class VisitaDAOImpl implements VisitaDAO {
         $this->conexion = new MySQL();
     }
 
-    public function delete(Visita $elemento) {
-        $consulta = "DELETE FROM visita WHERE id=" . $this->conexion->clean($elemento->id);
+    public function delete(Votacion $elemento) {
+        $consulta = "DELETE FROM votacion WHERE id=" . $this->conexion->clean($elemento->id);
 
         $this->conexion->query($consulta);
     }
@@ -19,7 +19,7 @@ class VisitaDAOImpl implements VisitaDAO {
         $arrayADevolver = array();
 
         while ($registro = $resultado->fetch_array(MYSQLI_ASSOC)) {
-            $objeto = new VisitaImpl();
+            $objeto = new VotacionImpl();
             $objeto->__set("id", $registro["id"]);
             $objeto->__set("idelemento", $registro["idelemento"]);
             $objeto->__set("idusuario", $registro["idusuario"]);
@@ -29,14 +29,14 @@ class VisitaDAOImpl implements VisitaDAO {
     }
 
     public function getAll() {
-        $consulta = "SELECT * FROM visita";
+        $consulta = "SELECT * FROM votacion";
         $resultado = $this->conexion->query($consulta);
 
         return $this->creaElementos($resultado);
     }
 
     public function getById($id) {
-        $consulta = "SELECT * FROM visita WHERE id=$id";
+        $consulta = "SELECT * FROM votacion WHERE id=$id";
         $resultado = $this->conexion->query($consulta);
 
         $objeto = new TagImpl();
@@ -50,7 +50,7 @@ class VisitaDAOImpl implements VisitaDAO {
     }
 
     public function insert($elemento) {
-        $consulta = "INSERT INTO visita (idelemento,idusuaro) VALUES (";
+        $consulta = "INSERT INTO votacion (idelemento,idusuaro) VALUES (";
         $consulta.=$this->conexion->clean($elemento->__get("idelemento"));
         $consulta.=",";
         $consulta.=$this->conexion->clean($elemento->__get("idusuario"));
@@ -60,7 +60,7 @@ class VisitaDAOImpl implements VisitaDAO {
     }
 
     public function update($elemento) {
-        $consulta = "UPDATE visita SET idelemento=" . $this->conexion->clean($elemento->idelemento);
+        $consulta = "UPDATE votacion SET idelemento=" . $this->conexion->clean($elemento->idelemento);
         $consulta.=",";
         $consulta.="idusuario=".$this->conexion->clean($elemento->idusuario);
         $consulta.=" WHERE id=" . $this->conexion->clean($elemento->id);

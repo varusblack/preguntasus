@@ -3,9 +3,9 @@
 class show {
 
     public static function mostrar($pagina) {
-        if (file_exists("vistas/$pagina.php")) {
+        if (file_exists($_SERVER['DOCUMENT_ROOT']."/preguntasus/vistas/$pagina.php")) {
             ob_start();
-            include("vistas/$pagina.php");
+            include($_SERVER['DOCUMENT_ROOT']."/preguntasus/vistas/$pagina.php");
             $retornar = ob_get_clean();
         } else {
             $retornar = "No encuentro vista";
