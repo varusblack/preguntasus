@@ -1,9 +1,8 @@
 <?php
 
-interface Elemento {
+interface Elemento extends transferObject{
 
-    function __get($atributo);
-    function __set($atributo,$valor);
+
 }
 
 ?>

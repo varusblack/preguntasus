@@ -1,6 +1,6 @@
 <?php
 
-interface Usuario extends Iterator{
+interface Usuario extends transferObject{
 
 }
 
