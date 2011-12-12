@@ -1,5 +1,5 @@
 <?php
-interface Tag {
+interface Tag extends transferObject{
 
 }
 ?>
