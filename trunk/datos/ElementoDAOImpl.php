@@ -1,88 +1,109 @@
 <?php
 
-class ElementoDAOImpl implements Dao, Iterator {
-	private $conexion;
-	private $resultados = array();
-	private $numResultados;
-	private $posicion;
+class ElementoDAOImpl implements ElementoDAO {
 
-	public function __construct() {
-		$this -> conexion = new MySQL();
-	}
+    private $conexion;
 
-	public function delete($elemento) {
+    public function __construct() {
+        $this->conexion = new MySQL();
+    }
 
-	}
+    public function delete($elemento) {
+        $consulta = "DELETE FROM elemento WHERE id=" . $this->conexion->clean($elemento->id);
 
-	public function encontrarElementosDeUsuario(Usuario $usuario) {
+        $this->conexion->query($consulta);
+    }
 
-	}
+    public function encontrarElementosDeUsuario(Usuario $usuario) {
+        $consulta = "SELECT * FROM elemento WHERE idUsuario=" . $this->conexion->clean($usuario->__get("id"));
+        $resultado = $this->conexion->query($consulta);
 
-	public function encontrarRespuestas(Elemento $elemento) {
+        return $this->creaElementos($resultado);
+    }
 
-	}
+    public function encontrarRespuestas(Elemento $elemento) {
+        $consulta = "SELECT * FROM elemento WHERE idrespuesta=" . $this->conexion->clean($elemento->__get("id"));
+        $resultado = $this->conexion->query($consulta);
 
-	public function getAll() {
-		$consulta = "SELECT * FROM elemento";
-		$resultado = $this -> conexion -> query($consulta);
-		$this -> numResultados = $resultado -> num_rows;
+        return $this->creaElementos($resultado);
+    }
 
-		while ($registro = $resultado -> fetch_array(MYSQLI_ASSOC)) {
-			$this -> resultados[] = $registro;
-		}
-		$this -> posicion = 0;
-		$this -> atributos = $this -> resultados[$this -> posicion];
+    private function creaElementos($resultado) {
+        $arrayADevolver = array();
 
-	}
+        while ($registro = $resultado->fetch_array(MYSQLI_ASSOC)) {
+            $objeto = new ElementoImpl();
+            $objeto->__set("id", $registro["id"]);
+            $objeto->__set("idautor", $registro["idautor"]);
+            $objeto->__set("titulo", $registro["titulo"]);
+            $objeto->__set("cuerpo", $registro["cuerpo"]);
+            $objeto->__set("idrespuesta", $registro["idrespuesta"]);
+            $objeto->__set("fechapregunta", $registro["fechapregunta"]);
+            $arrayADevolver[$registro["id"]] = $objeto;
+        }
+        return $arrayADevolver;
+    }
 
-	public function getById($id) {
-		$consulta = "SELECT * FROM elemento WHERE id=$id";
-		$resultado = $this -> conexion -> query($consulta);
-		$this -> numResultados = $resultado -> num_rows;
+    public function getAll() {
+        $consulta = "SELECT * FROM elemento";
+        $resultado = $this->conexion->query($consulta);
 
-		while ($registro = $resultado -> fetch_array(MYSQLI_ASSOC)) {
-			$this -> resultados[] = $registro;
-		}
-		$this -> posicion = 0;
-		$this -> atributos = $this -> resultados[$this -> posicion];
+        return $this->creaElementos($resultado);
+    }
 
-	}
+    public function getById($id) {
+        $consulta = "SELECT * FROM elemento WHERE id=$id";
+        $resultado = $this->conexion->query($consulta);
 
-	public function insert(Elemento $elemento) {
+        $objeto = new ElementoImpl();
+        while ($registro = $resultado->fetch_array(MYSQLI_ASSOC)) {
 
-	}
+            $objeto->__set("id", $registro["id"]);
+            $objeto->__set("idautor", $registro["idautor"]);
+            $objeto->__set("titulo", $registro["titulo"]);
+            $objeto->__set("cuerpo", $registro["cuerpo"]);
+            $objeto->__set("idrespuesta", $registro["idrespuesta"]);
+            $objeto->__set("fechapregunta", $registro["fechapregunta"]);
+        }
+        return $objeto;
+    }
 
-	public function update(Elemento $elemento) {
+    public function insert($elemento) {
+        $consulta = "INSERT INTO elemento (idautor,titulo,cuerpo,idrespuesta,fechapregunta) VALUES (";
+        $consulta.=$this->conexion->clean($elemento->__get("idautor"));
+        $consulta.=",";
+        $consulta.="'" . $this->conexion->clean($elemento->__get("titulo")) . "'";
+        $consulta.=",";
+        $consulta.="'" . $this->conexion->clean($elemento->__get("cuerpo")) . "'";
+        $consulta.=",";
+        if ($elemento->__get("idrespuesta") == NULL) {
+            $consulta.='NULL';
+        } else {
+            $consulta.=$this->conexion->clean($elemento->__get("idrespuesta"));
+        }
+        $consulta.=",";
+        $consulta.="now()";
 
-	}
+        $consulta.=")";
 
-	public function current() {
-		return $this;
-	}
+        $this->conexion->query($consulta);
+    }
 
-	public function key() {
-		return $this -> posicion;
-	}
+    public function update($elemento) {
+        $consulta = "UPDATE elemento SET idautor=" . $this->conexion->clean($elemento->idautor);
+        $consulta.=",";
+        $consulta.="titulo='" . $this->conexion->clean($elemento->titulo) . "'";
+        $consulta.=",";
+        $consulta.="cuerpo='" . $this->conexion->clean($elemento->cuerpo) . "'";
+        $consulta.=",";
+        $consulta.="idrespuesta='" . $this->conexion->clean($elemento->idrespuesta) . "'";
+        $consulta.=",";
+        $consulta.="fechapregunta='" . $this->conexion->clean($elemento->fechapregunta) . "'";
+        $consulta.="WHERE id=" . $this->conexion->clean($elemento->id);
 
-	public function next() {
-		$this -> posicion++;
-	}
-
-	public function rewind() {
-		$this -> posicion = 0;
-	}
-
-	public function valid() {
-		$ret = $this -> posicion < $this -> numResultados;
-		if ($ret) {
-			$this -> atributos = $this -> resultados[$this -> posicion];
-		}
-		return $ret;
-	}
-
-	public function getNumElementos() {
-		return $this -> numResultados;
-	}
+        $this->conexion->query($consulta);
+    }
 
 }
+
 ?>
