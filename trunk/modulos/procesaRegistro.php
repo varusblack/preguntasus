@@ -13,4 +13,6 @@ $nuevoUsuario->__set("fechanacimiento", $_POST["fechaNacimiento"]);
 $usuarioDAO->insert($nuevoUsuario);
 MySQL::commit();
 
+echo show::mostrar("resultadoCrearUsuario");
+
 ?>
