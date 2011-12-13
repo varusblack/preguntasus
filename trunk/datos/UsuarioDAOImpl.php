@@ -8,7 +8,7 @@ class UsuarioDAOImpl implements UsuarioDAO {
         $this->conexion = new MySQL();
     }
 
-    public function delete(Usuario $elemento) {
+    public function delete($elemento) {
         $consulta = "DELETE FROM usuario WHERE id=" . $this->conexion->clean($elemento->id);
 
         $this->conexion->query($consulta);
@@ -58,19 +58,19 @@ class UsuarioDAOImpl implements UsuarioDAO {
         return $objeto;
     }
 
-    public function insert(Usuario $elemento) {
+    public function insert($elemento) {
         $consulta = "INSERT INTO usuario (email,password,fecharegistro,nombre,apellidos,fechanacimiento) VALUES (";
-        $consulta.=$this->conexion->clean($elemento->__get("email"));
+        $consulta.="'".$this->conexion->clean($elemento->__get("email"))."'";
         $consulta.=",";
         $consulta.="'" . $this->conexion->clean($elemento->__get("password")) . "'";
         $consulta.=",";
-        $consulta.="'" . $this->conexion->clean($elemento->__get("fecharegistro")) . "'";
+        $consulta.="now()";
         $consulta.=",";
-        $consulta.=$this->conexion->clean($elemento->__get("nombre"));
+        $consulta.="'".$this->conexion->clean($elemento->__get("nombre"))."'";
         $consulta.=",";
-        $consulta.=$this->conexion->clean($elemento->__get("apellidos"));
+        $consulta.="'".$this->conexion->clean($elemento->__get("apellidos"))."'";
         $consulta.=",";
-        $consulta.=$this->conexion->clean($elemento->__get("fechanacimiento"));
+        $consulta.="'".$this->conexion->clean($elemento->__get("fechanacimiento"))."'";
 
         $consulta.=")";
 

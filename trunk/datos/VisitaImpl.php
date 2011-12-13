@@ -1,7 +1,6 @@
 <?
 class VisitaImpl extends TrasferObjectGenerico implements Visita {
 
-    private $atributos = array();
 
     public function __construct() {
         $this->atributos["id"] = NULL;

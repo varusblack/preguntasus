@@ -11,7 +11,7 @@
                 <input type="password" id="pass" name="pass" />
                 <input type="submit" value="Login" />
             </fieldset>
-            <a href="registrarse.php">Registrarse</a>
+            <a href="./vistas/registrarse.php">Registrarse</a>
         </div>
     </div>
 </div>

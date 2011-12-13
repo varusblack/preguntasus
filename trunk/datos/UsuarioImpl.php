@@ -2,7 +2,6 @@
 
 class UsuarioImpl extends TransferObjectGenerico implements Usuario {
 
-    private $atributos = array();
 
     public function __construct() {
         $this->atributos["id"] = NULL;

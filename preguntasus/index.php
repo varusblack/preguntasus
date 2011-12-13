@@ -1,5 +1,5 @@
 <?php
-require "lib/autoloader.php";
+require $_SERVER['DOCUMENT_ROOT']."/preguntasus/lib/autoloader.php";
 echo show::mostrar("cabeceraHTML");
 echo show::mostrar("cabecera");
 

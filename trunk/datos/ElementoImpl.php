@@ -2,8 +2,6 @@
 
 class ElementoImpl extends TransferObjectGenerico implements Elemento {
 
-    private $atributos = array();
-
     public function __construct() {
         $this->atributos["id"] = NULL;
         $this->atributos["idautor"] = NULL;

@@ -2,6 +2,8 @@
 
 class TransferObjectGenerico {
 
+    protected $atributos = array();
+    
     public function __get($atributo) {
         if (array_key_exists($atributo, $this->atributos)) {
             return $this->atributos[$atributo];
