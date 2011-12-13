@@ -1,6 +1,6 @@
 <?php
 
-class ElementoImpl implements Elemento {
+class ElementoImpl extends TransferObjectGenerico implements Elemento {
 
     private $atributos = array();
 
