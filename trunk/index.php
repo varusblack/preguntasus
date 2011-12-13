@@ -3,6 +3,8 @@ require "lib/autoloader.php";
 echo show::mostrar("cabeceraHTML");
 echo show::mostrar("cabecera");
 
+// echo session_id();
+
 //$el=new ElementoImpl();
 //foreach($el as $e){
 //    print_r($e->current());

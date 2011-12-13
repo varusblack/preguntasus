@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class Autoloader{
     public static function cargarInterfaces($class){
         $path=$_SERVER['DOCUMENT_ROOT']."/preguntasus/interfaces/{$class}.php";
