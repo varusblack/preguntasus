@@ -35,6 +35,8 @@ echo show::mostrar("cabecera");
         Columna
         <div id="cuadro_busqueda">
             Cuadro de busqueda
+            <label for="buscar">Buscar:</label>
+            <input type="text" id="buscar" name="buscar"/>
         </div>
         <div id="etiquetas_mas_frecuentes">
             Nube de etiquetas

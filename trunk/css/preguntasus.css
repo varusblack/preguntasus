@@ -83,15 +83,15 @@ html,body{
 #nombreProyecto{
     float:left;
     width: 49%;
-    text-align: left;
-    
+    text-align: left;    
 }
 
 #pie{
     background-color: blue;
     color: white;
-    height: 60px;
     vertical-align: middle;
+    height: 70px;
+    clear: both;
 }
 #contenedor_pie{
     width:960px;
@@ -111,5 +111,40 @@ html,body{
 #contenedor_pie #nombreProyecto{
     margin-left: 5px;
     height: 100%;
+}
+div.pregunta{
+	margin-top:5px;
+	margin-bottom:5px;
+	width:500px;
+	height:90px;
+	background-image: url('../imagenes/fondopregunta.jpg');
+}
+div.usuario_que_pregunta{
+	float:left;
+	margin-right: 10px;
+}
+div.preguntaConcreta{
+	float:left;
+}
+div.tituloPregunta{
+	font-size: large;
+}
+div.estadisticasPregunta{
+	float:right;
+	clear: left;
+}
+#preguntas{
+	float: left;
+}
+
+#columna{
+	width:300px;
+	text-align:left;
+	float:right;
+	clear: right;
+	background-image: url('../imagenes/fondocolumna.jpg');
+}
+#barraNavegacion{
+	
 }
 
