@@ -2,6 +2,7 @@
 require "lib/autoloader.php";
 echo show::mostrar("cabeceraHTML");
 echo show::mostrar("cabecera");
+echo show::mostrar("barraNavegacion");
 
 // echo session_id();
 
