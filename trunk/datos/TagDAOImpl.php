@@ -9,7 +9,7 @@ class TagDAOImpl implements tagDAO {
         $this->conexion = new MySQL();
     }
 
-    public function delete(Tag $elemento) {
+    public function delete($elemento) {
         $consulta = "DELETE FROM tag WHERE id=" . $this->conexion->clean($elemento->id);
 
         $this->conexion->query($consulta);

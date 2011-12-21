@@ -23,8 +23,7 @@ html, body {
 }
 #cabecera {
 	width: 100%;
-	/*    background-color: blue;*/
-	background-image: url('../imagenes/fondocabecera.jpg');
+	background-image: url('../imagenes/fondocabecera.png');
 	border: 0px;
 	padding: 5px 0 0 0;
 	margin: 0px;
@@ -35,7 +34,8 @@ html, body {
 	float: left;
 	width: 25%;
 	min-width: 170px;
-	background-image: url('../imagenes/logoPreguntas.png');
+	/*background-image: url('../imagenes/logoPreguntas.png');*/
+	background-image: url('../imagenes/Que.gif');
 	background-repeat: no-repeat;
 	background-position: left;
 	height: 100%;
@@ -83,8 +83,7 @@ html, body {
 	text-align: left;
 }
 #pie {
-	/*    background-color: blue;*/
-	background-image: url('../imagenes/fondopie.jpg');
+	background-image: url('../imagenes/fondopie.png');
 	color: white;
 	vertical-align: middle;
 	height: 70px;
@@ -114,7 +113,14 @@ div.pregunta {
 	margin-bottom: 5px;
 	width: 500px;
 	height: 90px;
-	background-image: url('../imagenes/fondopregunta.jpg');
+	background-image: url('../imagenes/pregunta.png');
+}
+div.pregunta_respondida{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 500px;
+	height: 90px;
+	background-image: url('../imagenes/fondopreguntarespondida.jpg');
 }
 div.usuario_que_pregunta {
 	float: left;
@@ -151,7 +157,7 @@ div.estadisticasPregunta {
 	font-size: medium;
 	font-style: normal;
 	height: 31px;
-	background-image: url('../imagenes/fondobarranavegacion.jpg');
+	background-image: url('../imagenes/fondobarranavegacion.png');
 }
 #barraNavegacion a.separado {
 	padding-left: 2em;

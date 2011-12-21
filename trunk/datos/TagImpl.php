@@ -1,5 +1,5 @@
 <?
-class TagImpl extends TrasferObjectGenerico implements Tag {
+class TagImpl extends TransferObjectGenerico implements Tag {
 
     public function __construct() {
         $this->atributos["id"] = NULL;

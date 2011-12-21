@@ -1,8 +1,8 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . "/preguntasus/lib/autoloader.php";
+
 echo show::mostrar("cabeceraHTML");
 echo show::mostrar("cabecera");
-echo show::mostrar("barraNavegacion")
+echo show::mostrar("barraNavegacion");
 ?>
 <div id="contenedor_cuerpo">
 	<form>
@@ -21,7 +21,18 @@ echo show::mostrar("barraNavegacion")
 				Tag:
 			</div>
 			<div class="inputTag">
-				<label> <select id="selectTags"></select> </label>
+				<label for="selectTags">Selecciona tag:  </label>
+				<select id="selectTags">
+					
+					<?php
+					foreach ($parametro as $tag) {
+						echo $tag->__get("tag");
+						echo "<option>".$tag->__get('tag')."</option>";
+					}
+					
+					?>
+					
+				</select>
 			</div>
 		</div>
 		<div class="preguntas"></div>

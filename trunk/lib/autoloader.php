@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 class Autoloader{
     public static function cargarInterfaces($class){
         $path=$_SERVER['DOCUMENT_ROOT']."/preguntasus/interfaces/{$class}.php";
@@ -20,8 +18,8 @@ class Autoloader{
             require($path);
         }
     }
- 
 }
+session_start();
 spl_autoload_register('autoloader::cargarInterfaces');
 spl_autoload_register('autoloader::cargarDatos');
 spl_autoload_register('autoloader::cargarLib');
