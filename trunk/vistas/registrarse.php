@@ -4,11 +4,21 @@ echo show::mostrar("cabeceraHTML");
 echo show::mostrar("cabecera");
 
 ?>
+
 <div id="contenedor_cuerpo">
+<?
+if(isset($parametros["errores"])){
+	echo show::mostrar("erroresRegistro",$parametros["errores"]);
+	$datos=$parametros["datos"];
+}else{
+	$datos=array();
+	$datos["email"]="Valor por dafecto del email";
+}
+?>
     <form name="datos" method="post" action="../modulos/procesaRegistro.php">
         <fieldset>
             <label for="email">E-mail:</label>
-            <input id="email" type="text" name="email" />
+            <input id="email" type="text" name="email" value="<?php echo $datos['email'];?>"/>
             <label for="pass1">Contraseña:</label>
             <input id="pass1" type="password" name="pass1" />
             <label for="pass2">Verifique contraseña:</label>

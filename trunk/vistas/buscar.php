@@ -3,16 +3,17 @@
 echo show::mostrar("cabeceraHTML");
 echo show::mostrar("cabecera");
 echo show::mostrar("barraNavegacion");
+
 ?>
 <div id="contenedor_cuerpo">
-	<form>
+	<form id="buscadorPreguntas" name="buscadorPreguntas" action="buscarPreguntas.php">
 		<div class="palabrasBuscar">
 			<div class="palabras">
 				Palabras clave:
 			</div>
 			<div class="inputPalabras">
 				<label>
-					<input id="escribirPalabra" type="text" />
+					<input id="palabra" type="text" />
 				</label>
 			</div>
 		</div>
@@ -25,7 +26,7 @@ echo show::mostrar("barraNavegacion");
 				<select id="selectTags">
 					
 					<?php
-					foreach ($parametro as $tag) {
+					foreach ($parametro["tags"] as $tag) {
 						echo $tag->__get("tag");
 						echo "<option>".$tag->__get('tag')."</option>";
 					}
@@ -35,8 +36,14 @@ echo show::mostrar("barraNavegacion");
 				</select>
 			</div>
 		</div>
-		<div class="preguntas"></div>
+		<div id="botonBuscar">
+			<input type="submit" value="Buscar" />
+		</div>
+		<div id="preguntas"><?php
+	echo show::mostrar("listaPreguntas",$parametro["elementos"]);
+?></div>
 	</form>
+	
 </div>
 <?php
 echo show::mostrar("pie");

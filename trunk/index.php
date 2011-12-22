@@ -15,22 +15,9 @@ echo show::mostrar("barraNavegacion");
 <div id="contenedor_cuerpo">
     ContenedorCuerpo
     <div id="preguntas">
-        ContenedorPreguntas
-        <div class="pregunta">
-            Pregunta
-            <div class="usuario_que_pregunta">
-                Usuario preguntador
-            </div>
-            <div class="preguntaConcreta">
-                Contenedor pregunta concreta
-                <div class="tituloPregunta">
-                    Titulo de la pregunta
-                </div>
-                <div class="estadisticasPregunta">
-                    Estadisticas de la pregunta
-                </div>
-            </div>
-        </div>
+<?php
+	echo show::mostrar("listaPreguntas",array());
+?>
     </div>
     <div id="columna">
         Columna
