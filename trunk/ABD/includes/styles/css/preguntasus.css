@@ -1,0 +1,172 @@
+/*
+ Document   : preguntaus
+ Created on : 06-dic-2011, 11:17:41
+ Author     : jenkin90
+ Description:
+ Purpose of the stylesheet follows.
+ */
+
+/*
+ TODO customize this sample style
+ Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+ */
+
+root {
+	display: block;
+}
+html, body {
+	width: 100%;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	font-family: sans-serif;
+}
+
+/* BARRA SUPERIOR DE LOGIN */
+#login {
+	width: 100%;
+	background-image: url('../imagenes/fondocabecera.png');
+	border: 0px;
+	padding: 5px 0 0 0;
+	margin: 0px;
+	height: 31px;
+	color: white;
+}
+#login-content {
+	width: 960px;
+	margin: 0 auto 0 auto;
+}
+
+#logo {
+	float: left;
+	width: 25%;
+	min-width: 170px;
+	/*background-image: url('../imagenes/logoPreguntas.png');*/
+	background-image: url('../imagenes/iconos/Que.gif');
+	background-repeat: no-repeat;
+	background-position: left;
+	height: 100%;
+	padding: 5px 0 0 5px;
+}
+#logo h1 {
+	font-size: large;
+	font-weight: bolder;
+	margin: 0 0 0 50px;
+	color: white;
+	vertical-align: baseline;
+}
+
+#user-box {
+	color: white;
+	vertical-align: middle;
+	height: 100%;
+	width: 74%;
+	font-size: small;
+	float: left;
+	text-align: right;
+}
+#user-box fieldset {
+	border: 0px;
+	display: inline;
+}
+#user-box a {
+	color: white;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+/* OTROS CSS */
+
+#nombreProyecto {
+	float: left;
+	width: 49%;
+	text-align: left;
+}
+
+
+#contenedor_cuerpo {
+	width: 960px;
+	margin: 0 auto 0 auto;
+}
+
+#pie {
+	background-image: url('../imagenes/fondopie.png');
+	color: white;
+	vertical-align: middle;
+	height: 70px;
+	clear: both;
+}
+#contenedor_pie {
+	width: 960px;
+	margin: 0 auto 0 auto;
+	vertical-align: middle;
+	height: 100%;
+}
+#contenedor_pie #autores {
+	text-align: right;
+	font-size: small;
+	height: 100%;
+}
+#contenedor_pie #autores li {
+	list-style-type: none;
+	height: 100%;
+}
+#contenedor_pie #nombreProyecto {
+	margin-left: 5px;
+	height: 100%;
+}
+div.pregunta {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 500px;
+	height: 90px;
+	background-image: url('../imagenes/preguntatest.png');
+}
+div.pregunta_respondida{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 500px;
+	height: 90px;
+	background-image: url('../imagenes/fondopreguntarespondida.jpg');
+}
+div.usuario_que_pregunta {
+	float: left;
+	margin-right: 10px;
+}
+div.preguntaConcreta {
+	float: left;
+}
+div.tituloPregunta {
+	font-size: large;
+}
+div.estadisticasPregunta {
+	float: right;
+	clear: left;
+}
+#preguntas {
+	float: left;
+}
+#columna {
+	width: 300px;
+	text-align: left;
+	float: right;
+	clear: right;
+	background-image: url('../imagenes/fondocolumna.jpg');
+}
+#barraNavegacion {
+	margin-top:0;
+	margin-left: 230px;
+	margin-right: 230px;
+	width: 500px;
+	text-align: center;
+	clear: both;
+	font-weight: bold;
+	font-size: medium;
+	font-style: normal;
+	height: 31px;
+	background-image: url('../imagenes/fondobarranavegacion.png');
+}
+#barraNavegacion a.separado {
+	padding-left: 2em;
+}
+
