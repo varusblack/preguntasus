@@ -2,16 +2,20 @@
     function obtenerTodosLosUsuarios($conexion){
     	try{
 			$SQL="SELECT * FROM usuario";
+			$stmt = $conexion->query($SQL);
+			return creaElementos($stmt);
 		}catch(PDOException $e){
-			
+			Header("Location: error.php");
 		}
     }
 	
 	function obtenerUsuarioPorId($id,$conexion){
 		try{
 			$SQL="SELECT * FROM usuario WHERE id=$id";
+			$stmt = $conexion->query($SQL);
+			return creaElementos($stmt);
 		}catch(PDOException $e){
-			
+			Header("Location: error.php");
 		}
 	}
 	
@@ -29,7 +33,7 @@
 			" VALUES ('$email','$password',NOW(),'0','0','0','$nombre','$apellidos','$fechaNacimiento')";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
-			
+			Header("Location: error.php");
 		}
 	}
 	
@@ -51,7 +55,7 @@
 			"WHERE id=$idUsuario";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
-			
+			Header("Location: error.php");
 		}
 	}
 	
@@ -61,7 +65,25 @@
 			$SQL = "DELETE FROM usuario WHERE id=$idUsuario";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
-			
+			Header("Location: error.php");
 		}
 	}
+	
+	function creaElementos($stmt) {
+        $resultado = array();		
+		foreach($stmt as $row){
+			$objeto = new Usuario();
+			$objeto->__set("id", $row["id"]);
+            $objeto->__set("email", $row["email"]);
+            $objeto->__set("password", $row["password"]);
+            $objeto->__set("fecharegistro", $row["fecharegistro"]);
+            $objeto->__set("preguntasrespondidas", $row["preguntasrespondidas"]);
+            $objeto->__set("puntos", $row["puntos"]);
+            $objeto->__set("nombre", $row["nombre"]);
+            $objeto->__set("apellidos", $row["apellidos"]);
+            $objeto->__set("fechanacimiento", $row["fechanacimiento"]);
+            $resultado[$row["id"]] = $objeto;
+		}        
+        return $resultado;
+    }
 ?>
