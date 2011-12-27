@@ -2,16 +2,20 @@
 function obtenerTodasLasVisitas($conexion) {
 	try {
 		$SQL = "SELECT * FROM visita";
+		$stmt = $conexion->query($SQL);
+		return creaElementos($stmt);
 	} catch(PDOException $e) {
-
+		Header("Location: error.php");
 	}
 }
 
 function obtenerVisitaPorId($id, $conexion) {
 	try {
 		$SQL = "SELECT * FROM visita WHERE id=$id";
+		$stmt = $conexion->query($SQL);
+		return creaElementos($stmt);
 	} catch(PDOException $e) {
-
+		Header("Location: error.php");
 	}
 }
 
@@ -22,7 +26,7 @@ function insertarVisita(Visita $visita, $conexion) {
 		$SQL = "INSERT INTO visita(idelemento,idusuario) VALUES ('$idElemento','$idusuario')";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-
+		Header("Location: error.php");
 	}
 }
 
@@ -34,7 +38,7 @@ function modificarVisita(Visita $visita, $conexion) {
 		$SQL = "UPDATE visita SET idelemento=$idElemento,idusuario=$idusuario WHERE id=$idVisita";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-
+		Header("Location: error.php");
 	}
 }
 
@@ -44,7 +48,19 @@ function borrarVisita(Visita $visita, $conexion) {
 		$SQL = "DELETE FROM visita WHERE id=$idVisita";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-
+		Header("Location: error.php");
 	}
+}
+
+function creaElementos($stmt) {
+    $resultado = array();
+	foreach($stmt as $row){
+		$objeto = new Visita();
+		$objeto->__set("id", $row["id"]);
+        $objeto->__set("idelemento", $row["idelemento"]);
+        $objeto->__set("idusuario", $row["idusuario"]);
+		$resultado[$row["id"]] = $objeto;
+	}
+    return $resultado;
 }
 ?>
