@@ -6,6 +6,7 @@ function encontrarTodosLosElementos($conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -16,6 +17,7 @@ function encontrarElementoPorId($id, $conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -27,6 +29,7 @@ function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -38,16 +41,18 @@ function encontrarRespuestas(Elemento $elemento, $conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
-
 function encontrarElementosPorTag(Tag $tag, $conexion) {
 	try {
-		$SQL = "";
+		$idTag = $tag->__get("id");
+		$SQL = "SELECT * FROM elemento e INNER JOIN tagsdeelementos t ON t.idelemento=e.id AND t.idtag=$idTag";
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -60,6 +65,7 @@ function encontrarElementosPorPalabras($cadena, $conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -74,6 +80,7 @@ function insertarElemento(Elemento $elemento, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -89,6 +96,7 @@ function modificarElemento(Elemento $elemento, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -99,6 +107,7 @@ function borrarElemento(Elemento $elemento, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 

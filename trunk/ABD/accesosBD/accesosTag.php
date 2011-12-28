@@ -6,6 +6,7 @@
 			return creaElementos($stmt);
     	}catch (PDOException $e){
    			Header("Location: error.php"); 		
+			die();
     	}
     }
 	
@@ -15,7 +16,8 @@
 			$stmt = $conexion->query($SQL);
 			return creaElementos($stmt);
 		}catch(PDOException $e){
-			Header("Location: error.php");			
+			Header("Location: error.php");	
+			die();		
 		}
 	}
 	
@@ -25,7 +27,8 @@
 			$SQL = "INSERT INTO tag (tag) VALUES ($nombre)";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
-			Header("Location: error.php");			
+			Header("Location: error.php");	
+			die();		
 		}
 	}
 	
@@ -36,7 +39,8 @@
 			$SQL = "UPDATE tag SET tag=$nombre WHERE id=$id";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
-			Header("Location: error.php");			
+			Header("Location: error.php");
+			die();			
 		}
 	}
 	
@@ -47,6 +51,7 @@
 			$conexion->exec($SQL);
 		}catch(PDOException $e){
 			Header("Location: error.php");
+			die();
 		}
 	}
 	

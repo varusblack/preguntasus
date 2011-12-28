@@ -6,6 +6,7 @@ function obtenerTodasLasVotaciones($conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -16,6 +17,7 @@ function obtenerVotacionPorId($id, $conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -27,6 +29,7 @@ function insertarVotacion(Votacion $votacion, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -39,6 +42,7 @@ function modificarVotacion(Votacion $votacion, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -49,6 +53,7 @@ function borrarVotacion(Votacion $votacion, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 

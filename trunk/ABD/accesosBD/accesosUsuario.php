@@ -6,6 +6,7 @@
 			return creaElementos($stmt);
 		}catch(PDOException $e){
 			Header("Location: error.php");
+			die();
 		}
     }
 	
@@ -16,6 +17,7 @@
 			return creaElementos($stmt);
 		}catch(PDOException $e){
 			Header("Location: error.php");
+			die();
 		}
 	}
 	
@@ -34,6 +36,7 @@
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
 			Header("Location: error.php");
+			die();
 		}
 	}
 	
@@ -56,6 +59,7 @@
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
 			Header("Location: error.php");
+			die();
 		}
 	}
 	
@@ -66,6 +70,7 @@
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
 			Header("Location: error.php");
+			die();
 		}
 	}
 	

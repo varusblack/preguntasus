@@ -6,6 +6,7 @@ function obtenerTodasLasVisitas($conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -16,6 +17,7 @@ function obtenerVisitaPorId($id, $conexion) {
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -27,6 +29,7 @@ function insertarVisita(Visita $visita, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -39,6 +42,7 @@ function modificarVisita(Visita $visita, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 
@@ -49,6 +53,7 @@ function borrarVisita(Visita $visita, $conexion) {
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
+		die();
 	}
 }
 

@@ -154,9 +154,7 @@ div.estadisticasPregunta {
 	background-image: url('../imagenes/fondocolumna.jpg');
 }
 #barraNavegacion {
-	margin-top:0;
-	margin-left: 230px;
-	margin-right: 230px;
+	margin:0 auto 0 auto;
 	width: 500px;
 	text-align: center;
 	clear: both;
@@ -169,4 +167,77 @@ div.estadisticasPregunta {
 #barraNavegacion a.separado {
 	padding-left: 2em;
 }
+#cuadroBusqueda {
+	margin:0 auto 0 auto;
+	clear:both;
+	margin-top:20px;
+	width:400px;
+	height: 120px;
+	background-image: url('../imagenes/fondocuadrobusqueda.png');
+}
+#labelsBusqueda{
+	padding-top:10px;
+	padding-left:10px;
+	text-align:right;
+	float:left;
+}
+#labelsBusqueda div.labelBusqueda{
+	padding-bottom:10px;
+}
+#inputsBusqueda{
+	padding-top:10px;
+	padding-right:10px;
+	float:right;
+	margin-right:5px;
+}
+#inputsBusqueda div.inputBusqueda{
+	padding-bottom:9px;
+}
+#palabras{
+	width: 230px;
+}
+#botonBuscar{
+	text-align:center;
+	padding-top:15px;
+	clear:both;
+}
+
+#cuadroRegistrarse{
+	margin:0 auto 0 auto;
+	clear:both;
+	margin-top:20px;
+	width:400px;
+	height: 225px;
+	background-image: url('../imagenes/fondocuadroregistrarse.png'); 
+}
+
+#labelsRegistrarse{
+	padding-top:10px;
+	padding-left:10px;
+	text-align :right;
+	float:left;
+	clear: left;
+}
+#labelsRegistrarse div.separado {
+	padding-top:7px;
+}
+#inputsRegistrarse{
+	padding-top:10px;
+	padding-right:10px;
+	float:right;
+	clear:right;
+}
+#inputsRegistrarse div.separado{
+	padding-top:5px;
+}
+#inputsRegistrarse input{
+	width: 200px;
+}
+#botonRegistrarse{
+	text-align:center;
+	padding-top:20px;
+	clear:both;
+}
+
+
 
