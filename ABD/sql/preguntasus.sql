@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 13-12-2011 a las 12:46:27
+-- Tiempo de generación: 28-12-2011 a las 13:57:36
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -60,6 +60,28 @@ CREATE TABLE IF NOT EXISTS `tag` (
   `tag` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `tag` (`tag`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tag`
+--
+
+INSERT INTO `tag` (`id`, `tag`) VALUES
+(2, 'Ampliación de Base de Datos'),
+(1, 'Microprocesadores');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tagsdeelementos`
+--
+
+CREATE TABLE IF NOT EXISTS `tagsdeelementos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idelemento` int(11) NOT NULL,
+  `idtag` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `parejaunica` (`idelemento`,`idtag`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------

@@ -1,11 +1,11 @@
 <?php
 	require_once ("./includes/styles/templates/cabecera.php");
 	
-	$ruta = $_SERVER['REQUEST_URI'];
-	if ($ruta == '/ABD/') {
-		require_once ("./includes/widgets/login.php");
-	}
-	
+	// $ruta = $_SERVER['REQUEST_URI'];
+	// if ($ruta == '/ABD/') {
+		// require_once ("./includes/widgets/login.php");
+	// }
+	require_once ("./includes/widgets/login.php");
 	require_once ("./includes/widgets/barranavegacion.php");
 ?>
 <div id="contenedor_cuerpo">
