@@ -7,23 +7,31 @@
 	// }
 	require_once ("./includes/widgets/login.php");
 	require_once ("./includes/widgets/barranavegacion.php");
-?>
+?> 
 <div id="contenedor_cuerpo">
 	ContenedorCuerpo
 	<div id="preguntas">
-		ContenedorPreguntas
 		<div class="pregunta">
-			Pregunta
-			<div class="usuario_que_pregunta">
-				Usuario preguntador
-			</div>
-			<div class="preguntaConcreta">
-				Contenedor pregunta concreta
-				<div class="tituloPregunta">
-					Titulo de la pregunta
+			<div class="usuarioPregunta">
+				<div class="fotoUsuarioPregunta">
+					FOTITO
 				</div>
-				<div class="estadisticasPregunta">
-					Estadisticas de la pregunta
+				<div class="nombreUsuario">
+					John Rambo
+				</div>
+				<div class="puntosUsuarioPregunta">
+					<label class="puntos">Puntos:</label>20
+				</div>
+			</div>
+			<div class="datosPregunta">			
+				<div class="tituloPregunta">
+					¿Esto funcionará?
+				</div>
+				<div class="estadisticasPregunta">					
+					<label class="votos">Votos:</label>20			
+					<label class="respuestas">Respuestas:</label>15				
+					<label class="visitas">Visitas:</label>89
+					
 				</div>
 			</div>
 		</div>
@@ -42,4 +50,13 @@
 <?php
 	require_once ("./includes/styles/templates/pie.php");
 ?>
+
+
+
+
+
+
+
+
+
 	
