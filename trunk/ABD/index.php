@@ -30,8 +30,12 @@
 				<div class="estadisticasPregunta">					
 					<label class="votos">Votos:</label>20			
 					<label class="respuestas">Respuestas:</label>15				
-					<label class="visitas">Visitas:</label>89
-					
+					<label class="visitas">Visitas:</label>89					
+				</div>
+				<div class="tagsPregunta">
+					<label class="tag1">Tag 1</label>
+					<label class="tag2">Tag 2</label>
+					<label class="tag3">Tag 3</label>
 				</div>
 			</div>
 		</div>
