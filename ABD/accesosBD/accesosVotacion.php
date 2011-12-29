@@ -23,8 +23,8 @@ function obtenerVotacionPorId($id, $conexion) {
 
 function insertarVotacion(Votacion $votacion, $conexion) {
 	try {
-		$idElemento = $votacion -> __get("idelemento");
-		$idusuario = $votacion -> __get("idusuario");
+		$idElemento = $votacion ->idelemento;
+		$idusuario = $votacion ->idusuario;
 		$SQL = "INSERT INTO votacion(idelemento,idusuario) VALUES ('$idElemento','$idusuario')";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
@@ -48,7 +48,7 @@ function modificarVotacion(Votacion $votacion, $conexion) {
 
 function borrarVotacion(Votacion $votacion, $conexion) {
 	try {
-		$idVotacion = $votacion -> __get("id");
+		$idVotacion = $votacion -> id;
 		$SQL = "DELETE FROM votacion WHERE id=$idVotacion";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
@@ -61,9 +61,9 @@ function creaElementos($stmt) {
     $resultado = array();
 	foreach($stmt as $row){
 		$objeto = new Votacion();
-		$objeto->__set("id", $row["id"]);
-        $objeto->__set("idelemento", $row["idelemento"]);
-        $objeto->__set("idusuario", $row["idusuario"]);
+		$objeto->id= $row["id"];
+        $objeto->idelemento= $row["idelemento"];
+        $objeto->idusuario= $row["idusuario"];
 		$resultado[$row["id"]] = $objeto;
 	}
     return $resultado;
