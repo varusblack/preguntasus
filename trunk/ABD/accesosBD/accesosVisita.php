@@ -23,8 +23,8 @@ function obtenerVisitaPorId($id, $conexion) {
 
 function insertarVisita(Visita $visita, $conexion) {
 	try {
-		$idElemento = $visita -> __get("idelemento");
-		$idusuario = $visita -> __get("idusuario");
+		$idElemento = $visita -> idelemento;
+		$idusuario = $visita -> idusuario;
 		$SQL = "INSERT INTO visita(idelemento,idusuario) VALUES ('$idElemento','$idusuario')";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
@@ -35,9 +35,9 @@ function insertarVisita(Visita $visita, $conexion) {
 
 function modificarVisita(Visita $visita, $conexion) {
 	try {
-		$idVisita = $visita -> __get("id");
-		$idElemento = $visita -> __get("idelemento");
-		$idusuario = $visita -> __get("idusuario");
+		$idVisita = $visita -> id;
+		$idElemento = $visita -> idelemento;
+		$idusuario = $visita -> idusuario;
 		$SQL = "UPDATE visita SET idelemento=$idElemento,idusuario=$idusuario WHERE id=$idVisita";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
@@ -48,7 +48,7 @@ function modificarVisita(Visita $visita, $conexion) {
 
 function borrarVisita(Visita $visita, $conexion) {
 	try {
-		$idVisita = $visita -> __get("id");
+		$idVisita = $visita ->id;
 		$SQL = "DELETE FROM visita WHERE id=$idVisita";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
@@ -61,9 +61,9 @@ function creaElementos($stmt) {
     $resultado = array();
 	foreach($stmt as $row){
 		$objeto = new Visita();
-		$objeto->__set("id", $row["id"]);
-        $objeto->__set("idelemento", $row["idelemento"]);
-        $objeto->__set("idusuario", $row["idusuario"]);
+		$objeto->id= $row["id"];
+        $objeto->idelemento=$row["idelemento"];
+        $objeto->idusuario= $row["idusuario"];
 		$resultado[$row["id"]] = $objeto;
 	}
     return $resultado;

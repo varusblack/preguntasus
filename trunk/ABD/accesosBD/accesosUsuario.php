@@ -23,12 +23,12 @@
 	
 	function insertarUsuario(Usuario $usuario,$conexion){
 		try{
-			$email = $usuario->__get("email");
-			$password = $usuario->__get("password");
-			$puntos = $usuario->__get("puntos");
-			$nombre = $usuario->__get("nombre");
-			$apellidos = $usuario->__get("apellidos");
-			$fechaNacimiento = $usuario->__get("fechanacimiento");
+			$email = $usuario->email;
+			$password = $usuario->password;
+			$puntos = $usuario->puntos;
+			$nombre = $usuario->nombre;
+			$apellidos = $usuario->apellidos;
+			$fechaNacimiento = $usuario->fechanacimiento;
 			
 			$SQL = "INSERT INTO usuario (email,password,fecharegistro,preguntasrealizadas,".
 			"preguntasrespondidas,puntos,nombre,apellidos,fechanacimiento)".
@@ -42,15 +42,15 @@
 	
 	function modificarUsuario(Usuario $usuario,$conexion){
 		try{
-			$idUsuario = $usuario->__get("id");
-			$email = $usuario->__get("email");
-			$password = $usuario->__get("password");
-			$preguntasRealizadas = $usuario->__get("preguntasrealizadas");
-			$preguntasRespondidas = $usuario->__get("preguntasrespondidas");
-			$puntos = $usuario->__get("puntos");
-			$nombre = $usuario->__get("nombre");
-			$apellidos = $usuario->__get("apellidos");
-			$fechaNacimiento = $usuario->__get("fechanacimiento");
+			$idUsuario = $usuario->id;
+			$email = $usuario->email;
+			$password = $usuario->password;
+			$preguntasRealizadas =$usuario->preguntasrealizadas;
+			$preguntasRespondidas = $usuario->preguntasrespondidas;
+			$puntos = $usuario->puntos;
+			$nombre = $usuario->nombre;
+			$apellidos = $usuario->apellidos;
+			$fechaNacimiento = $usuario->fechanacimiento;
 			
 			$SQL = "UPDATE usuario SET email=$email,password=$password,".
 			"preguntasrealizadas=$preguntasRealizadas,preguntasrespondidas=$preguntasRespondidas".
@@ -65,7 +65,7 @@
 	
 	function borrarUsuario(Usuario $usuario,$conexion){
 		try{
-			$idUsuario = $usuario->__get("id");
+			$idUsuario = $usuario->id;
 			$SQL = "DELETE FROM usuario WHERE id=$idUsuario";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
@@ -78,15 +78,15 @@
         $resultado = array();		
 		foreach($stmt as $row){
 			$objeto = new Usuario();
-			$objeto->__set("id", $row["id"]);
-            $objeto->__set("email", $row["email"]);
-            $objeto->__set("password", $row["password"]);
-            $objeto->__set("fecharegistro", $row["fecharegistro"]);
-            $objeto->__set("preguntasrespondidas", $row["preguntasrespondidas"]);
-            $objeto->__set("puntos", $row["puntos"]);
-            $objeto->__set("nombre", $row["nombre"]);
-            $objeto->__set("apellidos", $row["apellidos"]);
-            $objeto->__set("fechanacimiento", $row["fechanacimiento"]);
+			$objeto->id= $row["id"];
+            $objeto->email= $row["email"];
+            $objeto->password= $row["password"];
+            $objeto->fecharegistro=$row["fecharegistro"];
+            $objeto->preguntasrespondidas= $row["preguntasrespondidas"];
+            $objeto->puntos= $row["puntos"];
+            $objeto->nombre= $row["nombre"];
+            $objeto->apelldios= $row["apellidos"];
+            $objeto->fechanacimiento= $row["fechanacimiento"];
             $resultado[$row["id"]] = $objeto;
 		}        
         return $resultado;

@@ -1,6 +1,6 @@
 <?php
 function crearConexion() {
-	$host = "127.0.0.1";
+	$host = "localhost";
 	$usuario = "root";
 	$password = "";
 	$conexion = null;
@@ -9,10 +9,10 @@ function crearConexion() {
 		$conexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$conexion -> query('SET NAMES utf8');
 	} catch(PDOException $e) {
-		Header("Location:error.php");
+            Header("Location:error.php");
 		die();
 	}
-	return $conexion;
+ 	return $conexion;
 
 }
 

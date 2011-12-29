@@ -5,7 +5,6 @@ function encontrarTodosLosElementos($conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
 		die();
 	}
 }
@@ -23,7 +22,7 @@ function encontrarElementoPorId($id, $conexion) {
 
 function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 	try {
-		$idUsuario = $usuario -> __get("id");
+		$idUsuario = $usuario -> id;
 		$SQL = "SELECT * FROM elemento WHERE idUsuario=$idUsuario";
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
@@ -35,7 +34,7 @@ function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 
 function encontrarRespuestas(Elemento $elemento, $conexion) {
 	try {
-		$idRespuesta = $elemento -> __get("idrespuesta");
+		$idRespuesta = $elemento -> idrespuesta;
 		$SQL = "SELECT * FROM elemento WHERE idrespuesta=$idRespuesta";
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
@@ -46,7 +45,7 @@ function encontrarRespuestas(Elemento $elemento, $conexion) {
 }
 function encontrarElementosPorTag(Tag $tag, $conexion) {
 	try {
-		$idTag = $tag->__get("id");
+		$idTag = $tag->id;
 		$SQL = "SELECT * FROM elemento e INNER JOIN tagsdeelementos t ON t.idelemento=e.id AND t.idtag=$idTag";
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
@@ -71,10 +70,10 @@ function encontrarElementosPorPalabras($cadena, $conexion) {
 
 function insertarElemento(Elemento $elemento, $conexion) {
 	try {
-		$idAutor = $elemento -> __get("idautor");
-		$titulo = $elemento -> __get("titulo");
-		$cuerpo = $elemento -> __get("cuerpo");
-		$idRespuesta = $elemento -> __get("idrespuesta");
+		$idAutor = $elemento -> idautor;
+		$titulo = $elemento -> titulo;
+		$cuerpo = $elemento ->cuerpo;
+		$idRespuesta = $elemento -> idrespuesta;
 		$SQL = "INSERT INTO elemento (idautor,titulo,cuerpo,idrespuesta,fechapregunta) VALUES". 
 		"('$idAutor','$titulo','$cuerpo','$idRespuesta',NOW())";
 		$conexion -> exec($SQL);
@@ -86,11 +85,11 @@ function insertarElemento(Elemento $elemento, $conexion) {
 
 function modificarElemento(Elemento $elemento, $conexion) {
 	try {
-		$idElemento = $elemento -> __get("id");
-		$idAutor = $elemento -> __get("idautor");
-		$titulo = $elemento -> __get("titulo");
-		$cuerpo = $elemento -> __get("cuerpo");
-		$idRespuesta = $elemento -> __get("idrespuesta");
+		$idElemento = $elemento ->id;
+		$idAutor = $elemento -> idautor;
+		$titulo = $elemento -> titulo;
+		$cuerpo = $elemento ->cuerpo;
+		$idRespuesta = $elemento -> idrespuesta;
 		$SQL = "UPDATE elemento SET idautor=$idAutor,titulo=$titulo,cuerpo=$cuerpo,".
 		"idrespuesta=$idRespuesta WHERE id=$idElemento";
 		$conexion -> exec($SQL);
@@ -102,7 +101,7 @@ function modificarElemento(Elemento $elemento, $conexion) {
 
 function borrarElemento(Elemento $elemento, $conexion) {
 	try {
-		$idElemento = $elemento -> __get("id");
+		$idElemento = $elemento -> id;
 		$SQL = "DELETE FROM elemento WHERE id=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
@@ -112,15 +111,15 @@ function borrarElemento(Elemento $elemento, $conexion) {
 }
 
 function creaElementos($stmt) {
-	$resultado = array();	
+	$resultado = array();
 	foreach($stmt as $row){
 		$objeto = new Elemento();
-		$objeto->__set("id", $row["id"]);
-		$objeto->__set("idautor", $row["idautor"]);
-		$objeto->__set("titulo", $row["titulo"]);
-		$objeto->__set("cuerpo", $row["cuerpo"]);
-		$objeto->__set("idrespuesta", $row["idrespuesta"]);
-		$objeto->__set("fechapregunta", $row["fechapregunta"]);
+		$objeto->id= $row["id"];
+		$objeto->idautor= $row["idautor"];
+		$objeto->titulo= $row["titulo"];
+		$objeto->cuerpo= $row["cuerpo"];
+		$objeto->idrespuesta= $row["idrespuesta"];
+		$objeto->fechapregunta= $row["fechapregunta"];
 		$resultado[$row["id"]]=$objeto;
 	}
 	return $arrayADevolver;

@@ -1,8 +1,9 @@
 <?php
     function obtenerTodosLosTags($conexion){
     	try{
-    		$SQL = "SELECT tag FROM tag";
+    		$SQL = "SELECT * FROM tag";
 			$stmt = $conexion->query($SQL);
+                        
 			return creaElementos($stmt);
     	}catch (PDOException $e){
    			Header("Location: error.php"); 		
@@ -23,7 +24,7 @@
 	
 	function insertarTag(Tag $tag,$conexion){
 		try{
-			$nombre = $tag->__get("tag");
+			$nombre = $tag->tag;
 			$SQL = "INSERT INTO tag (tag) VALUES ($nombre)";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
@@ -34,8 +35,8 @@
 	
 	function modificarTag(Tag $tag,$conexion){
 		try{
-			$id = $tag->__get("id");
-			$nombre = $tag->__get("tag");
+			$id = $tag->id;
+			$nombre = $tag->tag;
 			$SQL = "UPDATE tag SET tag=$nombre WHERE id=$id";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
@@ -46,7 +47,7 @@
 	
 	function borrarTag(Tag $tag,$conexion){
 		try{
-			$idTag = $tag->__get("id");
+			$idTag = $tag->id;
 			$SQL="DELETE FROM tag WHERE id=$idTag";
 			$conexion->exec($SQL);
 		}catch(PDOException $e){
@@ -59,8 +60,8 @@
         $resultado = array();		
 		foreach($stmt as $row){
 			$objeto = new Tag();
-			$objeto->__set("id", $row["id"]);
-            $objeto->__set("tag", $row["tag"]);
+			$objeto->id=$row["id"];
+            $objeto->tag= $row["tag"];
 			$resultado[$row["id"]] = $objeto;
 		}
         return $resultado;
