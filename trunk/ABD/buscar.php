@@ -25,13 +25,12 @@ require_once ("./entidades/Tag.php");
 				<div class="inputBusqueda separado">
 					<select id="tag">
 						<!-- Esta option está para comprobar la longitud del box para el CSS -->
-						<option>Ingeniería del software de gestión III</option>
 						<?php
 							$conexion = crearConexion();
 							$arrayTags = obtenerTodosLosTags($conexion);
-							cerrarConexion($conexion);
+ 							cerrarConexion($conexion);
 							foreach($arrayTags as $tag){
-								echo "<option>".$tag->__get("tag")."</option><br>";
+								echo "<option value='$tag->id'>".$tag->tag."</option><br>";
 							}					
 						?>
 					</select>
