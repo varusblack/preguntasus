@@ -13,7 +13,7 @@ function encontrarElementoPorId($id, $conexion) {
 	try {
 		$SQL = "SELECT * FROM elemento WHERE id=$id";
 		$stmt = $conexion->query($SQL);
-		return creaElementos($stmt);
+		return creaUnicoElemento($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
 		die();
@@ -43,6 +43,19 @@ function encontrarRespuestas(Elemento $elemento, $conexion) {
 		die();
 	}
 }
+
+function obtenerNumeroDeRespuestasDeElemento(Elemento $elemento,$conexion){
+	try {
+		$idRespuesta = $elemento -> idrespuesta;
+		$SQL = "SELECT COUNT(*) as cuenta FROM elemento WHERE idrespuesta=$idRespuesta";
+		$stmt = $conexion->query($SQL);
+		return creaUnicoDato($stmt);
+	} catch(PDOException $e) {
+		Header("Location: error.php");
+		die();
+	}
+}
+
 function encontrarElementosPorTag(Tag $tag, $conexion) {
 	try {
 		$idTag = $tag->id;
@@ -66,6 +79,23 @@ function encontrarElementosPorPalabras($cadena, $conexion) {
 		Header("Location: error.php");
 		die();
 	}
+}
+
+function encontrarElementosPorPalabrasYTag($cadena,Tag $tag, $conexion){
+	try {
+		$cadmins = strtolower($cadena);
+		$cadPrimMay = ucfirst($cadmins);
+		$idTag = $tag->id;
+		$SQL = "SELECT e.id AS id,e.idautor AS idautor,e.titulo AS titulo, ".
+		"e.idrespuesta AS idrespuesta,e.fechapregunta AS fechapregunta ". 
+		"FROM elemento e,tagsdeelementos te WHERE e.id=te.idelemento AND te.idtag=$idTag ". 
+		"AND e.titulo LIKE '%$cadmins%' OR e.titulo LIKE '%$cadPrimMay%'";
+		$stmt = $conexion->query($SQL);
+		return creaElementos($stmt);
+	} catch(PDOException $e) {
+		Header("Location: error.php");
+		die();
+	} 
 }
 
 function insertarElemento(Elemento $elemento, $conexion) {
@@ -123,5 +153,26 @@ function creaElementos($stmt) {
 		$resultado[$row["id"]]=$objeto;
 	}
 	return $arrayADevolver;
+}
+
+function creaUnicoElemento($stmt) {
+	$objeto = new Elemento();
+	foreach($stmt as $row){
+		$objeto->id= $row["id"];
+		$objeto->idautor= $row["idautor"];
+		$objeto->titulo= $row["titulo"];
+		$objeto->cuerpo= $row["cuerpo"];
+		$objeto->idrespuesta= $row["idrespuesta"];
+		$objeto->fechapregunta= $row["fechapregunta"];
+	}
+	return $objeto;
+}
+
+function creaUnicoDato($stmt) {
+	$dato = NULL;
+	foreach($stmt as $row){
+		$dato = $row["cuenta"];
+	}
+	return $dato;
 }
 ?>

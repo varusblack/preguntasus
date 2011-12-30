@@ -215,7 +215,7 @@ div.pregunta {
 	margin-top: 5px;
 	margin-bottom: 5px;
 	width: 500px;
-	height: 90px;
+	height: 120px;
 	background-image: url('../imagenes/preguntatest.png');
 }
 
@@ -250,52 +250,3 @@ div.estadisticasPregunta{
 label.respuestas, label.visitas{
 	padding-left:10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*div.pregunta_respondida{
-	margin-top: 5px;
-	margin-bottom: 5px;
-	width: 500px;
-	height: 90px;
-	background-image: url('../imagenes/fondopreguntarespondida.jpg');
-}
-div.usuario_que_pregunta {
-	float: left;
-	margin-right: 10px;
-}
-div.preguntaConcreta {
-	float: left;
-}
-div.tituloPregunta {
-	font-size: large;
-}
-div.estadisticasPregunta {
-	float: right;
-	clear: left;
-}*/
-

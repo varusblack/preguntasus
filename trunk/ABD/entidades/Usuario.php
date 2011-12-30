@@ -14,7 +14,7 @@ class Usuario {
 		$this -> atributos["nombre"] = NULL;
 		$this -> atributos["apellidos"] = NULL;
 		$this -> atributos["fechanacimiento"] = NULL;
-		$this -> atributos["tipoUsuario"] = NULL;
+		$this -> atributos["tipousuario"] = NULL;
 	}
 
 	public function __get($atributo) {

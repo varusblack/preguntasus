@@ -14,7 +14,7 @@
 		try{
 			$SQL="SELECT * FROM usuario WHERE id=$id";
 			$stmt = $conexion->query($SQL);
-			return creaElementos($stmt);
+			return creaUnicoElemento($stmt);
 		}catch(PDOException $e){
 			Header("Location: error.php");
 			die();
@@ -87,8 +87,26 @@
             $objeto->nombre= $row["nombre"];
             $objeto->apelldios= $row["apellidos"];
             $objeto->fechanacimiento= $row["fechanacimiento"];
+            $objeto->tipousuario= $row["tipousuario"];
             $resultado[$row["id"]] = $objeto;
 		}        
         return $resultado;
+    }
+    
+    function creaUnicoElemento($stmt){
+    	$objeto = new Usuario();
+		foreach($stmt as $row){
+			$objeto->id= $row["id"];
+            $objeto->email= $row["email"];
+            $objeto->password= $row["password"];
+            $objeto->fecharegistro=$row["fecharegistro"];
+            $objeto->preguntasrespondidas= $row["preguntasrespondidas"];
+            $objeto->puntos= $row["puntos"];
+            $objeto->nombre= $row["nombre"];
+            $objeto->apelldios= $row["apellidos"];
+            $objeto->fechanacimiento= $row["fechanacimiento"];
+            $objeto->tipousuario= $row["tipousuario"];
+		}
+		return $objeto;
     }
 ?>

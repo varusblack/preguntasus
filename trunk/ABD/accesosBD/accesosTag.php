@@ -15,7 +15,7 @@
 		try{
 			$SQL = "SELECT * FROM tag WHERE id=$id";
 			$stmt = $conexion->query($SQL);
-			return creaElementos($stmt);
+			return creaUnicoElemento($stmt);
 		}catch(PDOException $e){
 			Header("Location: error.php");	
 			die();		
@@ -66,4 +66,13 @@
 		}
         return $resultado;
     }
+    
+    function creaUnicoElemento($stmt) {
+		$objeto = new Tag();
+		foreach($stmt as $row){
+			$objeto->id=$row["id"];
+            $objeto->tag= $row["tag"];
+		}
+		return $objeto;
+	}
 ?>
