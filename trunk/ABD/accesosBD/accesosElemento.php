@@ -1,4 +1,5 @@
 <?php
+require_once ("./entidades/Elemento.php");
 function encontrarTodosLosElementos($conexion) {
 	try {
 		$SQL = "SELECT * FROM elemento";
@@ -34,10 +35,11 @@ function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 
 function encontrarRespuestas(Elemento $elemento, $conexion) {
 	try {
-		$idRespuesta = $elemento -> idrespuesta;
+		$idRespuesta = $elemento -> id;
 		$SQL = "SELECT * FROM elemento WHERE idrespuesta=$idRespuesta";
 		$stmt = $conexion->query($SQL);
-		return creaElementos($stmt);
+		//return creaElementos($stmt);
+		return almacenaRespuestas($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
 		die();
@@ -46,7 +48,7 @@ function encontrarRespuestas(Elemento $elemento, $conexion) {
 
 function obtenerNumeroDeRespuestasDeElemento(Elemento $elemento,$conexion){
 	try {
-		$idRespuesta = $elemento -> idrespuesta;
+		$idRespuesta = $elemento -> id;
 		$SQL = "SELECT COUNT(*) as cuenta FROM elemento WHERE idrespuesta=$idRespuesta";
 		$stmt = $conexion->query($SQL);
 		return creaUnicoDato($stmt);
@@ -138,6 +140,14 @@ function borrarElemento(Elemento $elemento, $conexion) {
 		Header("Location: error.php");
 		die();
 	}
+}
+
+function almacenaRespuestas($stmt){
+	$resultado = array();
+	foreach($stmt as $row){
+		$resultado[]= $row["cuerpo"];
+	}
+	return $resultado;
 }
 
 function creaElementos($stmt) {
