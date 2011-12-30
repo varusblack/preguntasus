@@ -2,34 +2,47 @@
 require_once ("./includes/styles/templates/cabecera.php");
 require_once ("./includes/widgets/login.php");
 require_once ("./includes/widgets/barranavegacion.php");
+include_once ("./accesosBD/conexionesBD.php");
+include_once ("./accesosBD/accesosElemento.php");
+require_once ("./entidades/Elemento.php");
 session_start();
-$user=$_SESSION("usuario");
-
+$user=$_SESSION['usuario'];
+$conexion=crearConexion();
+$elemento= new Elemento();
+$elemento= encontrarElementoPorId(1,$conexion);
 ?>
+
 <div class="container">
 	<div id="header"></div>
 	<div id="content">
-		<div id="pregunta">
-			<h3 class="rotuloComun">La pregunta con sus votaciones es</h3>
-			<table border="1" summary="Tabla de fijacion del contenido de la pregunta">
-				<th>VOTOS</th>
-				<th>PREGUNTA</th>
-				<tr>
-					<td>******</td>
-					<td>TEXTO DE LA PREGUNTA</td>
-				</tr>
-			</table>
+		<div id="titulo">
+			<h2 class="rotuloComun">Titulo:</h2>
+			<h4 class="centra titulo"> 
+			<?				
+			print($elemento->titulo);
+			?>
+		</div>
+		<div id="cuerpo"
+			</h4>
+			<h2 class="rotuloComun">Contenido:</h2>
+			<h4 class="centra cuerpo"> 
+			<?
+			print($elemento->cuerpo);
+			?>
+			</h4>			
 		</div>
 		<div id="respuesta">
-			<table border="1" summary="Tabla para las respuestas">
-				<h3 class="rotuloComun">Las Respuestas publicadas para esta pregunta son:</h3>
-				<th>USUARIO</th>
-				<th>RESPUESTA</th>
-				<tr>
-					<td>NOMBRE DE USUARIO</td>
-					<td>TEXTO DE LA RESPUESTA</td>
-				</tr>
-			</table>
+			<h2 class="rotuloComun">Numero De Respuestas Publicadas :
+			<?
+			print(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));
+			$respuestas=array();
+			$respuestas=encontrarRespuestas($elemento,$conexion);
+			foreach ($respuestas as $value) {
+				print("$value");
+			}	
+			?>
+			</h2>
+			
 		</div>
 		<form id="mi_respuesta">
 			<h3 class="rotuloComun">Mi Respuesta Aportada es</h3>
