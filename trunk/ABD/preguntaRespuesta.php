@@ -2,6 +2,9 @@
 require_once ("./includes/styles/templates/cabecera.php");
 require_once ("./includes/widgets/login.php");
 require_once ("./includes/widgets/barranavegacion.php");
+session_start();
+$user=$_SESSION("usuario");
+
 ?>
 <div class="container">
 	<div id="header"></div>
