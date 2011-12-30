@@ -1,56 +1,28 @@
-<?php
-require_once ("../../accesosBD/conexionesBD.php");
-require_once ("../../accesosBD/accesosTag.php");
-require_once ("../../accesosBD/accesosUsuario.php");
-
-function imprimirPreguntas($arrayDeElementos){
-	$conexion = crearConexion();
-	
-	foreach($arrayDeElementos as $elemento){
-		$id=$elemento->__get("id");
-		$idautor=$elemento->__get("idautor");
-		$titulo=$elemento->__get("titulo");
-		$cuerpo=$elemento->__get("cuerpo");
-		$idrespuesta=$elemento->__get("idrespuesta");
-		$fechapregunta=$elemento->__get("fechapregunta");
-		
-		$usuario = obtenerUsuarioPorId($idautor, $conexion);
-		
-		foreach ($usuario as $user ) {
-			$nombreUsuario = $user->__get("email");
-		}
-		
-		echo construirDivElemento($nombreUsuario, $titulo);
-	}
-	
-	cerrarConexion($conexion);
-}
-
-
-
-
-function construirDivElemento($nombreUsuario,$tituloPregunta){
-	$cadena = '<div class="pregunta"><div class="usuario_que_pregunta">'.$nombreUsuario.
-	'</div><div class="preguntaConcreta"><div class="tituloPregunta">'.$tituloPregunta.
-	'</div><div class="estadisticasPregunta"></div></div></div>';
-	
-	return $cadena;
-}
-
-
-?>
 <div class="pregunta">
-	Pregunta
-	<div class="usuario_que_pregunta">
-		Usuario preguntador
-	</div>
-	<div class="preguntaConcreta">
-		Contenedor pregunta concreta
-		<div class="tituloPregunta">
-			Titulo de la pregunta
+	<div class="usuarioPregunta">
+		<div class="fotoUsuarioPregunta">
+			FOTITO
 		</div>
-		<div class="estadisticasPregunta">
-			Estadisticas de la pregunta
+		<div class="nombreUsuario">
+			<?php $usuario->email;?>
+		</div>
+		<div class="puntosUsuarioPregunta">
+			<label class="puntos">Puntos:</label><?php $usuario->puntos;?>
+		</div>
+	</div>
+	<div class="datosPregunta">			
+		<div class="tituloPregunta">
+			<?php $elemento->titulo;?>
+		</div>
+		<div class="estadisticasPregunta">					
+			<label class="votos">Votos:</label><?php $numeroDeVotos?>			
+			<label class="respuestas">Respuestas:</label><?php $numeroDeRespuestas?>				
+			<label class="visitas">Visitas:</label><?php $numeroDeVisitas?>					
+		</div>
+		<div class="tagsPregunta">
+			<label class="tag1"><?php $tag1?></label>
+			<label class="tag2"><?php $tag2?></label>
+			<label class="tag3"><?php $tag3?></label>
 		</div>
 	</div>
 </div>

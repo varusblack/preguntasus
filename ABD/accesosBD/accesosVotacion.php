@@ -1,7 +1,21 @@
 <?php
-function obtenerTodasLasVotaciones($conexion) {
+// La entidad Votacion veo que carece de sentido alguno y es candidata a ser cruelmente borrada
+
+// Lo veo inutil
+// function obtenerTodasLasVotaciones($conexion) {
+	// try {
+		// $SQL = "SELECT * FROM votacion";
+		// $stmt = $conexion->query($SQL);
+		// return creaElementos($stmt);
+	// } catch(PDOException $e) {
+		// Header("Location: error.php");
+		// die();
+	// }
+// }
+
+function obtenerVotacionPorId($id, $conexion) {
 	try {
-		$SQL = "SELECT * FROM votacion";
+		$SQL = "SELECT * FROM votacion WHERE id=$id";
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
@@ -10,9 +24,10 @@ function obtenerTodasLasVotaciones($conexion) {
 	}
 }
 
-function obtenerVotacionPorId($id, $conexion) {
+function obtenerNumeroDeVotosDeElemento(Elemento $elemento, $conexion){
 	try {
-		$SQL = "SELECT * FROM votacion WHERE id=$id";
+		$idElemento = $elemento ->id;
+		$SQL = "SELECT COUNT(*) AS cuenta FROM votacion WHERE idelemento=$idElemento";
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
@@ -33,12 +48,24 @@ function insertarVotacion(Votacion $votacion, $conexion) {
 	}
 }
 
-function modificarVotacion(Votacion $votacion, $conexion) {
+// Lo veo inutil
+// function modificarVotacion(Votacion $votacion, $conexion) {
+	// try {
+		// $idVotacion = $votacion -> __get("id");
+		// $idElemento = $votacion -> __get("idelemento");
+		// $idusuario = $votacion -> __get("idusuario");
+		// $SQL = "UPDATE votacion SET idelemento=$idElemento,idusuario=$idusuario WHERE id=$idVotacion";
+		// $conexion -> exec($SQL);
+	// } catch(PDOException $e) {
+		// Header("Location: error.php");
+		// die();
+	// }
+// }
+
+function borrarElementoYVotos(Elemento $elemento, $conexion) {
 	try {
-		$idVotacion = $votacion -> __get("id");
-		$idElemento = $votacion -> __get("idelemento");
-		$idusuario = $votacion -> __get("idusuario");
-		$SQL = "UPDATE votacion SET idelemento=$idElemento,idusuario=$idusuario WHERE id=$idVotacion";
+		$idElemento = $elemento ->id;
+		$SQL = "DELETE FROM voto WHERE idelemento=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
@@ -46,10 +73,10 @@ function modificarVotacion(Votacion $votacion, $conexion) {
 	}
 }
 
-function borrarVotacion(Votacion $votacion, $conexion) {
+function borrarTodosLosVotosDeUsuario(Usuario $usuario, $conexion){
 	try {
-		$idVotacion = $votacion -> id;
-		$SQL = "DELETE FROM votacion WHERE id=$idVotacion";
+		$idUsuario = $usuario ->id;
+		$SQL = "DELETE FROM voto WHERE idusuario=$idUsuario";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
@@ -57,15 +84,37 @@ function borrarVotacion(Votacion $votacion, $conexion) {
 	}
 }
 
-function creaElementos($stmt) {
-    $resultado = array();
+// Posiblemente carezca de sentido
+function borrarUnicoVoto(Elemento $elemento, Usuario $usuario, $conexion){
+	try {
+		$idElemento = $elemento ->id;
+		$idUsuario = $usuario ->id;
+		$SQL = "DELETE FROM voto WHERE idelemento=$idElemento AND idusuario=$idUsuario";
+		$conexion -> exec($SQL);
+	} catch(PDOException $e) {
+		Header("Location: error.php");
+		die();
+	}
+}
+
+// Lo veo inutil
+// function creaElementos($stmt) {
+    // $resultado = array();
+	// foreach($stmt as $row){
+		// $objeto = new Votacion();
+		// $objeto->id= $row["id"];
+        // $objeto->idelemento= $row["idelemento"];
+        // $objeto->idusuario= $row["idusuario"];
+		// $resultado[$row["id"]] = $objeto;
+	// }
+    // return $resultado;
+// }
+
+function creaUnicoDato($stmt) {
+	$dato = NULL;
 	foreach($stmt as $row){
-		$objeto = new Votacion();
-		$objeto->id= $row["id"];
-        $objeto->idelemento= $row["idelemento"];
-        $objeto->idusuario= $row["idusuario"];
-		$resultado[$row["id"]] = $objeto;
+		$dato = $row["cuenta"];
 	}
-    return $resultado;
+	return $dato;
 }
 ?>
