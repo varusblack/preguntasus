@@ -7,6 +7,19 @@
 	// }
 	require_once ("./includes/widgets/login.php");
 	require_once ("./includes/widgets/barranavegacion.php");
+	/*
+	 * Se inicializa la sesion y se crea la variable de sesión usuario y errores
+	 * Se comprueba prosteriormente que si la variable está creada se inicialize a ""
+	 * para evitar cambios en el tipo de usuario, ej 1 para el administrador
+	 */
+	session_start();
+	$usuario=$_SESSION['usuario'];
+	$errores=$_SESSION['errores'];
+	if(!isset($usuario)){
+		$usuario['tipoUsuario']="";
+		$_SESSION['usuario']=$usuario;
+	}
+	
 ?> 
 <div id="contenedor_cuerpo">
 	ContenedorCuerpo
