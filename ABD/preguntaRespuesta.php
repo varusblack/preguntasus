@@ -2,14 +2,37 @@
 require_once ("./includes/styles/templates/cabecera.php");
 require_once ("./includes/widgets/login.php");
 require_once ("./includes/widgets/barranavegacion.php");
-include_once ("./accesosBD/conexionesBD.php");
-include_once ("./accesosBD/accesosElemento.php");
+require_once ("./accesosBD/conexionesBD.php");
+require_once ("./accesosBD/accesosElemento.php");
 require_once ("./entidades/Elemento.php");
 session_start();
 $user=$_SESSION['usuario'];
+/*
+ * Se crea una variable nuevaRespuesta y errores en la sesión actual 
+ * Con el isset si es la primera vez que entramos en preguntaRespuesta.php, inicializamos la variable a vacio
+ * para evita que se rellene o almacene contenido anterior 
+ */
+
+$nuevaRespuesta=$_SESSION['nuevaRespuesta'];
+$errores=$_SESSION['errores'];
 $conexion=crearConexion();
 $elemento= new Elemento();
-$elemento= encontrarElementoPorId(1,$conexion);
+//$idelemento=$_REQUEST['idsolicitado'];
+$idelemento=1;
+$elemento= encontrarElementoPorId($idelemento,$conexion);
+
+if(!isset($nuevaRespuesta)){
+	$nuevaRespuesta['respuesta']="";
+	$nuevaRespuesta['elemento']=$elemento;
+	$nuevaRespuesta['idelemento']= $idelemento;
+	$_SESSION['nuevaRespuesta']=$nuevaRespuesta;
+}
+
+if (!empty($errores)) { 
+    echo "<div id=\"div_errores\" class=\"error\">";
+    	echo $errores . "<br/>"; 
+    echo "</div>";
+  }
 ?>
 
 <div class="container">
@@ -19,11 +42,12 @@ $elemento= encontrarElementoPorId(1,$conexion);
 			<h2 class="rotuloComun">Titulo:</h2>
 			<h4 class="centra titulo"> 
 			<?				
-			print($elemento->titulo);
+			echo($elemento->titulo);
 			?>
-		</div>
-		<div id="cuerpo"
 			</h4>
+		</div>
+		<div id="cuerpo">
+			
 			<h2 class="rotuloComun">Contenido:</h2>
 			<h4 class="centra cuerpo"> 
 			<?
@@ -33,19 +57,23 @@ $elemento= encontrarElementoPorId(1,$conexion);
 		</div>
 		<div id="respuesta">
 			<h2 class="rotuloComun">Numero De Respuestas Publicadas :
-			<?
-			print(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));
+				<?print(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));?>
+			</h2>
+			<h4>
+			 <?			
 			$respuestas=array();
 			$respuestas=encontrarRespuestas($elemento,$conexion);
 			foreach ($respuestas as $value) {
-				print("$value");
+				echo $value. "<BR/>";
 			}	
 			?>
-			</h2>
-			
+			</h4>			
 		</div>
-		<form id="mi_respuesta">
-			<h3 class="rotuloComun">Mi Respuesta Aportada es</h3>
+		<?
+		cerrarConexion($conexion);
+		?>
+		<form id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php">
+			<h2 class="rotuloComun">Nueva Respuesta Aportada</h2>
 			<textarea id="imput-respuesta" tabindex="101" rows="15" cols="92" name="mi-respuesta">
 			</textarea>
 			<div id="div_botones">
@@ -55,6 +83,7 @@ $elemento= encontrarElementoPorId(1,$conexion);
 		</form>
 	</div>
 </div>
+
 <?php
 require_once ("./includes/styles/templates/pie.php");
 ?>
