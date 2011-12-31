@@ -1,5 +1,4 @@
 <?php
-require_once ("./entidades/Elemento.php");
 function encontrarTodosLosElementos($conexion) {
 	try {
 		$SQL = "SELECT * FROM elemento";
