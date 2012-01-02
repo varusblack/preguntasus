@@ -37,8 +37,7 @@ function encontrarRespuestas(Elemento $elemento, $conexion) {
 		$idRespuesta = $elemento -> id;
 		$SQL = "SELECT * FROM elemento WHERE idrespuesta=$idRespuesta";
 		$stmt = $conexion->query($SQL);
-		//return creaElementos($stmt);
-		return almacenaRespuestas($stmt);
+		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
 		die();
@@ -50,7 +49,7 @@ function obtenerNumeroDeRespuestasDeElemento(Elemento $elemento,$conexion){
 		$idRespuesta = $elemento -> id;
 		$SQL = "SELECT COUNT(*) as cuenta FROM elemento WHERE idrespuesta=$idRespuesta";
 		$stmt = $conexion->query($SQL);
-		return creaUnicoDato($stmt);
+		return creaUnicoDatoDeElemento($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
 		die();
@@ -141,14 +140,6 @@ function borrarElemento(Elemento $elemento, $conexion) {
 	}
 }
 
-function almacenaRespuestas($stmt){
-	$resultado = array();
-	foreach($stmt as $row){
-		$resultado[]= $row["cuerpo"];
-	}
-	return $resultado;
-}
-
 function creaElementos($stmt) {
 	$resultado = array();
 	foreach($stmt as $row){
@@ -177,7 +168,7 @@ function creaUnicoElemento($stmt) {
 	return $objeto;
 }
 
-function creaUnicoDato($stmt) {
+function creaUnicoDatoDeElemento($stmt) {
 	$dato = NULL;
 	foreach($stmt as $row){
 		$dato = $row["cuenta"];

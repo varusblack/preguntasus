@@ -29,7 +29,7 @@ function obtenerNumeroDeVotosDeElemento(Elemento $elemento, $conexion){
 		$idElemento = $elemento ->id;
 		$SQL = "SELECT COUNT(*) AS cuenta FROM votacion WHERE idelemento=$idElemento";
 		$stmt = $conexion->query($SQL);
-		return creaElementos($stmt);
+		return creaUnicoDatoVotacion($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
 		die();
@@ -110,7 +110,7 @@ function borrarUnicoVoto(Elemento $elemento, Usuario $usuario, $conexion){
     // return $resultado;
 // }
 
-function creaUnicoDato($stmt) {
+function creaUnicoDatoVotacion($stmt) {
 	$dato = NULL;
 	foreach($stmt as $row){
 		$dato = $row["cuenta"];

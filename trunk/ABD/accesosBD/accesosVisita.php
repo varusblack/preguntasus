@@ -30,7 +30,7 @@ function obtenerNumeroDeVisitasDeElemento(Elemento $elemento,$conexion){
 		$idElemento = $elemento->id;
 		$SQL = "SELECT COUNT(*) AS cuenta FROM visita WHERE idElemento=$idElemento";
 		$stmt = $conexion->query($SQL);
-		return creaElementos($stmt);
+		return creaUnicoDatoVisita($stmt);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
 		die();
@@ -111,7 +111,7 @@ function borrarUnicaVisita(Elemento $elemento, Usuario $usuario, $conexion){
     // return $resultado;
 // }
 
-function creaUnicoDato($stmt) {
+function creaUnicoDatoVisita($stmt) {
 	$dato = NULL;
 	foreach($stmt as $row){
 		$dato = $row["cuenta"];
