@@ -8,6 +8,7 @@ require_once ("./entidades/Elemento.php");
 session_start();
 $user=$_SESSION['usuario'];
 /*
+ * 
  * Se crea una variable nuevaRespuesta y errores en la sesión actual 
  * Con el isset si es la primera vez que entramos en preguntaRespuesta.php, inicializamos la variable a vacio
  * para evita que se rellene o almacene contenido anterior 
