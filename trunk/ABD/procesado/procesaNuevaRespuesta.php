@@ -3,8 +3,12 @@ require_once ("../entidades/Elemento.php");
 require_once ("../accesosBD/conexionesBD.php");
 require_once ("../accesosBD/accesosElemento.php");
  
+if ($_POST[cancelar]="Cancelar"){
+	Header("Location:../index.php");
+}else{
 session_start();
 $nuevaRespuesta = $_SESSION['nuevaRespuesta'];
+
 
 if (isset($nuevaRespuesta)) {// si está creada en la sesion
   $nuevaRespuesta['respuesta'] = trim($_REQUEST['mi-respuesta']);  
@@ -37,5 +41,6 @@ function preparaInsercion($nuevaRespuesta){
 	$elemento->idrespuesta=$nuevaRespuesta['idelemento'];
 	insertarElemento($elemento,$conexion);
 	cerrarConexion($conexion);
+}
 }
 ?>
