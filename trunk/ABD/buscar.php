@@ -12,16 +12,25 @@ require_once ("./entidades/Tag.php");
 require_once ("./entidades/Elemento.php");
 require_once ("./entidades/Usuario.php" );
 
-require ("./procesado/buscarPreguntas.php");
+	session_start();
+	$buscarPreguntas=$_SESSION["buscarPreguntas"];
+	$erroresBuscarPreguntas=$_SESSION["erroresBuscarPregunta"];
+	
+	$haBuscado = false;
+	if (isset($_GET["haBuscado"])) {
+		$haBuscado = $_GET["haBuscado"];
+	} else {
+		$haBuscado = $_SESSION["haBuscado"];
+	}
 
-session_start();
+	//$_SESSION["buscarPreguntas"]=$buscarPreguntas;
 	
 ?>
 <div id="contenedor_cuerpo">
-	<div class="errores">
+	<div id="erroresBuscarPregunta" class="errores">
 	<?php
-		if (isset($errores)) {
-			foreach ($errores as $error) {
+		if (isset($erroresBuscarPreguntas) && $haBuscado === TRUE) {
+			foreach ($erroresBuscarPreguntas as $error) {
 				print("<div class='error'>");
 				print("$error");
 				print("</div>");
@@ -30,7 +39,7 @@ session_start();
 	?>
 	</div>
 	
-	<form id="buscarPreguntas" name="buscarPreguntas" action="buscar.php">
+	<form id="buscarPreguntas" name="buscarPreguntas" action="./procesado/buscarPreguntas.php">
 				
 		<div id="cuadroBusqueda">
 			<div id="labelsBusqueda">
@@ -43,10 +52,10 @@ session_start();
 			</div>
 			<div id="inputsBusqueda">
 				<div class="inputBusqueda">
-					<input id="palabras" type="text"/>
+					<input id="palabras" name="palabras" type="text"/>
 				</div>				
 				<div class="inputBusqueda separado">
-					<select id="tag">
+					<select id="tag" name="tag">
 						<option></option>
 						<?php
 							$conexion = crearConexion();
@@ -76,17 +85,26 @@ session_start();
 				 * 	2.- Solo por palabras
 				 * 	3.- Solo por tag
 				 */
-				
+				$tipoBusqueda = $_SESSION["tipobusqueda"];
 				if(isset($tipoBusqueda)){
 				
 					$conexion = crearConexion();
 					
 					if($tipoBusqueda==1){
-						$arrayElementos = encontrarElementosPorPalabrasYTag($cadena, $tag, $conexion);
+						$cadena = $buscarPreguntas["palabras"]; 
+						$tag = $buscarPreguntas["tag"]; 
+						if (strlen($tag) > 0) {
+							$as = obtenerTagPorId($tag, $conexion);
+							$arrayElementos = encontrarElementosPorPalabrasYTag($cadena, $as, $conexion);
+						} else {
+							$arrayElementos = array();
+						}
 					}else{
 						if($tipoBusqueda==2){
+							$cadena = $buscarPreguntas["palabras"]; 
 							$arrayElementos = encontrarElementosPorPalabras($cadena, $conexion);
 						}else{
+							$tag = $buscarPreguntas["tag"];
 							$arrayElementos = encontrarElementosPorTag($tag, $conexion);
 						}
 					}								
@@ -124,7 +142,7 @@ session_start();
 						require("./includes/widgets/preguntas.php");
 					}				
 					cerrarConexion($conexion);
-					$tipobusqueda=NULL;
+					$_SESSION["tipobusqueda"]=NULL;
 				}
 			?>
 		</div>
