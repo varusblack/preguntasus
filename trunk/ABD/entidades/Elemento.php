@@ -1,5 +1,5 @@
 <?php
-class Elemento {
+class Elemento{
 	
 	private $atributos = array();
 	
