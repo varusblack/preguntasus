@@ -153,7 +153,7 @@ function creaElementos($stmt) {
 		$objeto->fechapregunta= $row["fechapregunta"];
 		$resultado[$row["id"]]=$objeto;
 	}
-	return $arrayADevolver;
+	return $resultado;
 }
 
 function creaUnicoElemento($stmt) {

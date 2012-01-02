@@ -5,6 +5,7 @@ require_once ("./includes/widgets/barranavegacion.php");
 require_once ("./accesosBD/conexionesBD.php");
 require_once ("./accesosBD/accesosElemento.php");
 require_once ("./accesosBD/accesosTag.php");
+require_once ("./accesosBD/accesosTagsDeElementos.php");
 require_once ("./accesosBD/accesosUsuario.php");
 require_once ("./accesosBD/accesosVisita.php");
 require_once ("./accesosBD/accesosVotacion.php");
@@ -39,7 +40,7 @@ require_once ("./entidades/Usuario.php" );
 	?>
 	</div>
 	
-	<form id="buscarPreguntas" name="buscarPreguntas" action="./procesado/buscarPreguntas.php">
+	<form id="buscarPreguntas" name="buscarPreguntas" action="./procesado/buscarPreguntas.php" method="post">
 				
 		<div id="cuadroBusqueda">
 			<div id="labelsBusqueda">
@@ -89,60 +90,67 @@ require_once ("./entidades/Usuario.php" );
 				if(isset($tipoBusqueda)){
 				
 					$conexion = crearConexion();
-					
+					$arrayElementos = array();
 					if($tipoBusqueda==1){
 						$cadena = $buscarPreguntas["palabras"]; 
 						$tag = $buscarPreguntas["tag"]; 
 						if (strlen($tag) > 0) {
 							$as = obtenerTagPorId($tag, $conexion);
 							$arrayElementos = encontrarElementosPorPalabrasYTag($cadena, $as, $conexion);
-						} else {
-							$arrayElementos = array();
 						}
 					}else{
 						if($tipoBusqueda==2){
 							$cadena = $buscarPreguntas["palabras"]; 
-							$arrayElementos = encontrarElementosPorPalabras($cadena, $conexion);
+							$arrayElementos = encontrarElementosPorPalabras($cadena, $conexion);	
 						}else{
 							$tag = $buscarPreguntas["tag"];
-							$arrayElementos = encontrarElementosPorTag($tag, $conexion);
+							if (strlen($tag) > 0) {
+								$as = obtenerTagPorId($tag, $conexion);
+								$arrayElementos = encontrarElementosPorTag($as, $conexion);
+							}							
 						}
 					}								
-					
-					foreach($arrayElementos as $elemento){
-						$idUsuario = $elemento->idautor;
-						$usuario = obtenerUsuarioPorId($idUsuario, $conexion);
-						$numeroDeVotos = obtenerNumeroDeVotosDeElemento($elemento, $conexion);
-						$numeroDeRespuestas = obtenerNumeroDeRespuestasDeElemento($elemento, $conexion);
-						$numeroDeVisitas = obtenerNumeroDeVisitasDeElemento($elemento, $conexion);
-						$tag1 = NULL;
-						$tag2 = NULL;
-						$tag3 = NULL;
-						
-						$resTags = obtenerTagsDeElemento($elemento, $conexion);		
-						$contador = 1;			
-						foreach($resTags as $tg){
-							if($contador==1){
-								$tag1 = $tg;
-								$contador = $contador+1;
-							}
-							if($contador==2){
-								$tag2 = $tg;
-								$contador = $contador+1;
-							}
-							if($contador==3){
-								$tag3 = $tg;
-								$contador = $contador+1;
-							}
-							if($contador>3){
-								break;
-							}
-						}
-						
-						require("./includes/widgets/preguntas.php");
-					}				
-					cerrarConexion($conexion);
-					$_SESSION["tipobusqueda"]=NULL;
+					if(count($arrayElementos)==0){
+						echo "No se han encontrado resultados.";
+					}else{
+												
+						foreach($arrayElementos as $elemento){
+							echo $elemento->idautor;
+							$idUsuario = $elemento->idautor;
+							$usuario = obtenerUsuarioPorId($idUsuario, $conexion);
+							$numeroDeVotos = obtenerNumeroDeVotosDeElemento($elemento, $conexion);
+							$numeroDeRespuestas = obtenerNumeroDeRespuestasDeElemento($elemento, $conexion);
+							$numeroDeVisitas = obtenerNumeroDeVisitasDeElemento($elemento, $conexion);
+							$tag1 = NULL;
+							$tag2 = NULL;
+							$tag3 = NULL;
+							
+							echo $elemento->titulo;
+							
+							$resTags = obtenerTagsDeElemento($elemento, $conexion);		
+							$contador = 1;			
+							foreach($resTags as $tg){
+								if($contador==1){
+									$tag1 = $tg;
+									$contador = $contador+1;
+								}
+								if($contador==2){
+									$tag2 = $tg;
+									$contador = $contador+1;
+								}
+								if($contador==3){
+									$tag3 = $tg;
+									$contador = $contador+1;
+								}
+								if($contador>3){
+									break;
+								}
+							}						
+							require("./includes/widgets/preguntas.php");
+						}				
+						cerrarConexion($conexion);
+						$_SESSION["tipobusqueda"] = NULL;
+					}
 				}
 			?>
 		</div>

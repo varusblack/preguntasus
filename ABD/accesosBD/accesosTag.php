@@ -67,7 +67,6 @@
     }
     
     function creaUnicoTag($stmt) {
-    	echo 'Entra aqui';
 		$objeto = new Tag();
 		foreach($stmt as $row){
 			$objeto->id=$row["id"];

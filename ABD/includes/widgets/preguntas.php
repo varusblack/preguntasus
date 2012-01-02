@@ -4,28 +4,28 @@
 			FOTITO
 		</div>
 		<div class="nombreUsuario">
-			<?php $usuario->email;?>
+			<?php echo $usuario->email; ?>
 		</div>
 		<div class="puntosUsuarioPregunta">
-			<label class="puntos">Puntos:</label><?php $usuario->puntos;?>
+			<label class="puntos">Puntos:</label><?php echo $usuario->puntos; ?>
 		</div>
 	</div>
 	<div class="datosPregunta">			
 		<div class="tituloPregunta">
-			<?php $elemento->titulo;?>
+			<?php echo $elemento->titulo; ?>
 		</div>
 		<div class="estadisticasPregunta">					
-			<label class="votos">Votos:</label><?php $numeroDeVotos?>			
-			<label class="respuestas">Respuestas:</label><?php $numeroDeRespuestas?>				
-			<label class="visitas">Visitas:</label><?php $numeroDeVisitas?>					
+			<label class="votos">Votos:</label><?php echo $numeroDeVotos; ?>			
+			<label class="respuestas">Respuestas:</label><?php echo $numeroDeRespuestas; ?>				
+			<label class="visitas">Visitas:</label><?php echo $numeroDeVisitas; ?>					
 		</div>
 		<div class="tagsPregunta">
-			<label class="tag"><?php $tag1?></label>
+			<span class="tag"><?php echo $tag1->tag; ?></span>
 			<?php if(isset($tag2)){ ?>
-				<label class="tag"><?php $tag2?></label>
+				<span class="tag"><?php echo $tag2->tag; ?></span>
 			<?php }
 			if(isset($tag3)){ ?>
-				<label class="tag"><?php $tag3?></label>
+				<span class="tag"><?php echo $tag3->tag; ?></span>
 			<?php }?>
 		</div>
 	</div>
