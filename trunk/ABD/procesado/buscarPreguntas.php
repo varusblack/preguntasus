@@ -24,7 +24,8 @@
 			}
 			if (strlen($buscarPreguntas["palabras"]) == 0 && strlen($buscarPreguntas["tag"]) > 0) {
 				$_SESSION["tipobusqueda"] = 3;
-			}			
+			}	
+			$_SESSION["erroresBuscarPregunta"] = NULL;		
 			Header("Location: ../buscar.php");
 			die();
 		}				
