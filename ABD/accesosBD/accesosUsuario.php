@@ -3,7 +3,7 @@
     	try{
 			$SQL="SELECT * FROM usuario";
 			$stmt = $conexion->query($SQL);
-			return creaElementos($stmt);
+			return creaUsuarios($stmt);
 		}catch(PDOException $e){
 			Header("Location: error.php");
 			die();
@@ -14,7 +14,7 @@
 		try{
 			$SQL="SELECT * FROM usuario WHERE id=$id";
 			$stmt = $conexion->query($SQL);
-			return creaUnicoElemento($stmt);
+			return creaUnicoUsuario($stmt);
 		}catch(PDOException $e){
 			Header("Location: error.php");
 			die();
@@ -74,7 +74,7 @@
 		}
 	}
 	
-	function creaElementos($stmt) {
+	function creaUsuarios($stmt) {
         $resultado = array();		
 		foreach($stmt as $row){
 			$objeto = new Usuario();
@@ -93,7 +93,7 @@
         return $resultado;
     }
     
-    function creaUnicoElemento($stmt){
+    function creaUnicoUsuario($stmt){
     	$objeto = new Usuario();
 		foreach($stmt as $row){
 			$objeto->id= $row["id"];

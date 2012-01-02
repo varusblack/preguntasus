@@ -2,9 +2,8 @@
     function obtenerTodosLosTags($conexion){
     	try{
     		$SQL = "SELECT * FROM tag";
-			$stmt = $conexion->query($SQL);
-                        
-			return creaElementos($stmt);
+			$stmt = $conexion->query($SQL);                        
+			return creaTags($stmt);
     	}catch (PDOException $e){
    			Header("Location: error.php"); 		
 			die();
@@ -15,7 +14,7 @@
 		try{
 			$SQL = "SELECT * FROM tag WHERE id=$id";
 			$stmt = $conexion->query($SQL);
-			return creaUnicoElemento($stmt);
+			return creaUnicoTag($stmt);
 		}catch(PDOException $e){
 			Header("Location: error.php");	
 			die();		
@@ -56,7 +55,7 @@
 		}
 	}
 	
-	function creaElementos($stmt) {
+	function creaTags($stmt) {
         $resultado = array();		
 		foreach($stmt as $row){
 			$objeto = new Tag();
@@ -67,7 +66,7 @@
         return $resultado;
     }
     
-    function creaUnicoElemento($stmt) {
+    function creaUnicoTag($stmt) {
 		$objeto = new Tag();
 		foreach($stmt as $row){
 			$objeto->id=$row["id"];
