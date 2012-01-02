@@ -34,7 +34,6 @@ if (!empty($errores)) {
     echo "</div>";
   }
 ?>
-
 <div class="container">
 	<div id="header"></div>
 	<div id="content">
@@ -56,29 +55,31 @@ if (!empty($errores)) {
 			</h4>			
 		</div>
 		<div id="respuesta">
-			<h2 class="rotuloComun">Numero De Respuestas Publicadas :
+			<h2 class="rotuloComun"> Numero De Respuestas Publicadas :
 				<?print(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));?>
 			</h2>
 			<h4>
 			 <?			
 			$respuestas=array();
-			$respuestas=encontrarRespuestas($elemento,$conexion);
-			foreach ($respuestas as $value) {
-				echo $value. "<BR/>";
-			}	
+			$respuestas=encontrarRespuestas($elemento,$conexion);					
+			$elementoRespuesta=new Elemento();
+		    foreach ($respuestas as $res){
+				echo "Respuesta Numero: ".$i."   ".$res->cuerpo. "<BR/>";
+			}			
 			?>
 			</h4>			
 		</div>
 		<?
 		cerrarConexion($conexion);
 		?>
-		<form id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php">
+		<form id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="get">
 			<h2 class="rotuloComun">Nueva Respuesta Aportada</h2>
 			<textarea id="imput-respuesta" tabindex="101" rows="15" cols="92" name="mi-respuesta">
 			</textarea>
 			<div id="div_botones">
-				<input id="submit" type="submit" value="Publicar Mi Respuesta" />
-				<input id ="reset" type="reset" value="Limpiar Respuesta"/>
+				<input id="submit" name ="submit" type="submit" value="Publicar Mi Respuesta" />
+				<input id ="reset" name="reset" type="reset" value="Limpiar Respuesta"/>
+				<input id ="submit" name="cancelar" type="submit" value="Cancelar"/>
 			</div>
 		</form>
 	</div>
