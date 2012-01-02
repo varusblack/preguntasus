@@ -176,12 +176,14 @@ html, body {
 }
 
 #cuadroRegistrarse{
-	margin:0 auto 0 auto;
+	margin:40px auto 0 auto;
+        padding-top: 20px;
 	clear:both;
-	margin-top:20px;
 	width:400px;
 	height: 225px;
-	background-image: url('../imagenes/fondocuadroregistrarse.png'); 
+	background-image: url('../imagenes/fondocuadroregistrarse.png') ; 
+        background-repeat: no-repeat;
+
 }
 
 #labelsRegistrarse{
@@ -191,8 +193,12 @@ html, body {
 	float:left;
 	clear: left;
 }
-#labelsRegistrarse div.separado {
-	padding-top:7px;
+#campo{
+	margin:10px 0 10px 0;
+}
+div.campo div{
+    float:left;
+    width:50%;
 }
 #inputsRegistrarse{
 	padding-top:10px;
