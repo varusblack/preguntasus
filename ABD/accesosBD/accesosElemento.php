@@ -93,7 +93,8 @@ function encontrarElementosPorPalabrasYTag($cadena,Tag $tag, $conexion){
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		echo $e;
+		//Header("Location: error.php");
 		die();
 	} 
 }
