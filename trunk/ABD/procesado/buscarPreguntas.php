@@ -1,13 +1,5 @@
 <?php
-    /**
-     * VALIDAR CON LA SESSION COMO SE VE EN CLASE
-     */
-    
-    /*
-	 * Llega una cadena de "$palabras"
-	 * llega un idTag desde "$tag"
-	 */
-	
+   
 	session_start();
 	$buscarPreguntas=$_SESSION["buscarPreguntas"];
 	$erroresBuscarPreguntas=$_SESSION["erroresBuscarPregunta"];
@@ -21,12 +13,20 @@
 			$erroresBuscarPreguntas[1]="Los dos campos no pueden ser vacios";
 			Header("Location:buscar.php");
 			die();
-		}else{			
-			/**
-			 * ¿A dónde mandará esto cuando sean correctos los campos?
-			 */
-			Header();
+		}else{
+			if(isset($buscarPreguntas["palabras"]) && isset($buscarPreguntas["tag"])){
+				$_SESSION["tipobusqueda"]=1;
+			}
+			if(isset($buscarPreguntas["palabras"]) && !isset($buscarPreguntas["tag"])){
+				$_SESSION["tipobusqueda"]=2;
+			}
+			if(!isset($buscarPreguntas["palabras"]) && isset($buscarPreguntas["tag"])){
+				$_SESSION["tipobusqueda"]=3;
+			}			
+			Header("Location:buscar.php");
 			die();
 		}				
-	}    
+	}    else{
+		echo "COPON DE NEGRO PA TI";
+	}
 ?>

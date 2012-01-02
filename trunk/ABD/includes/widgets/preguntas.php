@@ -20,9 +20,13 @@
 			<label class="visitas">Visitas:</label><?php $numeroDeVisitas?>					
 		</div>
 		<div class="tagsPregunta">
-			<label class="tag1"><?php $tag1?></label>
-			<label class="tag2"><?php $tag2?></label>
-			<label class="tag3"><?php $tag3?></label>
+			<label class="tag"><?php $tag1?></label>
+			<?php if(isset($tag2)){ ?>
+				<label class="tag"><?php $tag2?></label>
+			<?php }
+			if(isset($tag3)){ ?>
+				<label class="tag"><?php $tag3?></label>
+			<?php }?>
 		</div>
 	</div>
 </div>
