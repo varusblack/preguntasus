@@ -12,7 +12,7 @@
 	
 	function obtenerTagPorId($id,$conexion){
 		try{
-			$SQL = "SELECT * FROM tag WHERE id=$id";
+			$SQL = "SELECT * FROM tag WHERE tag.id=$id";
 			$stmt = $conexion->query($SQL);
 			return creaUnicoTag($stmt);
 		}catch(PDOException $e){
@@ -67,6 +67,7 @@
     }
     
     function creaUnicoTag($stmt) {
+    	echo 'Entra aqui';
 		$objeto = new Tag();
 		foreach($stmt as $row){
 			$objeto->id=$row["id"];
