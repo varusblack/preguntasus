@@ -12,18 +12,16 @@ require_once ("./entidades/Tag.php");
 require_once ("./entidades/Elemento.php");
 require_once ("./entidades/Usuario.php" );
 
-	session_start();
-	$buscarPreguntas=$_SESSION["buscarPreguntas"];
-	$erroresBuscarPreguntas=$_SESSION["erroresBuscarPregunta"];
+require ("./procesado/buscarPreguntas.php");
 
-	$_SESSION["buscarPreguntas"]=$buscarPreguntas;
+session_start();
 	
 ?>
 <div id="contenedor_cuerpo">
-	<div id="erroresBuscarPregunta" class="errores">
+	<div class="errores">
 	<?php
-		if (isset($erroresBuscarPreguntas)) {
-			foreach ($erroresBuscarPreguntas as $error) {
+		if (isset($errores)) {
+			foreach ($errores as $error) {
 				print("<div class='error'>");
 				print("$error");
 				print("</div>");
@@ -32,7 +30,7 @@ require_once ("./entidades/Usuario.php" );
 	?>
 	</div>
 	
-	<form id="buscarPreguntas" name="buscarPreguntas" action="./procesado/buscarPreguntas.php">
+	<form id="buscarPreguntas" name="buscarPreguntas" action="buscar.php">
 				
 		<div id="cuadroBusqueda">
 			<div id="labelsBusqueda">
@@ -78,21 +76,17 @@ require_once ("./entidades/Usuario.php" );
 				 * 	2.- Solo por palabras
 				 * 	3.- Solo por tag
 				 */
-				$tipoBusqueda = $_SESSION["tipobusqueda"];
+				
 				if(isset($tipoBusqueda)){
 				
 					$conexion = crearConexion();
 					
 					if($tipoBusqueda==1){
-						$cadena = $buscarPreguntas["palabras"]; 
-						$tag = $buscarPreguntas["tag"]; 
 						$arrayElementos = encontrarElementosPorPalabrasYTag($cadena, $tag, $conexion);
 					}else{
 						if($tipoBusqueda==2){
-							$cadena = $buscarPreguntas["palabras"]; 
 							$arrayElementos = encontrarElementosPorPalabras($cadena, $conexion);
 						}else{
-							$tag = $buscarPreguntas["tag"];
 							$arrayElementos = encontrarElementosPorTag($tag, $conexion);
 						}
 					}								
@@ -130,7 +124,7 @@ require_once ("./entidades/Usuario.php" );
 						require("./includes/widgets/preguntas.php");
 					}				
 					cerrarConexion($conexion);
-					$_SESSION["tipobusqueda"]=NULL;
+					$tipobusqueda=NULL;
 				}
 			?>
 		</div>

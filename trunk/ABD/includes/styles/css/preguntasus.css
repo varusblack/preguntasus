@@ -177,12 +177,12 @@ html, body {
 
 #cuadroRegistrarse{
 	margin:40px auto 0 auto;
-        padding-top: 20px;
+    padding-top: 20px;
 	clear:both;
 	width:400px;
 	height: 225px;
 	background-image: url('../imagenes/fondocuadroregistrarse.png') ; 
-        background-repeat: no-repeat;
+    background-repeat: no-repeat;
 
 }
 
@@ -264,4 +264,10 @@ div.estadisticasPregunta{
 }
 label.respuestas, label.visitas{
 	padding-left:10px;
+}
+div.errores{
+	margin:0 auto 0 auto;
+	text-align: left;
+	color: red;
+	
 }
