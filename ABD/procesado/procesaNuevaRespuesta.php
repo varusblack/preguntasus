@@ -3,9 +3,10 @@ require_once ("../entidades/Elemento.php");
 require_once ("../accesosBD/conexionesBD.php");
 require_once ("../accesosBD/accesosElemento.php");
  
-if ($_POST[cancelar]="Cancelar"){
+/*if ($_POST[cancelar]="cancelar"){
 	Header("Location:../index.php");
-}else{
+}else{*/
+ 
 session_start();
 $nuevaRespuesta = $_SESSION['nuevaRespuesta'];
 
@@ -24,7 +25,7 @@ if (!empty($errores)) {
 }else{
 	$_SESSION['errores'] = "";
 	preparaInsercion($nuevaRespuesta);	
-	Header("Location:../index.php");
+	Header("Location:../preguntaRespuesta.php");
 }
 
 function valida($nuevaRespuesta) {
@@ -42,5 +43,5 @@ function preparaInsercion($nuevaRespuesta){
 	insertarElemento($elemento,$conexion);
 	cerrarConexion($conexion);
 }
-}
+//}
 ?>
