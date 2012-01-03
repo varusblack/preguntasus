@@ -1,38 +1,38 @@
 <?php
    
 	session_start();
-	$buscarPreguntas = $_SESSION["buscarPreguntas"];
 	$erroresBuscarPreguntas = $_SESSION["erroresBuscarPregunta"];
+	$busqueda = $_REQUEST["buscar"];
 	$_SESSION["haBuscado"] = TRUE;
+	
+	if (isset($busqueda)) {
+		$palabras = $_REQUEST["palabras"];
+		$tag = $_REQUEST["tag"];
 
-	if (isset($buscarPreguntas)) {
-		$buscarPreguntas["palabras"] = $_REQUEST["palabras"];
-		$buscarPreguntas["tag"] = $_REQUEST["tag"];
-
-		$_SESSION["buscarPalabras"] = $buscarPreguntas;
-		if (strlen($buscarPreguntas["palabras"]) == 0 && strlen($buscarPreguntas["tag"]) == 0) {
+		if (strlen($palabras) == 0 && strlen($tag) == 0) {
 			$erroresBuscarPreguntas[1] = "Los dos campos no pueden ser vacios";
 			$_SESSION["erroresBuscarPregunta"] = $erroresBuscarPreguntas;
+			$_SESSION["tipobusqueda"] = NULL;
+			$_SESSION["tag"] = NULL;
+			$_SESSION["palabras"] = NULL;
 			Header("Location: ../buscar.php");
 			die();
 		} else {
-			if (strlen($buscarPreguntas["palabras"]) > 0 && strlen($buscarPreguntas["tag"]) > 0) {
+			if (strlen($palabras) > 0 && strlen($tag) > 0) {
 				$_SESSION["tipobusqueda"] = 1;
 			}
-			if (strlen($buscarPreguntas["palabras"]) > 0 && strlen($buscarPreguntas["tag"]) == 0) {
+			if (strlen($palabras) > 0 && strlen($tag) == 0) {
 				$_SESSION["tipobusqueda"] = 2;
 			}
-			if (strlen($buscarPreguntas["palabras"]) == 0 && strlen($buscarPreguntas["tag"]) > 0) {
+			if (strlen($palabras) == 0 && strlen($tag) > 0) {
 				$_SESSION["tipobusqueda"] = 3;
-			}	
+			}
+			$_SESSION["palabras"] = $palabras;
+			$_SESSION["tag"] = $tag;
 			$_SESSION["erroresBuscarPregunta"] = NULL;		
 			Header("Location: ../buscar.php");
 			die();
-		}				
-	} else {
-		$erroresBuscarPreguntas[1] = "No se pudo realizar la búsqueda";
-		$_SESSION["erroresBuscarPregunta"] = $erroresBuscarPreguntas;
-		Header("Location: ../buscar.php");
-		die();
+		}		
+		die();	
 	}
 ?>
