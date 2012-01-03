@@ -7,6 +7,15 @@
         <!-- Importacion de css -->
         <link type="text/css" rel="stylesheet" href="./includes/styles/css/preguntasus.css" />
         <!-- Importacion de javascript -->
+        <?php if (stripos($_SERVER['REQUEST_URI'], 'index') !== FALSE) { ?>
+        	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
+        <?php } ?>
+        <?php if (stripos($_SERVER['REQUEST_URI'], 'preguntaRespuesta') !== FALSE) { ?>
+        
+        <?php } ?>
+        <?php if (stripos($_SERVER['REQUEST_URI'], 'buscar') !== FALSE) { ?>
+        	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
+        <?php } ?>        
         <?php if (stripos($_SERVER['REQUEST_URI'], 'registrarse') !== FALSE) { ?>
             <script type="text/javascript" src="./includes/styles/js/registrarse.js"></script>
         <?php } ?>
