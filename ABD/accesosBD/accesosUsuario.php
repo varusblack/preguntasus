@@ -21,6 +21,18 @@
 		}
 	}
 	
+	function obtenerUsuarioPorEmailYPass($email, $pass, $conexion){
+		try{
+			$SQL="SELECT * FROM usuario WHERE email='$email' AND password='$pass'";
+			$stmt = $conexion->query($SQL);
+			return creaUnicoUsuario($stmt);
+		}catch(PDOException $e){
+			echo $e;
+			//Header("Location: error.php");
+			//die();
+		}
+	}
+	
 	function insertarUsuario(Usuario $usuario,$conexion){
 		try{
 			$email = $usuario->email;

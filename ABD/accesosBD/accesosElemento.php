@@ -20,6 +20,17 @@ function encontrarElementoPorId($id, $conexion) {
 	}
 }
 
+function encontrarElementosOrdenadosPorFechaDecreciente($conexion){
+	try {
+		$SQL = "SELECT * FROM elemento ORDER BY fechapregunta DESC";
+		$stmt = $conexion->query($SQL);
+		return creaElementos($stmt);
+	} catch(PDOException $e) {
+		Header("Location: error.php");
+		die();
+	}
+}
+
 function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 	try {
 		$idUsuario = $usuario -> id;
@@ -89,7 +100,7 @@ function encontrarElementosPorPalabrasYTag($cadena,Tag $tag, $conexion){
 		$SQL = "SELECT e.id AS id,e.idautor AS idautor,e.titulo AS titulo, ".
 		"e.idrespuesta AS idrespuesta,e.fechapregunta AS fechapregunta ". 
 		"FROM elemento e,tagsdeelementos te WHERE e.id=te.idelemento AND te.idtag=$idTag ". 
-		"AND e.titulo LIKE '%$cadmins%' OR e.titulo LIKE '%$cadPrimMay%'";
+		"AND (e.titulo LIKE '%$cadmins%' OR e.titulo LIKE '%$cadPrimMay%')";
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
