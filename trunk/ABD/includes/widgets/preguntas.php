@@ -1,4 +1,10 @@
-<div class="pregunta">
+<?php 
+if($numeroDeRespuestas<1){
+	echo "<div class='pregunta'>";
+}else{
+	echo "<div class='preguntaRespondida'>";
+}
+?>
 	<div class="usuarioPregunta">
 		<div class="fotoUsuarioPregunta">
 			FOTITO
@@ -15,9 +21,12 @@
 			<?php echo $elemento->titulo; ?>
 		</div>
 		<div class="estadisticasPregunta">					
-			<label class="votos">Votos:</label><?php echo $numeroDeVotos; ?>			
-			<label class="respuestas">Respuestas:</label><?php echo $numeroDeRespuestas; ?>				
-			<label class="visitas">Visitas:</label><?php echo $numeroDeVisitas; ?>					
+			<label class="votos">Votos:</label>
+			<span class="numeroVotos"><?php echo $numeroDeVotos; ?></span>			
+			<label class="respuestas">Respuestas:</label>
+			<span class="numeroRespuestas"><?php echo $numeroDeRespuestas; ?></span>				
+			<label class="visitas">Visitas:</label>
+			<span class="numeroVisitas"><?php echo $numeroDeVisitas; ?></span>					
 		</div>
 		<div class="tagsPregunta">
 			<span class="tag"><?php echo $tag1->tag; ?></span>

@@ -1,4 +1,15 @@
 <?php
+	require_once ("./accesosBD/conexionesBD.php");
+	require_once ("./accesosBD/accesosElemento.php");
+	require_once ("./accesosBD/accesosTag.php");
+	require_once ("./accesosBD/accesosTagsDeElementos.php");
+	require_once ("./accesosBD/accesosUsuario.php");
+	require_once ("./accesosBD/accesosVisita.php");
+	require_once ("./accesosBD/accesosVotacion.php");
+	require_once ("./entidades/Tag.php");
+	require_once ("./entidades/Elemento.php");
+	require_once ("./entidades/Usuario.php" );
+	
 	require_once ("./includes/styles/templates/cabecera.php");
 	
 	// $ruta = $_SERVER['REQUEST_URI'];
@@ -24,34 +35,43 @@
 <div id="contenedor_cuerpo">
 	ContenedorCuerpo
 	<div id="preguntas">
-		<div class="pregunta">
-			<div class="usuarioPregunta">
-				<div class="fotoUsuarioPregunta">
-					FOTITO
-				</div>
-				<div class="nombreUsuario">
-					John Rambo
-				</div>
-				<div class="puntosUsuarioPregunta">
-					<label class="puntos">Puntos:</label>20
-				</div>
-			</div>
-			<div class="datosPregunta">			
-				<div class="tituloPregunta">
-					¿Esto funcionará?
-				</div>
-				<div class="estadisticasPregunta">					
-					<label class="votos">Votos:</label>20			
-					<label class="respuestas">Respuestas:</label>15				
-					<label class="visitas">Visitas:</label>89					
-				</div>
-				<div class="tagsPregunta">
-					<label class="tag1">Tag 1</label>
-					<label class="tag2">Tag 2</label>
-					<label class="tag3">Tag 3</label>
-				</div>
-			</div>
-		</div>
+		<?php 		
+			$conexion = crearConexion();
+			$arrayElementos = encontrarElementosOrdenadosPorFechaDecreciente($conexion);
+			
+			foreach ($arrayElementos as $elemento) {
+				$idUsuario = $elemento->idautor;
+				$usuario = obtenerUsuarioPorId($idUsuario, $conexion);
+				$numeroDeVotos = obtenerNumeroDeVotosDeElemento($elemento, $conexion);
+				$numeroDeRespuestas = obtenerNumeroDeRespuestasDeElemento($elemento, $conexion);
+				$numeroDeVisitas = obtenerNumeroDeVisitasDeElemento($elemento, $conexion);
+				$tag1 = NULL;
+				$tag2 = NULL;
+				$tag3 = NULL;
+				
+				$resTags = obtenerTagsDeElemento($elemento, $conexion);		
+				$contador = 1;			
+				foreach ($resTags as $tg) {
+					if ($contador == 1) {
+						$tag1 = $tg;
+						$contador = $contador+1;
+					}
+					if ($contador == 2) {
+						$tag2 = $tg;
+						$contador = $contador+1;
+					}
+					if ($contador == 3) {
+						$tag3 = $tg;
+						$contador = $contador+1;
+					}
+					if ($contador > 3) {
+						break;
+					}
+				}						
+				require("./includes/widgets/preguntas.php");
+			}				
+			cerrarConexion($conexion);		
+		?>		
 	</div>
 	<div id="columna">
 		Columna
