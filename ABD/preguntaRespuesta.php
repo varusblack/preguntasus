@@ -19,7 +19,7 @@ session_start();
 
 $nuevaRespuesta=$_SESSION['nuevaRespuesta'];
 //$usuario=$_SESSION['tipoUsuario'];
-$usuario=0;
+$usuario=1;
 $errores=$_SESSION['errores'];
 $conexion=crearConexion();
 $elemento= new Elemento();
@@ -41,7 +41,6 @@ if (!empty($errores)) {
   }
 
 ?>
-	
 
 <body>
 <div class="container">
@@ -73,33 +72,33 @@ if (!empty($errores)) {
 			$respuestas=encontrarRespuestas($elemento,$conexion);					
 			$elementoRespuesta=new Elemento();
 			$cont=1;
-			foreach ($respuestas as $res){				
-				?>						 	
-				<input  id="modificaRespuesta" name="modificaRespuesta"  type="image"  onclick="modificaCuerpo(<?$res->cuerpo?>)"  src="./includes/styles/imagenes/iconos/editar.jpg" alt"modificar" />
-				<script type="text/javascript" charset="utf-8">
-					controlAdministrador(<?echo $usuario?>)
-				</script>
-				<?
+			foreach ($respuestas as $res){
+				if ($usuario==1){ //Si es administrador				
+					?>						 	
+					<a href="./procesado/modificaRespuesta.php?cuerpo=<?echo$res->cuerpo;?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>
+					<a href="./procesado/eliminaRespuesta.php?cuerpo=<?echo $res->cuerpo?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>
+					<?
+				}
 				echo "R.N. ".$cont." :  ".$res->cuerpo. "<BR/>";
 				$cont++;
-			}	
-			?>	
-										
+			}?>						
 			</h5>			
 		</div>
 		<?
 		cerrarConexion($conexion);
 		?>
-		<form id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="post" onsubmit="return validar()">
+		<div id=div_form>
+		<form id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="post" onsubmit="return validaRes()">
 			<h3 class="rotuloComun">Nueva Respuesta Aportada</h3>
-			<textarea id="imput-respuesta" tabindex="101" rows="5" cols="92" name="mi-respuesta">
+			<textarea name="mi-respuesta" id="mi-respuesta" tabindex="101" rows="5" cols="92" >
 			</textarea>
 			<div id="div_botones">
-				<input id="submit" name ="submit" type="submit" value="Publicar Mi Respuesta" />
-				<input id ="reset" name="reset" type="reset" value="Limpiar Respuesta"/>
-				<input id ="cancelar" name="cancelar" type="submit" value="cancelar"/>
+				<button id="submit" type="submit" >Publicar Mi Respuesta</button>
+				<button id="reset" type="reset">Limpiar Respuesta</button>
+				
 			</div>
 		</form>
+		</div>
 	</div>
 </div>
 </body>
