@@ -13,7 +13,7 @@
 	                <input type="submit" value="Login" />            		
             	</form>
             </fieldset>
-            <a href="./registrarse.php">Registrarse</a>
+            <a href="/abd/registrarse.php">Registrarse</a>
         </div>
     </div>
 </div>

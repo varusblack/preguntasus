@@ -4,270 +4,277 @@
  Author     : jenkin90
  Description:
  Purpose of the stylesheet follows.
- */
+*/
 
 /*
  TODO customize this sample style
  Syntax recommendation http://www.w3.org/TR/REC-CSS2/
- */
+*/
 
 root {
-	display: block;
+    display: block;
 }
 html, body {
-	width: 100%;
-	border: 0px;
-	padding: 0px;
-	margin: 0px;
-	font-family: sans-serif;
+    width: 100%;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    font-family: sans-serif;
 }
 
 /* BARRA SUPERIOR DE LOGIN */
 #login {
-	width: 100%;
-	background-image: url('../imagenes/fondocabecera.png');
-	border: 0px;
-	padding: 5px 0 0 0;
-	margin: 0px;
-	height: 31px;
-	color: white;
+    width: 100%;
+    background-image: url('../imagenes/fondocabecera.png');
+    border: 0px;
+    padding: 5px 0 0 0;
+    margin: 0px;
+    height: 31px;
+    color: white;
 }
 #login-content {
-	width: 960px;
-	margin: 0 auto 0 auto;
+    width: 960px;
+    margin: 0 auto 0 auto;
 }
 
 #logo {
-	float: left;
-	width: 25%;
-	min-width: 170px;
-	/*background-image: url('../imagenes/logoPreguntas.png');*/
-	background-image: url('../imagenes/iconos/Que.gif');
-	background-repeat: no-repeat;
-	background-position: left;
-	height: 100%;
-	padding: 5px 0 0 5px;
+    float: left;
+    width: 25%;
+    min-width: 170px;
+    /*background-image: url('../imagenes/logoPreguntas.png');*/
+    background-image: url('../imagenes/iconos/Que.gif');
+    background-repeat: no-repeat;
+    background-position: left;
+    height: 100%;
+    padding: 5px 0 0 5px;
 }
 #logo h1 {
-	font-size: large;
-	font-weight: bolder;
-	margin: 0 0 0 50px;
-	color: white;
-	vertical-align: baseline;
+    font-size: large;
+    font-weight: bolder;
+    margin: 0 0 0 50px;
+    color: white;
+    vertical-align: baseline;
 }
 
 #user-box {
-	color: white;
-	vertical-align: middle;
-	height: 100%;
-	width: 74%;
-	font-size: small;
-	float: left;
-	text-align: right;
+    color: white;
+    vertical-align: middle;
+    height: 100%;
+    width: 74%;
+    font-size: small;
+    float: left;
+    text-align: right;
 }
 #user-box fieldset {
-	border: 0px;
-	display: inline;
+    border: 0px;
+    display: inline;
 }
 #user-box a {
-	color: white;
-	text-decoration: underline;
-	font-weight: bold;
+    color: white;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 /* OTROS CSS */
 
 #nombreProyecto {
-	float: left;
-	width: 49%;
-	text-align: left;
+    float: left;
+    width: 49%;
+    text-align: left;
 }
 
 
 #contenedor_cuerpo {
-	width: 960px;
-	margin: 0 auto 0 auto;
+    width: 960px;
+    margin: 0 auto 0 auto;
 }
 
 #pie {
-	background-image: url('../imagenes/fondopie.png');
-	color: white;
-	vertical-align: middle;
-	height: 70px;
-	clear: both;
+    background-image: url('../imagenes/fondopie.png');
+    color: white;
+    vertical-align: middle;
+    height: 70px;
+    clear: both;
 }
 #contenedor_pie {
-	width: 960px;
-	margin: 0 auto 0 auto;
-	vertical-align: middle;
-	height: 100%;
+    width: 960px;
+    margin: 0 auto 0 auto;
+    vertical-align: middle;
+    height: 100%;
 }
 #contenedor_pie #autores {
-	text-align: right;
-	font-size: small;
-	height: 100%;
+    text-align: right;
+    font-size: small;
+    height: 100%;
 }
 #contenedor_pie #autores li {
-	list-style-type: none;
-	height: 100%;
+    list-style-type: none;
+    height: 100%;
 }
 #contenedor_pie #nombreProyecto {
-	margin-left: 5px;
-	height: 100%;
+    margin-left: 5px;
+    height: 100%;
 }
 
 #preguntas {
-	float: left;
+    float: left;
 }
 #columna {
-	width: 300px;
-	text-align: left;
-	float: right;
-	clear: right;
-	background-image: url('../imagenes/fondocolumna.jpg');
+    width: 300px;
+    text-align: left;
+    float: right;
+    clear: right;
+    background-image: url('../imagenes/fondocolumna.jpg');
 }
 #barraNavegacion {
-	margin:0 auto 0 auto;
-	width: 500px;
-	text-align: center;
-	clear: both;
-	font-weight: bold;
-	font-size: medium;
-	font-style: normal;
-	height: 31px;
-	background-image: url('../imagenes/fondobarranavegacion.png');
+    margin:0 auto 0 auto;
+    width: 500px;
+    text-align: center;
+    clear: both;
+    font-weight: bold;
+    font-size: medium;
+    font-style: normal;
+    height: 31px;
+    background-image: url('../imagenes/fondobarranavegacion.png');
 }
 #barraNavegacion a.separado {
-	padding-left: 2em;
+    padding-left: 2em;
 }
 #cuadroBusqueda {
-	margin:0 auto 0 auto;
-	clear:both;
-	margin-top:20px;
-	width:400px;
-	height: 120px;
-	background-image: url('../imagenes/fondocuadrobusqueda.png');
+    margin:0 auto 0 auto;
+    clear:both;
+    margin-top:20px;
+    width:400px;
+    height: 120px;
+    background-image: url('../imagenes/fondocuadrobusqueda.png');
 }
 #labelsBusqueda{
-	padding-top:10px;
-	padding-left:10px;
-	text-align:right;
-	float:left;
+    padding-top:10px;
+    padding-left:10px;
+    text-align:right;
+    float:left;
 }
 #labelsBusqueda div.labelBusqueda{
-	padding-bottom:10px;
+    padding-bottom:10px;
 }
 #inputsBusqueda{
-	padding-top:10px;
-	padding-right:10px;
-	float:right;
-	margin-right:5px;
+    padding-top:10px;
+    padding-right:10px;
+    float:right;
+    margin-right:5px;
 }
 #inputsBusqueda div.inputBusqueda{
-	padding-bottom:9px;
+    padding-bottom:9px;
 }
 #palabras{
-	width: 230px;
+    width: 230px;
 }
 #botonBuscar{
-	text-align:center;
-	padding-top:15px;
-	clear:both;
+    text-align:center;
+    padding-top:15px;
+    clear:both;
 }
 
 #cuadroRegistrarse{
-	margin:40px auto 0 auto;
+    margin:40px auto 0 auto;
     padding-top: 20px;
-	clear:both;
-	width:400px;
-	height: 225px;
-	background-image: url('../imagenes/fondocuadroregistrarse.png') ; 
+    clear:both;
+    width:400px;
+    height: 225px;
+    background-image: url('../imagenes/fondocuadroregistrarse.png') ; 
     background-repeat: no-repeat;
+    padding-left: 5px;
 
 }
 
 #labelsRegistrarse{
-	padding-top:10px;
-	padding-left:10px;
-	text-align :right;
-	float:left;
-	clear: left;
+    padding-top:10px;
+    padding-left:10px;
+    text-align :right;
+    float:left;
+    clear: left;
 }
 #campo{
-	margin:10px 0 10px 0;
+    margin:10px 0 10px 0;
 }
 div.campo div{
     float:left;
     width:50%;
 }
+
 #inputsRegistrarse{
-	padding-top:10px;
-	padding-right:10px;
-	float:right;
-	clear:right;
+    padding-top:10px;
+    padding-right:10px;
+    float:right;
+    clear:right;
 }
 #inputsRegistrarse div.separado{
-	padding-top:5px;
+    padding-top:5px;
 }
 #inputsRegistrarse input{
-	width: 200px;
+    width: 200px;
 }
 #botonRegistrarse{
-	text-align:center;
-	padding-top:20px;
-	clear:both;
+    text-align:center;
+    padding-top:20px;
+    clear:both;
+}
+div.cuadroRegistrarse p{
+    margin: 0 auto 0 10px;
+    text-align: center;
 }
 div.pregunta {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	width: 500px;
-	height: 120px;
-	background-image: url('../imagenes/pregunta.png');
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 500px;
+    height: 120px;
+    background-image: url('../imagenes/pregunta.png');
 }
 /*Pregunta respondida con fondo
- */
+*/
 div.preguntaRespondida {
-	margin-top: 5px;
-	margin-bottom: 5px;
-	width: 500px;
-	height: 120px;
-	background-image: url('../imagenes/preguntaRespondida.png');
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 500px;
+    height: 120px;
+    background-image: url('../imagenes/preguntaRespondida.png');
 }
 
 div.usuarioPregunta{
-	padding-left:5px;
-	padding-top:5px;
-	padding-bottom:5px;
-	float: left;
-	clear:left;
-	width:100px;
+    padding-left:5px;
+    padding-top:5px;
+    padding-bottom:5px;
+    float: left;
+    clear:left;
+    width:100px;
 }
 div.datosPregunta{
-	padding-bottom:5px;
-	padding-right:5px;
-	padding-top:5px;
-	float:right;
-	clear: right;
-	width:380px;
+    padding-bottom:5px;
+    padding-right:5px;
+    padding-top:5px;
+    float:right;
+    clear: right;
+    width:380px;
 }
 div.tituloPregunta{
-	font-family:sans-serif;
-	font-size:large;
-	padding-top:5px;
-	padding-bottom:10px;
-	clear: both;
-	width: 390px;
+    font-family:sans-serif;
+    font-size:large;
+    padding-top:5px;
+    padding-bottom:10px;
+    clear: both;
+    width: 390px;
 }
 div.estadisticasPregunta{
-	width: 390px;
-	height: 35px;
+    width: 390px;
+    height: 35px;
 }
 label.respuestas, label.visitas{
-	padding-left:10px;
+    padding-left:10px;
 }
 div.errores{
-	margin:0 auto 0 auto;
-	text-align: left;
-	color: red;
-	
+    margin:0 auto 0 auto;
+    text-align: left;
+    color: red;
+
 }
+
