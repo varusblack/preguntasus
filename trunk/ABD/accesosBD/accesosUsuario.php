@@ -1,4 +1,5 @@
 <?php
+    require_once($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/funciones/fechas.php');
     function obtenerTodosLosUsuarios($conexion){
     	try{
 			$SQL="SELECT * FROM usuario";
@@ -37,17 +38,18 @@
 		try{
 			$email = $usuario->email;
 			$password = $usuario->password;
-			$puntos = $usuario->puntos;
 			$nombre = $usuario->nombre;
 			$apellidos = $usuario->apellidos;
-			$fechaNacimiento = $usuario->fechanacimiento;
+			$fechaNacimiento = fecha2mysql($usuario->fechanacimiento);
 			
 			$SQL = "INSERT INTO usuario (email,password,fecharegistro,preguntasrealizadas,".
 			"preguntasrespondidas,puntos,nombre,apellidos,fechanacimiento)".
 			" VALUES ('$email','$password',NOW(),'0','0','0','$nombre','$apellidos','$fechaNacimiento')";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
-			Header("Location: error.php");
+			//Header("Location: error.php");
+                    echo $e;
+                    echo $SQL;
 			die();
 		}
 	}
