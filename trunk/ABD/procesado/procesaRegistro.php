@@ -6,46 +6,51 @@ require ($_SERVER["DOCUMENT_ROOT"]. '/abd/accesosBD/accesosUsuario.php');
 require ($_SERVER["DOCUMENT_ROOT"]. '/abd/entidades/Usuario.php');
 require ($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/funciones/emails.php');
 
+    $conexion = crearConexion();
+    $nuevoUsuario = new Usuario();
 
-$errores = array();
+
+$erroresArray = array();
 if ($_POST["email"] == "") {
-    $errores[] = "No se ha indicado el correo electrónico";
+    $erroresArray[] = "No se ha indicado el correo electrónico";
 }
 if(!valida_email($_POST["email"])){
-    $errores[]="El email no es válido";
+    $erroresArray[]="El email no es válido";
 }
 if($_POST["pass1"]==""){
-    $errores[]="No se ha indicado la contraseña";
+    $erroresArray[]="No se ha indicado la contraseña";
 }
 if($_POST["pass1"]!=$_POST["pass2"]){
-    $errores[]="Las contraseñas no son iguales";
+    $erroresArray[]="Las contraseñas no son iguales";
 }
 if($_POST["nombre"]==""){
-    $errores[]="No se ha indicado el nombre";
+    $erroresArray[]="No se ha indicado el nombre";
 }
 if($_POST["apellidos"]==""){
-    $errores[]="No se ha indicado los apellidos";
+    $erroresArray[]="No se ha indicado los apellidos";
 }
 if($_POST["fechaNacimiento"]==""){
-    $errores[]="No se ha indicado la fecha de nacimiento";
+    $erroresArray[]="No se ha indicado la fecha de nacimiento";
 }else{
     if(!validaFecha($_POST["fechaNacimiento"])){
-        $errores[]="La fecha de nacimiento no es válida. El formato debe ser dd/mm/aaaa";
+        $erroresArray[]="La fecha de nacimiento no es válida. El formato debe ser dd/mm/aaaa";
     }
+}
+if(existeUsuarioConEmail($_POST["email"], $conexion)){
+    $erroresArray[]="Ya existe un usuario con ese email";
 }
 
 
+if (count($erroresArray) != 0) {
 
-if (count($errores) != 0) {
+    $datosArray = array();
+    $datosArray["email"] = $_POST["email"];
+    $datosArray["nombre"] = $_POST["nombre"];
+    $datosArray["apellidos"] = $_POST["apellidos"];
+    $datosArray["fechaNacimiento"] = $_POST["fechaNacimiento"];
 
-    $datos = array();
-    $datos["email"] = $_POST["email"];
-    $datos["nombre"] = $_POST["nombre"];
-    $datos["apellidos"] = $_POST["apellidos"];
-    $datos["fechaNacimiento"] = $_POST["fechaNacimiento"];
-
-    $_SESSION["errores"] = $errores;
-    $_SESSION["datos"] = $datos;
+    $_SESSION["errores"] = $erroresArray;
+    $_SESSION["datos"] = $datosArray;
     header("Location: /abd/registrarse.php");
     exit();
 } else {

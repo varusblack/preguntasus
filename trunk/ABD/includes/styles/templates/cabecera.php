@@ -5,7 +5,7 @@
         <meta http-equiv="content-type" content="text/html; utf-8" />
         <title>Preguntas y respuestas US</title>
         <!-- Importacion de css -->
-        <link type="text/css" rel="stylesheet" href="./includes/styles/css/preguntasus.css" />
+        <link type="text/css" rel="stylesheet" href="/abd/includes/styles/css/preguntasus.css" />
         <!-- Importacion de javascript -->
         <?php if (stripos($_SERVER['REQUEST_URI'], 'index') !== FALSE) { ?>
         	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
