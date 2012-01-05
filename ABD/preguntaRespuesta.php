@@ -44,28 +44,17 @@ if (!empty($errores)) {
 
 <body>
 <div class="container">
-	<div id="header"></div>
 	<div id="content">
-		<div id="titulo">
-			<h3 class="rotuloComun">Titulo:</h3>
-			<h5 class="centra titulo"> 
-			<?				
-			echo($elemento->titulo);
-			?>
-			</h5>
+		<div id="nombreCampos">
+			<h3 class="rotuloRespuestas">Titulo:</h3>
+			<h3 class="rotuloRespuestas">Contenido:</h3>
+			<h3 class="rotuloRespuestas"> Numero De Respuestas Publicadas :<?print(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));?></h3>
 		</div>
-		<div id="cuerpo">			
-			<h3 class="rotuloComun">Contenido:</h3>
-			<h5 class="centra cuerpo"> 
-			<?
-			print($elemento->cuerpo);
-			?>
-			</h5>			
+		<div id="contenidoCampos">				
+			<h5 class="contenidoRespuesta"> <?print($elemento->cuerpo);?></h5>
+			<h5 class="contenidoRespuesta"> <?echo($elemento->titulo);?></h5>		
 		</div>
-		<div id="respuesta">
-			<h3 class="rotuloComun"> Numero De Respuestas Publicadas :
-				<?print(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));?>
-			</h3>
+		<div id="respuesta">			
 			<h5>
 			 <?			
 			$respuestas=array();
@@ -87,9 +76,9 @@ if (!empty($errores)) {
 		<?
 		cerrarConexion($conexion);
 		?>
-		<div id=div_form>
+		<div id=div_formularioRespuesta>
 		<form id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="post" onsubmit="return validaRes()">
-			<h3 class="rotuloComun">Nueva Respuesta Aportada</h3>
+			<h3 class="rotulo">Nueva Respuesta Aportada</h3>
 			<textarea name="mi-respuesta" id="mi-respuesta" tabindex="101" rows="5" cols="92" >
 			</textarea>
 			<div id="div_botones">
