@@ -39,7 +39,7 @@ require_once ("./entidades/Usuario.php" );
 	?>
 	</div>
 	
-	<form id="buscarPreguntas" name="buscarPreguntas" action="./procesado/buscarPreguntas.php" method="post">
+	<form id="buscarPreguntas" name="buscarPreguntas" action="./procesado/buscarPreguntas.php" method="post" onsubmit="return comprobarCamposVacios()">
 		<div id="cuadroBusqueda">
 			<div id="labelsBusqueda">
 				<div class="labelBusqueda">
