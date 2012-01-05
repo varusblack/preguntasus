@@ -30,22 +30,21 @@ if(!isset($eliminarespuesta)){
 cerrarConexion($conexion);
 ?>
 <form id="eliminaRespuesta" name="Confirmar" method="post" action="eliminaRespuesta.php">
-	<div id="cuadroEliminacion">
-		<fieldset>
-		<h2>Confirme o Rechaze La Eliminacion De La Siguiente Respuesta</h2>
+	<div id="cuadroeliminacion">
+		<h2 class="rotulos">Confirme o Rechaze La Eliminacion De La Siguiente Respuesta</h2>
 		<div id="div_datoUsuario">
-			<label class="autor" id="label_autor">Email Del Autor :  </label><?php echo $usuario->email;?>		
+			<label class="autor" id="label_eliminaRespuesta">Email Del Autor :  </label><?php echo $usuario->email;?>		
 		</div>
-		<div id="respuesta">
-			<label class="respuesta" id="label_respuesta">Contenido De La Respuesta: </label><?php echo $elemento->cuerpo;?>
+		<div id="div_respuesta">
+			<label class="respuesta" id="label_eliminaRespuesta">Contenido De La Respuesta: </label><?php echo $elemento->cuerpo;?>
 		</div>		
-		<div id="botonesEliminacion">
-				<input type="submit" value="Confirmar" />
-				<input type="button" value="Cancelar" name ="cancelar" onClick="location.href='../preguntaRespuesta.php'" />
+		<div id="div_botonConfirmar">
+			<input type="submit" value="Confirmar" />
 		</div>
-		</fieldset>
+		<div id="div_botonCancelar">
+			<input type="button" value="Cancelar" name ="cancelar" onClick="location.href='../preguntaRespuesta.php'" />			
+		</div>
 	</div>	
-	
 </form>
 
 <?php

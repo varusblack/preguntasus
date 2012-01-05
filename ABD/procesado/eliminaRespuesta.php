@@ -6,23 +6,17 @@ require_once ("../accesosBD/accesosElemento.php");
 session_start();
 $eliminaRespuesta =$_SESSION['eliminaRespuesta'];
 
-
+// Control que evite acceder directamente a esta página
 if (isset($eliminaRespuesta)) {// si está creada en la sesion
-  	realizaEliminacion($eliminaRespuesta);
-  
-} else
-	Header("Location:../preguntaRespuesta.php");
+  	realizaEliminacion($eliminaRespuesta);  
+} 
+Header("Location:../preguntaRespuesta.php");
 
 function realizaEliminacion($eliminaRespuesta){
-	/*HACER ¡¡¡¡¡¡¡¡¡¡¡¡¡¡
-	 * $conexion=crearConexion();
 	$elemento=new Elemento();
-	$elemento=$nuevaRespuesta['elemento'];
-	$elemento->cuerpo=$nuevaRespuesta['respuesta'];
-	$elemento->idrespuesta=$nuevaRespuesta['idelemento'];
-	insertarElemento($elemento,$conexion);
-	cerrarConexion($conexion);
-	 * */
-	 
+	$elemento=$eliminaRespuesta['elemento'];
+	$conexion=crearConexion();
+	borrarElemento($elemento,$conexion);
+	cerrarConexion($xonexion);
 }
 ?>
