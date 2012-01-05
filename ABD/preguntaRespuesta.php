@@ -76,7 +76,7 @@ if (!empty($errores)) {
 				if ($usuario==1){ //Si es administrador				
 					?>						 	
 					<a href="./procesado/modificaRespuesta.php?cuerpo=<?echo$res->cuerpo;?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>
-					<a href="./procesado/eliminaRespuesta.php?cuerpo=<?echo $res->cuerpo?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>
+					<a href="./procesado/preparaEliminaRespuesta.php?cuerpo=<?echo $res->cuerpo?>&cod=<?echo $res->id?>&idautor=<?echo $res->idautor?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>
 					<?
 				}
 				echo "R.N. ".$cont." :  ".$res->cuerpo. "<BR/>";
@@ -95,6 +95,7 @@ if (!empty($errores)) {
 			<div id="div_botones">
 				<button id="submit" type="submit" >Publicar Mi Respuesta</button>
 				<button id="reset" type="reset">Limpiar Respuesta</button>
+				<button id="cancelar" type="button" onClick="location.href='./index.php'" />Cancelar</button>
 				
 			</div>
 		</form>
