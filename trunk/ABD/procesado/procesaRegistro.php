@@ -38,7 +38,6 @@ if($_POST["fechaNacimiento"]==""){
 
 if (count($errores) != 0) {
 
-
     $datos = array();
     $datos["email"] = $_POST["email"];
     $datos["nombre"] = $_POST["nombre"];
@@ -62,7 +61,8 @@ if (count($errores) != 0) {
 
     insertarUsuario($nuevoUsuario, $conexion);
     
-    	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/cabecera.php");
+	cerrarConexion($conexion);
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/cabecera.php");
 	
 	// $ruta = $_SERVER['REQUEST_URI'];
 	// if ($ruta == '/ABD/') {
@@ -75,14 +75,10 @@ if (count($errores) != 0) {
     <div id="cuadroRegistrarse">
         <p>El usuario se ha creado correctamente</p>
         <p><a href="/abd/">Volver a la página princial</a></p>
-    </div>
-    
+    </div>    
 </div>
 
 <?php
-        
-
 	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/pie.php");
-
 }
 ?>

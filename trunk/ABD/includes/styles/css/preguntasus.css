@@ -277,4 +277,31 @@ div.errores{
     color: red;
 
 }
-
+#recuadroLogin{
+	margin:0 auto 0 auto;
+    width: 270px;
+    text-align: center;
+    clear: both;
+    height: 115px;
+    background-image: url('../imagenes/fondorecuadrologin.png');
+}
+#emailLogin{
+	padding-top: 10px;
+}
+#passLogin{	
+	margin-top: 30px;
+}
+div.labelRecuadroLogin{
+	padding-left:10px;
+	float:left;
+}
+div.inputRecuadroLogin{
+	padding-right:10px;
+	float:right;
+}
+#botonLogin{
+	text-align:center;
+    padding-top:20px;
+    clear:both;
+    padding-bottom:10px;
+}
