@@ -33,6 +33,20 @@
 			//die();
 		}
 	}
+        
+        function existeUsuarioConEmail($email,$conexion){
+		try{
+			$SQL="SELECT count(*) as cuenta FROM usuario WHERE email='$email'";
+			$stmt = $conexion->query($SQL);
+                        $dato=$stmt->fetch();
+                        return $dato["cuenta"]>0;
+		}catch(PDOException $e){
+			echo $e;
+			//Header("Location: error.php");
+			//die();
+		}
+	}
+        
 	
 	function insertarUsuario(Usuario $usuario,$conexion){
 		try{

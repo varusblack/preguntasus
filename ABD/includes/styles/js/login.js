@@ -1,14 +1,16 @@
 function camposVacios(){
-	var resultado = true;
-	var email = document.getElementById(email).valueOf;
-	var pass = document.getElementById(pass).valueOf;
-	
-	if(email == null || pass==null){
-		if(email == null){
-			document.getElementById(erroresBuscarPregunta).innerHTML = "El campo email no puede ser vacío.";			
+	resultado = true;
+	var email = document.getElementById("email").value;
+	var pass = document.getElementById("pass").value;
+
+	if(email == "" || pass==""){
+		if(email ==""){
+                        alert("El email no puede estar en blanco");
+			document.getElementById("erroresBuscarPregunta").innerHTML += "El campo email no puede ser vacío.<br>";			
 		}
-		if(pass == null){
-			document.getElementById(erroresBuscarPregunta).innerHTML = "El campo contraseña no puede ser vacío.";
+		if(pass == ""){
+                        alert("La contraseña no puede estar en blanco");
+			document.getElementById("erroresBuscarPregunta").innerHTML += "El campo contraseña no puede ser vacío.";
 		}
 		resultado = false;
 	}
