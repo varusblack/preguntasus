@@ -44,7 +44,7 @@ function validafecha($fecha) {
         } else {
             if ($dia > 28) {
                 return false;
-                echo "Día mayor que 28"; //Dia mayor que 28 en febrero normal
+                //Dia mayor que 28 en febrero normal
             }
         }
     }

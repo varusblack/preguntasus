@@ -1,34 +1,59 @@
 function comprobarEmail(email) {
-	var patronEmail = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
-	if(email == '' || email == null || email.match(patronEmail)) {
-		return false;
-	} else {
-		return true;
-	}
+	var patronEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return patronEmail.test(email);
 }
 
-function coincidenPasswords() {
-	var pass1 = document.getElementById(pass1).value;
-	var pass2 = document.getElementById(pass2).value;
-	if(!pass1.match(pass2)) {
-		return false;
-	} else {
-		return true;
-	}
+
+
+
+function comprobarRegistrarse(){
+    resultado=true;
+    if(resultado && document.getElementById("emailUsuario").value=='' ){
+        alert("No se puede dejar en blanco el correo electronico");
+        resultado=false;
+        document.getElementById("emailUsuario").focus();
+    }
+    if(resultado && !comprobarEmail(document.getElementById("emailUsuario").value) ){
+        alert("El email introducido no es válido");
+        resultado=false;
+        document.getElementById("emailUsuario").focus();
+    }
+    if(resultado && document.getElementById("pass1").value==''){
+        alert("La contraseña no puede estar en blaco");
+        resultado=false;
+        document.getElementById("pass1");
+    }
+    if(resultado && document.getElementById("pass2").value==''){
+        alert("La verificación de la contraseña no puede estar en blanco");
+        resultado=false;
+        document.getElementById("pass2");
+    }
+    if(resultado && document.getElementById("pass2").value!=document.getElementById("pass1").value){
+        alert("La contraseña y su verificación no son iguales");
+        resultado=false;
+        document.getElementById("pass1");
+    }
+    if(resultado && document.getElementById("nombre").value==''){
+        alert("El nombre no puede estar en blanco");
+        resultado=false;
+        document.getElementById("nombre");
+    }
+    if(resultado && document.getElementById("apellidos").value==''){
+        alert("Los apellidos no pueden estar en blanco");
+        resultado=false;
+        document.getElementById("apellidos");
+    }
+    if(resultado && document.getElementById("fechaNacimiento").value==''){
+        alert("La fecha de nacimiento no puede estar en blanco");
+        resultado=false;
+        document.getElementById("fechaNacimiento");
+    }
+     if(resultado && validafecha(document.getElementById("fechaNacimiento").value)){
+        alert("La fecha de nacimiento no puede estar en blanco");
+        resultado=false;
+        document.getElementById("fechaNacimiento");
+    }
+    
+    return resultado;
 }
 
-function comprobarNoVacio(cadena) {
-	if(cadena == null || cadena == '') {
-		return false;
-	}
-}
-
-function comprobarFechaNacimiento() {
-	var fech = document.getElementById(fechaNacimiento).value;
-	var patronFecha = /^\d{1,2}\/\d{1,2}\/\d{2,4}$/;
-	if(fech == null || fech == '' || !fech.match(patronFecha)) {
-		return false;
-	} else {
-		return true;
-	}
-}
