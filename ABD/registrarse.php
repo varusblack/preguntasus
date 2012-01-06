@@ -33,14 +33,14 @@ session_start();
         $fechaNacimiento="";
     }
     ?>
-    <form name="datos" method="post" action="./procesado/procesaRegistro.php">
+    <form name="datos" method="post" action="./procesado/procesaRegistro.php" onsubmit="return comprobarRegistrarse();">
         <div id="cuadroRegistrarse">
             <div class="campo">
                 <div class="labels">
-                    <label for="email">E-mail:</label>
+                    <label for="emailUsuario">E-mail:</label>
                 </div>
                
-                    <input id="email" type="text" name="email" value="<?php echo $email;?>"/>
+                    <input id="emailUsuario" type="text" name="email" value="<?php echo $email;?>"/>
 
             </div>
             <div class="campo">
@@ -75,7 +75,7 @@ session_start();
                 <input type="text" id="fechaNacimiento" name="fechaNacimiento"  value="<?php echo $fechaNacimiento;?>"/>
             </div>
             <div id="botonRegistrarse">
-                <input type="submit" value="Enviar"/>
+                <input id="submit" type="submit" value="Registrarse"/>
             </div>
         </div>
     </form>

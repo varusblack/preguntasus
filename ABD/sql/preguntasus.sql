@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 28-12-2011 a las 13:57:36
+-- Tiempo de generación: 06-01-2012 a las 21:43:55
 -- Versión del servidor: 5.5.16
 -- Versión de PHP: 5.3.8
 
@@ -34,20 +34,35 @@ CREATE TABLE IF NOT EXISTS `elemento` (
   `idrespuesta` int(11) DEFAULT NULL,
   `fechapregunta` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=27 ;
 
 --
 -- Volcado de datos para la tabla `elemento`
 --
 
 INSERT INTO `elemento` (`id`, `idautor`, `titulo`, `cuerpo`, `idrespuesta`, `fechapregunta`) VALUES
-(1, 1, 'Pregunta de prueba', 'Pues, eso, a ver si alguien me la responde', NULL, '2011-12-06 17:29:29'),
+(1, 1, 'Pregunta de prueba', 'Pues, eso, a ver si alguien me la responde', 0, '2011-12-06 17:29:29'),
 (2, 2, 'Prueba de insert', 'pues si que lo hace', 0, '2011-12-12 13:02:11'),
-(3, 2, 'Prueba de insert', 'Â¿Esto se inserta bien?', NULL, '2011-12-12 12:45:48'),
-(4, 2, 'Prueba de insert', 'Â¿Esto se inserta bien?', NULL, '2011-12-12 12:48:16'),
-(5, 2, 'Prueba de insert', 'Â¿Esto se inserta bien?', NULL, '2011-12-12 13:01:47'),
-(7, 2, 'Prueba de insert', 'A lo mejor esto no se inserta bien', NULL, '2011-12-12 13:07:48'),
-(8, 2, 'Prueba de insert', 'pues si que lo hace', NULL, '2011-12-12 13:16:47');
+(3, 2, 'Prueba de insert', 'Â¿Esto se inserta bien?', 0, '2011-12-12 12:45:48'),
+(4, 2, 'Prueba de insert', 'Â¿Esto se inserta bien?', 0, '2011-12-12 12:48:16'),
+(5, 2, 'Prueba de insert', 'Â¿Esto se inserta bien?', 0, '2011-12-12 13:01:47'),
+(7, 2, 'Prueba de insert', 'A lo mejor esto no se inserta bien', 0, '2011-12-12 13:07:48'),
+(8, 2, 'Prueba de insert', 'pues si que lo hace', 0, '2011-12-12 13:16:47'),
+(9, 1, 'RESPUESTA', 'RESPUESTA A TU PREGUNTA', 1, '2011-12-30 19:00:00'),
+(10, 1, 'Segunda respuesta', 'Esta es la segunda Respuesta a tu pregunta que hiciste la pasada semana\r\n', 1, '2011-12-31 00:00:00'),
+(11, 1, 'Pregunta de prueba', 'asd', 0, '2011-12-31 14:50:26'),
+(12, 1, 'Pregunta de prueba', 'asdadad', 0, '2011-12-31 15:02:08'),
+(13, 1, 'Pregunta de prueba', 'asdadasdasdddddddddddddddddddd', 0, '2011-12-31 15:04:35'),
+(14, 1, 'Pregunta de prueba', 'a', 0, '2011-12-31 15:05:27'),
+(15, 1, 'Pregunta de prueba', '', 0, '2011-12-31 15:35:21'),
+(16, 1, 'Pregunta de prueba', '', 0, '2011-12-31 15:36:54'),
+(17, 1, 'Pregunta de prueba', 'ffffffffffffffff', 0, '2011-12-31 15:38:27'),
+(18, 1, 'Pregunta de prueba', 's', 1, '2011-12-31 15:54:00'),
+(19, 1, 'Pregunta de prueba', 'asdfasdasdasd', 1, '2011-12-31 16:00:44'),
+(20, 1, 'Pregunta de prueba', 'respuesta del 03/01/12', 1, '2012-01-03 16:18:13'),
+(21, 1, 'Pregunta de prueba', 'otra respuesta del 03/01/12', 1, '2012-01-03 18:10:59'),
+(22, 1, 'Pregunta de prueba', 'ultima respuesta del 03/01/12', 1, '2012-01-03 22:15:08'),
+(26, 1, 'Pregunta de prueba', 'respuesta 06/01/12', 1, '2012-01-06 00:36:10');
 
 -- --------------------------------------------------------
 
@@ -101,6 +116,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `nombre` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `apellidos` varchar(255) COLLATE utf8_spanish2_ci DEFAULT NULL,
   `fechanacimiento` date DEFAULT NULL,
+  `tipoUsuario` int(1) NOT NULL COMMENT '0 normal, 1 administrador',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci AUTO_INCREMENT=7 ;
@@ -109,9 +125,9 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `email`, `password`, `fecharegistro`, `preguntasrealizadas`, `preguntasrespondidas`, `puntos`, `nombre`, `apellidos`, `fechanacimiento`) VALUES
-(1, 'jenkin90@gmail.com', 'legend95', '2011-12-13 00:00:00', 0, 0, 0, 'Antonio', 'ViÃ±as', '0000-00-00'),
-(6, 'jenkin901@gmail.com', 'fdfdsafsafdafads', '2011-12-13 00:00:00', 0, 0, 0, 'Antonio', 'ViÃ±as', '1977-06-25');
+INSERT INTO `usuario` (`id`, `email`, `password`, `fecharegistro`, `preguntasrealizadas`, `preguntasrespondidas`, `puntos`, `nombre`, `apellidos`, `fechanacimiento`, `tipoUsuario`) VALUES
+(1, 'jenkin90@gmail.com', 'legend95', '2011-12-13 00:00:00', 0, 0, 0, 'Antonio', 'ViÃ±as', '0000-00-00', 0),
+(6, 'jenkin901@gmail.com', 'fdfdsafsafdafads', '2011-12-13 00:00:00', 0, 0, 0, 'Antonio', 'ViÃ±as', '1977-06-25', 0);
 
 -- --------------------------------------------------------
 
