@@ -6,13 +6,12 @@
         <div id="user-box">
             <fieldset>            
             	<?php 
-            	$sesionUser = $_SESSION["usuario"];
 				$conexion = crearConexion();
-				$preguntasSesionUser = count(encontrarElementosDeUsuario($sesionUser,$conexion));
-				$respuestasSesionUser = count(encontrarRespuestasDeUsuario($sesionUser,$conexion));
+				$preguntasSesionUser = count(encontrarElementosDeUsuario($usuario,$conexion));
+				$respuestasSesionUser = count(encontrarRespuestasDeUsuario($usuario,$conexion));
 				cerrarConexion($conexion);
             	?>	
-            	<a href="perfil.php"><?php echo $sesionUser->email; ?></a>
+            	<a href="perfil.php"><?php echo $usuario->email; ?></a>
                 <label for="puntos">Puntos:</label>
                 <span id="puntosUsuario"><?php echo $sesionUser->puntos;?></span> 
                 <label for="numPreguntasUsuario">Preguntas realizadas: </label>

@@ -26,7 +26,7 @@
 	session_start();
 	
 	if(isset($_SESSION["usuario"])){
-		$usuario=$_SESSION["usuario"];
+		$usuario=unserialize($_SESSION["usuario"]);
 		require_once ("./includes/widgets/barraUsuario.php");
 	}else{
 		require_once ("./includes/widgets/login.php");
@@ -35,7 +35,6 @@
 	require_once ("./includes/widgets/barranavegacion.php");	
 ?> 
 <div id="contenedor_cuerpo">
-	ContenedorCuerpo
 	<div id="preguntas">
 		<?php 		
 			$conexion = crearConexion();
