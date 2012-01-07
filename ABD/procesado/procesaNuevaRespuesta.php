@@ -6,8 +6,8 @@ require_once ("../entidades/Usuario.php");
  
 session_start();
 
-  $nuevaRespuesta = trim($_REQUEST['mi-respuesta']); 
-  $idpreguntarespondida= $_REQUEST['idelemento']; 
+$nuevaRespuesta = trim($_REQUEST['mi-respuesta']); 
+$idpreguntarespondida= $_REQUEST['idelemento']; 
 	
 
 $errores = valida($nuevaRespuesta);
@@ -20,10 +20,10 @@ if (!empty($errores)) {
 	$usuario=unserialize($_SESSION['usuario']);
 	
 	 preparaInsercion($nuevaRespuesta,$idpreguntarespondida,$usuario);
+	// actualizaVotosTag($usuario);
 		
 	Header("Location:../preguntaRespuesta.php?idsolicitado=".$idpreguntarespondida);
-	exit();
-	
+	exit();	
 }
 
 function valida($nuevaRespuesta) {
@@ -32,14 +32,9 @@ function valida($nuevaRespuesta) {
   	 $error = 'El campo <b>Respuesta</b> no puede ser vacio';  
    	return $error;      
 }
-function preparaInsercion($nuevaRespuesta, $idpreguntarespondida,$usuario){
-	
-	
+function preparaInsercion($nuevaRespuesta, $idpreguntarespondida,$usuario){	
 	$conexion=crearConexion();
-	$elemento=new Elemento();	
-	
-	
-	
+	$elemento=new Elemento();		
 	$elemento->idautor=$usuario->id;
 	$elemento->titulo="RESPUESTA";
 	$elemento->cuerpo=$nuevaRespuesta;	
@@ -48,5 +43,7 @@ function preparaInsercion($nuevaRespuesta, $idpreguntarespondida,$usuario){
 	insertarElemento($elemento,$conexion);
 	cerrarConexion($conexion);
 }
-//}
+function actualizaVotosRespuesta($usuario){
+	
+}
 ?>
