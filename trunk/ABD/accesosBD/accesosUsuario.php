@@ -128,10 +128,11 @@
             $objeto->email= $row["email"];
             $objeto->password= $row["password"];
             $objeto->fecharegistro=$row["fecharegistro"];
+            $objeto->preguntasrespondidas= $row["preguntasrealizadas"];
             $objeto->preguntasrespondidas= $row["preguntasrespondidas"];
             $objeto->puntos= $row["puntos"];
             $objeto->nombre= $row["nombre"];
-            $objeto->apelldios= $row["apellidos"];
+            $objeto->apellidos= $row["apellidos"];
             $objeto->fechanacimiento= $row["fechanacimiento"];
             $objeto->tipousuario= $row["tipoUsuario"];
 		}

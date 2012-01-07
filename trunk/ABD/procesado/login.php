@@ -36,7 +36,8 @@
 			Header("Location:../login.php");
 			die();
 		}else{
-			$_SESSION["usuario"] = $usuario;
+			$_SESSION["usuario"] = serialize($usuario);
+                        
 			$_SESSION["erroresBuscarPregunta"] = null;
 			Header("Location:../index.php");
 			die();
