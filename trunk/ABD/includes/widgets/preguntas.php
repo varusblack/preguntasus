@@ -18,7 +18,7 @@ if($numeroDeRespuestas<1){
 	</div>
 	<div class="datosPregunta">			
 		<div class="tituloPregunta">
-			<?php echo $elemento->titulo; ?>
+			<a href="./preguntaRespuesta.php?idsolicitado=<?echo $idpregunta;?>"><?php echo $elemento->titulo; ?></a>
 		</div>
 		<div class="estadisticasPregunta">					
 			<label class="votos">Votos:</label>
