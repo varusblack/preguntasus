@@ -25,7 +25,7 @@
 	 */
 	session_start();
 	$usuario=$_SESSION['usuario'];
-	$errores=$_SESSION['errores'];
+	$errores=@$_SESSION['errores'];
 	if(!isset($usuario)){
 		$usuario['tipoUsuario']="";
 		$_SESSION['usuario']=$usuario;
@@ -33,7 +33,6 @@
 	
 ?> 
 <div id="contenedor_cuerpo">
-	ContenedorCuerpo
 	<div id="preguntas">
 		<?php 		
 			$conexion = crearConexion();
@@ -61,19 +60,17 @@
 				foreach ($resTags as $tg) {
 					if ($contador == 1) {
 						$tag1 = $tg;
-						$contador = $contador+1;
 					}
 					if ($contador == 2) {
 						$tag2 = $tg;
-						$contador = $contador+1;
 					}
 					if ($contador == 3) {
 						$tag3 = $tg;
-						$contador = $contador+1;
 					}
 					if ($contador > 3) {
 						break;
 					}
+                                        $contador++;
 				}						
 				require("./includes/widgets/preguntas.php");
 			}				
@@ -81,13 +78,11 @@
 		?>		
 	</div>
 	<div id="columna">
-		Columna
 		<div id="cuadro_busqueda">
-			Cuadro de busqueda <label for="buscar">Buscar:</label>
+			<label for="buscar">Buscar:</label>
 			<input type="text" id="buscar" name="buscar"/>
 		</div>
 		<div id="etiquetas_mas_frecuentes">
-			Nube de etiquetas
 		</div>
 	</div>
 </div>

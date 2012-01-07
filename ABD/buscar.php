@@ -14,7 +14,7 @@ require_once ("./entidades/Elemento.php");
 require_once ("./entidades/Usuario.php" );
 
 	session_start();
-	$erroresBuscarPreguntas = $_SESSION["erroresBuscarPregunta"];
+	$erroresBuscarPreguntas = @$_SESSION["erroresBuscarPregunta"];
 	$haBuscado = FALSE;
 	if (isset($_GET["haBuscado"])) {
 		$haBuscado = $_GET["haBuscado"];
@@ -23,8 +23,8 @@ require_once ("./entidades/Usuario.php" );
 	}
 	$tag = NULL;
 	$cadena = NULL;
-	$tag = $_SESSION["tag"];
-	$cadena = $_SESSION["palabras"];
+	$tag = @$_SESSION["tag"];
+	$cadena = @$_SESSION["palabras"];
 ?>
 <div id="contenedor_cuerpo">
 	<div id="erroresBuscarPregunta" class="errores">
@@ -80,7 +80,7 @@ require_once ("./entidades/Usuario.php" );
 			 * 	2.- Solo por palabras
 			 * 	3.- Solo por tag
 			 */
-			$tipoBusqueda = $_SESSION["tipobusqueda"];
+			$tipoBusqueda = @$_SESSION["tipobusqueda"];
 			if (isset($tipoBusqueda)) {
 			
 				$conexion = crearConexion();

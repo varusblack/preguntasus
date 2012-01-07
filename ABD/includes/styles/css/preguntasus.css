@@ -128,14 +128,15 @@ html, body {
 }
 #barraNavegacion {
     margin:0 auto 0 auto;
-    width: 500px;
     text-align: center;
     clear: both;
     font-weight: bold;
     font-size: medium;
     font-style: normal;
     height: 31px;
-    background-image: url('../imagenes/fondobarranavegacion.png');
+    background-image: url('../imagenes/fondobarranavegacion1.png');
+    background-repeat: repeat-x;
+    width:960px;
 }
 #barraNavegacion a.separado {
     padding-left: 2em;
