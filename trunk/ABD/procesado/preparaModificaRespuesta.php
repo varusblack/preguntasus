@@ -1,5 +1,4 @@
 <?php
-
 require_once ("../includes/styles/templates/cabecera.php");
 require_once ("../includes/widgets/login.php");
 require_once ("../includes/widgets/barranavegacion.php");
@@ -11,44 +10,35 @@ require_once ("../entidades/Usuario.php");
 
 session_start();
 $idElemento=$_REQUEST['cod'];
-$eliminaRespuesta=$_SESSION['eliminaRespuesta'];
-
 $conexion=crearConexion();
 $elemento=new Elemento();
 $usuario=new Usuario();
-
-
 $elemento=encontrarElementoPorId($idElemento,$conexion);
 $idautor=$elemento->idautor;
 $usuario=obtenerUsuarioPorId($idautor,$conexion);
 
-if(!isset($eliminarespuesta)){
-	$eliminaRespuesta['elemento']=$elemento;
-	$_SESSION['eliminaRespuesta']=$eliminaRespuesta;
-	$_SESSION['codigoPregunta']= $_REQUEST['codigoPregunta'];
-	
-}
 
 cerrarConexion($conexion);
 ?>
-<form id="eliminaRespuesta" name="Confirmar" method="post" action="eliminaRespuesta.php">
+<form id="modificaRespuesta" name="Moificarr" method="post" action="modificaRespuesta.php">
 	<div id="cuadroeliminacion">
-		<h2 class="rotulos">Confirme o Rechaze La Eliminacion De La Siguiente Respuesta</h2>
+		<h2 class="rotulos">Modifique Los Datos De La Respuesta</h2>
 		<div id="div_datoUsuario">
-			<label class="autor" id="label_eliminaRespuesta">Email Del Autor :  </label><?php echo $usuario->email;?>		
+			<label class="autor" id="label_modificarRespuesta">Email Del Autor :  </label><?php echo $usuario->email;?>		
 		</div>
 		<div id="div_respuesta">
-			<label class="respuesta" id="label_eliminaRespuesta">Contenido De La Respuesta: </label><?php echo $elemento->cuerpo;?>
+			<textarea class="respuesta" id="label_modificaRespuesta" name="mi-respuesta" tabindex="101" rows="5" cols="80" ><?php echo $elemento->cuerpo;?></textarea>
 		</div>		
 		<div id="div_botonConfirmar">
-			<input type="submit" value="Confirmar" />
+			<input type="submit" value="Modificar" />
 		</div>
 		<div id="div_botonCancelar">
-			<input type="button" value="Cancelar" name ="cancelar" onClick="location.href='../preguntaRespuesta.php?idsolicitado='"<?$idElemento?>/>			
+			<input type="button" value="Cancelar" name ="cancelar" onClick="location.href='../preguntaRespuesta.php?'"/>			
 		</div>
 	</div>	
 </form>
 
 <?php
 	require_once ("../includes/styles/templates/pie.php");
+?>
 ?>
