@@ -25,6 +25,8 @@ $usuario=obtenerUsuarioPorId($idautor,$conexion);
 if(!isset($eliminarespuesta)){
 	$eliminaRespuesta['elemento']=$elemento;
 	$_SESSION['eliminaRespuesta']=$eliminaRespuesta;
+	$_SESSION['codigoPregunta']= $_REQUEST['codigoPregunta'];
+	
 }
 
 cerrarConexion($conexion);
