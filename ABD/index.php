@@ -41,6 +41,13 @@
 			
 			foreach ($arrayElementos as $elemento) {
 				$idUsuario = $elemento->idautor;
+				
+				/*
+				 *Solo deben de mostrarse los elementos que tenga contenido en cuerpo
+				 * caso contrario serán respuestas. 
+				 */
+				
+				$idpregunta = $elemento->id;
 				$usuario = obtenerUsuarioPorId($idUsuario, $conexion);
 				$numeroDeVotos = obtenerNumeroDeVotosDeElemento($elemento, $conexion);
 				$numeroDeRespuestas = obtenerNumeroDeRespuestasDeElemento($elemento, $conexion);
