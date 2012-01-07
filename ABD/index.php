@@ -39,7 +39,7 @@
 		<?php 		
 			$conexion = crearConexion();
 			$arrayElementos = encontrarElementosOrdenadosPorFechaDecreciente($conexion);
-			
+			print_r($arrayElementos);
 			foreach ($arrayElementos as $elemento) {
 				$idUsuario = $elemento->idautor;
 				
@@ -62,19 +62,17 @@
 				foreach ($resTags as $tg) {
 					if ($contador == 1) {
 						$tag1 = $tg;
-						$contador = $contador+1;
 					}
 					if ($contador == 2) {
 						$tag2 = $tg;
-						$contador = $contador+1;
 					}
 					if ($contador == 3) {
 						$tag3 = $tg;
-						$contador = $contador+1;
 					}
 					if ($contador > 3) {
 						break;
 					}
+                                        $contador++;
 				}						
 				require("./includes/widgets/preguntas.php");
 			}				
@@ -82,13 +80,12 @@
 		?>		
 	</div>
 	<div id="columna">
-		Columna
 		<div id="cuadro_busqueda">
-			Cuadro de busqueda <label for="buscar">Buscar:</label>
+			<label for="buscar">Buscar:</label>
 			<input type="text" id="buscar" name="buscar"/>
 		</div>
 		<div id="etiquetas_mas_frecuentes">
-			Nube de etiquetas
+
 		</div>
 	</div>
 </div>
