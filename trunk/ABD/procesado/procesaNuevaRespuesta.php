@@ -2,6 +2,7 @@
 require_once ("../entidades/Elemento.php");
 require_once ("../accesosBD/conexionesBD.php");
 require_once ("../accesosBD/accesosElemento.php");
+require_once ("../entidades/Usuario.php");
  
 session_start();
 
@@ -17,11 +18,11 @@ if (!empty($errores)) {
 }else{
 	$_SESSION['errores'] = "";
 	$usuario=unserialize($_SESSION['usuario']);
-	print_r($usuario);
-	echo $usuario->id;
-	preparaInsercion($nuevaRespuesta,$idpreguntarespondida,$usuario);
+	
+	 preparaInsercion($nuevaRespuesta,$idpreguntarespondida,$usuario);
 		
-//	Header("Location:../preguntaRespuesta.php?idsolicitado=".$idpreguntarespondida);
+	Header("Location:../preguntaRespuesta.php?idsolicitado=".$idpreguntarespondida);
+	exit();
 	
 }
 
@@ -44,12 +45,7 @@ function preparaInsercion($nuevaRespuesta, $idpreguntarespondida,$usuario){
 	$elemento->cuerpo=$nuevaRespuesta;	
 	$elemento->idrespuesta=$idpreguntarespondida;
 	
-	echo $elemento->titulo;
-	echo $elemento->idautor."autor era";
-	echo $elemento->cuerpo;
-	echo $elemento->idrespuesta;
-	
-	//insertarElemento($elemento,$conexion);
+	insertarElemento($elemento,$conexion);
 	cerrarConexion($conexion);
 }
 //}
