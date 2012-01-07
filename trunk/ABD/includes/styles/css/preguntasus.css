@@ -379,3 +379,8 @@ div.inputRecuadroLogin{
 	margin:5px 30px 5px 30px;
 	-moz-border-radius:1px;	
 }
+
+th{
+	border-style:solid;	
+	background-color: #f0f8ff;
+}
