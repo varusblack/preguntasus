@@ -12,13 +12,14 @@
 				$respuestasSesionUser = count(encontrarRespuestasDeUsuario($sesionUser,$conexion));
 				cerrarConexion($conexion);
             	?>	
-            	<a href="perfil.php"><?php ?></a>
+            	<a href="perfil.php"><?php echo $sesionUser->email; ?></a>
                 <label for="puntos">Puntos:</label>
-                <span id="puntosUsuario"><?php echo $sessionUser->puntos;?></span> 
+                <span id="puntosUsuario"><?php echo $sesionUser->puntos;?></span> 
                 <label for="numPreguntasUsuario">Preguntas realizadas: </label>
                 <span id="numPreguntasUsuario"><?php echo $preguntasSesionUser;?></span> 
                 <label for="numRespuestasUsuario">Preguntas respondidas: </label>
                 <span id="numRespuestasUsuario"><?php echo $respuestasSesionUser;?></span>
+                <a href="./procesado/logout.php">Logout</a>
             </fieldset>
         </div>
     </div>
