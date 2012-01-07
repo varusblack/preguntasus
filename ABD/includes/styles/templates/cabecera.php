@@ -19,6 +19,9 @@
         <?php if (stripos($_SERVER['REQUEST_URI'], 'registrarse') !== FALSE) { ?>
             <script type="text/javascript" src="./includes/styles/js/registrarse.js"></script>
         <?php } ?>
+            <?php if (stripos($_SERVER['REQUEST_URI'], 'perfil') !== FALSE) { ?>
+            <script type="text/javascript" src="./includes/styles/js/registrarse.js"></script>
+        <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'login') !== FALSE) { ?>
         	<script type="text/javascript" src="./includes/styles/js/login.js"></script>
         <?php } ?>

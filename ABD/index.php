@@ -6,7 +6,7 @@
 		<?php 		
 			$conexion = crearConexion();
 			$arrayElementos = encontrarElementosOrdenadosPorFechaDecreciente($conexion);
-			print_r($arrayElementos);
+			
 			foreach ($arrayElementos as $elemento) {
 				$idUsuario = $elemento->idautor;
 				
