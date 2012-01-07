@@ -18,13 +18,23 @@ session_start();
  */
 
 $nuevaRespuesta=$_SESSION['nuevaRespuesta'];
-//$usuario=$_SESSION['tipoUsuario'];
-$usuario=1;
+
+// ***********
+/* $accedeUsuario=$_SESSION['usuario'];
+ * $tipoUsuario=$accedeUsuario->tipoUsuario;
+ */ 
+//************
+$tipoUsuario=1;
+
 $errores=$_SESSION['errores'];
 $conexion=crearConexion();
 $elemento= new Elemento();
-//$idelemento=$_REQUEST['idsolicitado']; // Para cuando se pulse la respuesta en index.php
+
+
+// $idelemento=$_REQUEST['idsolicitado']; // Para cuando se pulse la pregunta en index.php 
+ 
 $idelemento=1;
+
 $elemento= encontrarElementoPorId($idelemento,$conexion);
 
 if(!isset($nuevaRespuesta)){
@@ -61,17 +71,38 @@ if (!empty($errores)) {
 			$respuestas=encontrarRespuestas($elemento,$conexion);					
 			$elementoRespuesta=new Elemento();
 			$cont=1;
+			?>
+			<table>
+				<tr align="left" >
+					<th>Modifica</th>
+					<th>Elimina</th>
+					<th>Contenido De La Respuesta</th>
+				</tr>
+			<?
 			foreach ($respuestas as $res){
-				if ($usuario==1){ //Si es administrador				
-					?>						 	
-					<a href="./procesado/modificaRespuesta.php?cuerpo=<?echo$res->cuerpo;?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>
-					<a href="./procesado/preparaEliminaRespuesta.php?cuerpo=<?echo $res->cuerpo?>&cod=<?echo $res->id?>&idautor=<?echo $res->idautor?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>
+				?>
+				<tr align="left" >
+				<?
+				if ($tipoUsuario==1){ //Si es administrador				
+					?>
+					<td>
+						<a href="./procesado/modificaRespuesta.php?cuerpo=<?echo$res->cuerpo;?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>						
+					</td>						 	
+					<td>
+						<a href="./procesado/preparaEliminaRespuesta.php?cuerpo=<?echo $res->cuerpo?>&cod=<?echo $res->id?>&idautor=<?echo $res->idautor?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>						
+					</td>
 					<?
 				}
-				echo "R.N. ".$cont." :  ".$res->cuerpo. "<BR/>";
+				?>
+				<td><?echo "R.N. ".$cont." :  ".$res->cuerpo;?></td> 
+				<?
 				$cont++;
+				?>
+				</tr>
+				<?
 			}?>						
-			</h5>			
+			</h5>
+			</table>			
 		</div>
 		<?
 		cerrarConexion($conexion);
