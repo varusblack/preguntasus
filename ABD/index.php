@@ -8,6 +8,7 @@
 			$arrayElementos = encontrarElementosOrdenadosPorFechaDecreciente($conexion);
 			
 			foreach ($arrayElementos as $elemento) {
+				echo "hola";
 				$idUsuario = $elemento->idautor;				
 				$idpregunta = $elemento->id;
 				$usuario = obtenerUsuarioPorId($idUsuario, $conexion);

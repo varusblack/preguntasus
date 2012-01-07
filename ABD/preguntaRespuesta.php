@@ -12,7 +12,8 @@ $nuevaRespuesta=$_SESSION['nuevaRespuesta'];
 
 // ***********
  $accedeUsuario=unserialize($_SESSION['usuario']);
- $tipoUsuario=$accedeUsuario->tipoUsuario;
+ $tipoUsuario=$accedeUsuario->tipousuario;
+ 
   
 //************
 //$tipoUsuario=1;
@@ -80,7 +81,7 @@ if (!empty($errores)) {
 						<a href="./procesado/modificaRespuesta.php?cuerpo=<?echo$res->cuerpo;?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>						
 					</td>						 	
 					<td>
-						<a href="./procesado/preparaEliminaRespuesta.php?cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>						
+						<a href="./procesado/preparaEliminaRespuesta.php?cod=<?echo $res->id?>&codigoPregunta=<?echo $idelemento?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>						
 					</td>
 					<?
 				}
@@ -101,9 +102,7 @@ if (!empty($errores)) {
 		<div id=div_formularioRespuesta>
 		<form id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="post" onsubmit="return validaRes()">
 			<h3 class="rotulo">Nueva Respuesta Aportada</h3>
-			<textarea name="mi-respuesta" id="mi-respuesta" tabindex="101" rows="5" cols="92" >
-			
-			</textarea>
+			<textarea name="mi-respuesta" id="mi-respuesta" tabindex="101" rows="5" cols="92" ></textarea>
 			<input type="hidden" name ="idelemento" value="<?echo $idelemento?>" />
 			<div id="div_botones">
 				<button id="submit" type="submit" >Publicar Mi Respuesta</button>
