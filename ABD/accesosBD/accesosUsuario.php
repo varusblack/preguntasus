@@ -115,7 +115,7 @@
             $objeto->nombre= $row["nombre"];
             $objeto->apelldios= $row["apellidos"];
             $objeto->fechanacimiento= $row["fechanacimiento"];
-            $objeto->tipousuario= $row["tipousuario"];
+            $objeto->tipousuario= $row["tipoUsuario"];
             $resultado[$row["id"]] = $objeto;
 		}        
         return $resultado;

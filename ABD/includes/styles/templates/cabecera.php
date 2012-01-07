@@ -37,12 +37,17 @@
 	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Elemento.php");
 	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Usuario.php" );
 	
+	$usuario="";
 	if(isset($_SESSION["usuario"])){
 		$usuario=unserialize($_SESSION["usuario"]);
 		require ($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/widgets/barraUsuario.php');
+		$esAdmin = $usuario->tipousuario;
+		$estaLogueado=true;
 	}else{
+		$estaLogueado=false;
 		require ($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/widgets/login.php');
+		
 	}
+	require ($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/widgets/barranavegacion.php');
 
-	require_once ($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/widgets/barranavegacion.php');
 ?>
