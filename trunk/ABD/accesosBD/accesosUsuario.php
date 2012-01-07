@@ -57,8 +57,8 @@
 			$fechaNacimiento = fecha2mysql($usuario->fechanacimiento);
 			
 			$SQL = "INSERT INTO usuario (email,password,fecharegistro,preguntasrealizadas,".
-			"preguntasrespondidas,puntos,nombre,apellidos,fechanacimiento)".
-			" VALUES ('$email','$password',NOW(),'0','0','0','$nombre','$apellidos','$fechaNacimiento')";
+			"preguntasrespondidas,puntos,nombre,apellidos,fechanacimiento,tipousuario)".
+			" VALUES ('$email','$password',NOW(),'0','0','0','$nombre','$apellidos','$fechaNacimiento',0)";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
 			//Header("Location: error.php");
@@ -133,7 +133,7 @@
             $objeto->nombre= $row["nombre"];
             $objeto->apelldios= $row["apellidos"];
             $objeto->fechanacimiento= $row["fechanacimiento"];
-            $objeto->tipousuario= $row["tipousuario"];
+            $objeto->tipousuario= $row["tipoUsuario"];
 		}
 		return $objeto;
     }
