@@ -10,22 +10,13 @@ session_start();
 
 $nuevaRespuesta=$_SESSION['nuevaRespuesta'];
 
-// ***********
- $accedeUsuario=unserialize($_SESSION['usuario']);
- $tipoUsuario=$accedeUsuario->tipousuario;
- 
-  
-//************
-//$tipoUsuario=1;
-
+$accedeUsuario=unserialize($_SESSION['usuario']);
+$tipoUsuario=$accedeUsuario->tipousuario; 
 $errores=$_SESSION['errores'];
 $conexion=crearConexion();
 $elemento= new Elemento();
 
-
 $idelemento=$_REQUEST['idsolicitado']; // Para cuando se pulse la pregunta en index.php 
- 
-//$idelemento=1;
 
 $elemento= encontrarElementoPorId($idelemento,$conexion);
 
@@ -33,7 +24,6 @@ if(!isset($nuevaRespuesta)){
 	$nuevaRespuesta['respuesta']="";
 	$nuevaRespuesta['elemento']=$elemento;
 	$nuevaRespuesta['idelemento']= $idelemento;
-	//$_SESSION['nuevaRespuesta']=$nuevaRespuesta;
 }
 
 if (!empty($errores)) { 
@@ -66,8 +56,10 @@ if (!empty($errores)) {
 			?>
 			<table>
 				<tr align="left" >
+				<?if ($tipoUsuario!=""){?>
 					<th>Modifica</th>
 					<th>Elimina</th>
+			  <?}?>
 					<th>Contenido De La Respuesta</th>
 				</tr>
 			<?
@@ -78,7 +70,7 @@ if (!empty($errores)) {
 				if ($tipoUsuario==1){ //Si es administrador				
 					?>
 					<td>
-						<a href="./procesado/modificaRespuesta.php?cuerpo=<?echo$res->cuerpo;?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>						
+						<a href="./procesado/preparaModificaRespuesta.php?cuerpo=<?echo$res->cuerpo;?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>						
 					</td>						 	
 					<td>
 						<a href="./procesado/preparaEliminaRespuesta.php?cod=<?echo $res->id?>&codigoPregunta=<?echo $idelemento?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>						
@@ -92,29 +84,39 @@ if (!empty($errores)) {
 				?>
 				</tr>
 				<?
-			}?>						
+			}
+			
+			?>						
 			</h5>
 			</table>			
 		</div>
 		<?
 		cerrarConexion($conexion);
-		?>
+		if (isset($accedeUsuario)){
+			?>
+				
+			<?
+}
+if (($tipoUsuario!="")){
+?>
 		<div id=div_formularioRespuesta>
-		<form id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="post" onsubmit="return validaRes()">
+		<form  id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="post" onsubmit="return validaRes()">
 			<h3 class="rotulo">Nueva Respuesta Aportada</h3>
 			<textarea name="mi-respuesta" id="mi-respuesta" tabindex="101" rows="5" cols="92" ></textarea>
 			<input type="hidden" name ="idelemento" value="<?echo $idelemento?>" />
 			<div id="div_botones">
-				<button id="submit" type="submit" >Publicar Mi Respuesta</button>
+				<button  id="submit" type="submit" >Publicar Mi Respuesta</button>
 				<button id="reset" type="reset">Limpiar Respuesta</button>
 				<button id="cancelar" type="button" onClick="location.href='./index.php'" />Cancelar</button>
 				
 			</div>
 		</form>
 		</div>
+<?}?>
 	</div>
 </div>
 </body>
-<?php
+
+<?
 	require_once ("./includes/styles/templates/pie.php");
 ?>
