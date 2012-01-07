@@ -8,13 +8,7 @@
 			$arrayElementos = encontrarElementosOrdenadosPorFechaDecreciente($conexion);
 			
 			foreach ($arrayElementos as $elemento) {
-				$idUsuario = $elemento->idautor;
-				
-				/*
-				 *Solo deben de mostrarse los elementos que tenga contenido en cuerpo
-				 * caso contrario serán respuestas. 
-				 */
-				
+				$idUsuario = $elemento->idautor;				
 				$idpregunta = $elemento->id;
 				$usuario = obtenerUsuarioPorId($idUsuario, $conexion);
 				$numeroDeVotos = obtenerNumeroDeVotosDeElemento($elemento, $conexion);
