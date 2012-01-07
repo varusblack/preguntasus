@@ -1,8 +1,6 @@
 <?php
 require_once ("./includes/styles/templates/cabecera.php");
-require_once ("./includes/widgets/login.php");
-require_once ("./includes/widgets/barranavegacion.php");
-session_start();
+
 ?>
 
 <div id="contenedor_cuerpo">
