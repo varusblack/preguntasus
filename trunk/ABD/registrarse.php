@@ -37,7 +37,7 @@ require_once ("./includes/styles/templates/cabecera.php");
                 include_once './includes/styles/templates/formularioUsuario.php';
             ?>
             <div id="botonRegistrarse">
-                <input id="submit" type="submit" value="Registrarse"/>
+                <input id="submit" type="submit" name="submit" value="Registrarse"/>
             </div>
         </div>
     </form>

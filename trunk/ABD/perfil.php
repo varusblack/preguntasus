@@ -1,5 +1,6 @@
 <?php
 require_once ("./includes/styles/templates/cabecera.php");
+require_once ("./includes/funciones/fechas.php" );
 ?>
 
 <div id="contenedor_cuerpo">
@@ -24,7 +25,7 @@ if (isset($_SESSION["errores"])) {
     $_SESSION["errores"] = null;
     $_SESSION["datos"] = null;
 } else {
-    $usuarioLogueado = unserialize($_SESSION["usuario"]);
+    $usuarioLogueado = $usuario;
     $email = $usuarioLogueado->email;
     $nombre = $usuarioLogueado->nombre;
     $apellidos = $usuarioLogueado->apellidos;
@@ -33,50 +34,17 @@ if (isset($_SESSION["errores"])) {
 ?>
     <form name="datos" method="post" action="./procesado/procesaRegistro.php" onsubmit="return comprobarRegistrarse();">
         <div id="cuadroRegistrarse">
-            <div class="campo">
-                <div class="labels">
-                    <label for="emailUsuario">E-mail:</label>
-                </div>
-
-                <input id="emailUsuario" type="text" name="email" value="<?php echo $email; ?>"/>
-
-            </div>
-            <div class="campo">
-                <div class="labels">
-                    <label for="pass1">Contraseña:</label>
-                </div>
-                <input id="pass1" type="password" name="pass1" />
-            </div>
-            <div class="campo">
-                <div class="labels">
-                    <label for="pass2">Verifique contraseña:</label>
-                </div>
-                <input id="pass2" type="password" name="pass2" />
-            </div>
-            <div class="campo">
-                <div class="labels">
-                    <label for="nombre">Nombre:</label>
-                </div>
-                <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>" />
-            </div>
-            <div class="campo">
-                <div class="labels">
-                    <label for="apellidos">Apellidos:</label>
-
-                </div>
-                <input type="text" id="apellidos" name="apellidos"  value="<?php echo $apellidos; ?>"/>
-            </div>
-            <div class="campo">
-                <div class="labels">
-                    <label for="fechaNacimiento">Fecha de nacimiento:</label>
-                </div>
-                <input type="text" id="fechaNacimiento" name="fechaNacimiento"  value="<?php echo $fechaNacimiento; ?>"/>
-            </div>
+            <?php
+                include_once './includes/styles/templates/formularioUsuario.php';
+            ?>
             <div id="botonRegistrarse">
-                <input id="submit" type="submit" value="Registrarse"/>
+                 <input id="submit" type="submit" name="submit" value="Editar perfil"/>
             </div>
         </div>
     </form>
+    <div id="avisos">
+        <p>Si no se quiere cambiar la contraseña hay que dejarla en blanco</p>
+    </div>
 </div>
 <?php
 require_once ("./includes/styles/templates/pie.php");

@@ -17,7 +17,7 @@ if ($_POST["email"] == "") {
 if(!valida_email($_POST["email"])){
     $erroresArray[]="El email no es válido";
 }
-if($_POST["pass1"]==""){
+if($_POST["pass1"]=="" && $_POST["submit"]!="Editar perfil"){
     $erroresArray[]="No se ha indicado la contraseña";
 }
 if($_POST["pass1"]!=$_POST["pass2"]){
