@@ -13,7 +13,7 @@
             	?>	
             	<a href="perfil.php"><?php echo $usuario->email; ?></a>
                 <label for="puntos">Puntos:</label>
-                <span id="puntosUsuario"><?php echo $sesionUser->puntos;?></span> 
+                <span id="puntosUsuario"><?php echo $usuario->puntos;?></span> 
                 <label for="numPreguntasUsuario">Preguntas realizadas: </label>
                 <span id="numPreguntasUsuario"><?php echo $preguntasSesionUser;?></span> 
                 <label for="numRespuestasUsuario">Preguntas respondidas: </label>
