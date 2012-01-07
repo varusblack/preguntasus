@@ -1,14 +1,5 @@
-<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<script type="text/javascript" src="./includes/styles/js/validaFormularioRespuesta.js"></script>
-</head>
 <?php
 require_once ("./includes/styles/templates/cabecera.php");
-require_once ("./includes/widgets/login.php");
-require_once ("./includes/widgets/barranavegacion.php");
-require_once ("./accesosBD/conexionesBD.php");
-require_once ("./accesosBD/accesosElemento.php");
-require_once ("./entidades/Elemento.php");
 session_start();
 /*
  * 

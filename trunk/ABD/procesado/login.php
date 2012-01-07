@@ -26,20 +26,20 @@
 				$_SESSION["erroresBuscarPregunta"] = $erroresBuscarPreguntas;
 			}
 		}	
-		Header("Location:../login.php");
+		Header("Location:/abd/index.php");
 		die();	
 	}else{
 		if($usuario->id==null){
 			$erroresBuscarPreguntas = null;
 			$erroresBuscarPreguntas[1] = "No existe usuario con tales datos.";
 			$_SESSION["erroresBuscarPregunta"] = $erroresBuscarPreguntas;
-			Header("Location:../login.php");
+			Header("Location:/abd/index.php");
 			die();
 		}else{
 			$_SESSION["usuario"] = serialize($usuario);
                         
 			$_SESSION["erroresBuscarPregunta"] = null;
-			Header("Location:../index.php");
+			Header("Location:/abd/index.php");
 			die();
 		}
 	}	

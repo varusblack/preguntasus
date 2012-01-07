@@ -1,12 +1,5 @@
 <?php
 require_once ("./includes/styles/templates/cabecera.php");
-require_once ("./includes/widgets/login.php");
-require_once ("./includes/widgets/barranavegacion.php");
-require_once ("./accesosBD/conexionesBD.php");
-require_once ("./accesosBD/accesosUsuario.php");
-require_once ("./entidades/Usuario.php" );
-require_once ("./includes/funciones/fechas.php" );
-session_start();
 ?>
 
 <div id="contenedor_cuerpo">

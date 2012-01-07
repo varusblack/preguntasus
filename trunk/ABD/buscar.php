@@ -1,19 +1,6 @@
 <?php
 require_once ("./includes/styles/templates/cabecera.php");
-require_once ("./includes/widgets/login.php");
-require_once ("./includes/widgets/barranavegacion.php");
-require_once ("./accesosBD/conexionesBD.php");
-require_once ("./accesosBD/accesosElemento.php");
-require_once ("./accesosBD/accesosTag.php");
-require_once ("./accesosBD/accesosTagsDeElementos.php");
-require_once ("./accesosBD/accesosUsuario.php");
-require_once ("./accesosBD/accesosVisita.php");
-require_once ("./accesosBD/accesosVotacion.php");
-require_once ("./entidades/Tag.php");
-require_once ("./entidades/Elemento.php");
-require_once ("./entidades/Usuario.php" );
 
-	session_start();
 	$erroresBuscarPreguntas = @$_SESSION["erroresBuscarPregunta"];
 	$haBuscado = FALSE;
 	if (isset($_GET["haBuscado"])) {

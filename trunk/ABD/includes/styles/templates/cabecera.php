@@ -11,7 +11,7 @@
         	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
         <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'preguntaRespuesta') !== FALSE) { ?>
-        
+        	<script type="text/javascript" src="./includes/styles/js/validaFormularioRespuesta.js"></script>
         <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'buscar') !== FALSE) { ?>
         	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
@@ -24,3 +24,25 @@
         <?php } ?>
     </head>
     <body>
+<?php    	
+    session_start();
+    require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/conexionesBD.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosElemento.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosTag.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosTagsDeElementos.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosUsuario.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosVisita.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosVotacion.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Tag.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Elemento.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Usuario.php" );
+	
+	if(isset($_SESSION["usuario"])){
+		$usuario=unserialize($_SESSION["usuario"]);
+		require ($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/widgets/barraUsuario.php');
+	}else{
+		require ($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/widgets/login.php');
+	}
+
+	require_once ($_SERVER["DOCUMENT_ROOT"]. '/abd/includes/widgets/barranavegacion.php');
+?>
