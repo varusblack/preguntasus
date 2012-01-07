@@ -22,7 +22,7 @@ function encontrarElementoPorId($id, $conexion) {
 
 function encontrarElementosOrdenadosPorFechaDecreciente($conexion){
 	try {
-		$SQL = "SELECT * FROM elemento ORDER BY fechapregunta DESC";
+		$SQL = "SELECT * FROM elemento WHERE idrespuesta IS NULL AND id ORDER BY fechapregunta DESC";
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
