@@ -121,6 +121,23 @@ function encontrarElementosPorPalabrasYTag($cadena,Tag $tag, $conexion){
 		die();
 	} 
 }
+function insertarPregunta(Elemento $elemento, $conexion) {
+	try {
+		$idAutor = $elemento -> idautor;
+		$titulo = $elemento -> titulo;
+		$cuerpo = $elemento ->cuerpo;
+		$idRespuesta = $elemento -> idrespuesta;
+		$SQL = "INSERT INTO elemento (idautor,titulo,cuerpo,fechapregunta) VALUES". 
+		"('$idAutor','$titulo','$cuerpo',NOW())";
+		$conexion -> exec($SQL);
+		$var = $conexion->lastInsertId('elemento');
+		return($var);
+		//return( mysql_insert_id($conexion -> exec($SQL)));
+	} catch(PDOException $e) {
+		Header("Location: error.php");
+		die();
+	}
+}
 
 function insertarElemento(Elemento $elemento, $conexion) {
 	try {
