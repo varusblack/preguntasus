@@ -18,7 +18,10 @@ $elemento= new Elemento();
 $idelemento=$_REQUEST['idsolicitado']; // Para cuando se pulse la pregunta en index.php 
 
 $elemento= encontrarElementoPorId($idelemento,$conexion);
-insertarVisita($elemento,$accedeUsuario,$conexion);
+
+if ($tipoUsuario!=""){// solo se actualizará las visitas de usuarios logueados
+	insertarVisita($elemento,$accedeUsuario,$conexion);
+}
 
 if(!isset($nuevaRespuesta)){
 	$nuevaRespuesta['respuesta']="";
