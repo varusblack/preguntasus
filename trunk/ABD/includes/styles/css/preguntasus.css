@@ -350,28 +350,45 @@ div.inputRecuadroLogin{
  #div_botones{
  	margin: 20px 0 0 150px;/* arriba, dcha,abajo, izda */
  }
- 
+ #div_botonConfirmar{
+	float:left;
+	padding: 50px 0 5px 350px;/* arriba, dcha,abajo, izda */
+}
+#div_botonModificar{	
+	float:right;
+	padding: 10px 300px 5px 20px;	
+}
+#cuadroModificacion{
+ 	margin:40px auto 0 auto; 
+    padding: 20px 0 150px 0;
+    clear:both;
+    width:760px;
+    height: 150px;
+    background-image: url('../imagenes/fondocuadroeliminarespuesta.png') ; 
+    background-repeat: no-repeat;
  #label_eliminaRespuesta{
  	font-family:"Arial Black" ;
  	font-size:14px; 
  	color:#000000;
  	vertical-align: top
  	}
+ #label_modificaRespuesta{
+ 	font-family:"Arial Black" ;
+ 	font-size:14px; 
+ 	color:#000000;
+ 	vertical-align: top
+ 	}
+ #text_modificaRespuesta{
+ 	margin:100px 0px 0px 100px;
+ }
+ 		
  #div_datoUsuario{
  	padding: 10px 0 0 40px; 	
  }
- #div_respuesta{
- 	padding: 10px 0 0 40px;
- 	margin-top: 20px;
+ #div_modifica_respuesta{ 	
+ 	margin-top: 100px;
 }
-#div_botonConfirmar{
-	float:left;
-	padding: 75px 0 5px 250px;/* arriba, dcha,abajo, izda */
-}
-#div_botonCancelar{	
-	float:right;
-	padding: 75px 300px 5px 20px;	
-}
+
 #content{
 	float:left;
     border:2px solid #a1a1a1;
@@ -399,4 +416,58 @@ th{
 #barraUsuario-content {
     width: 960px;
     margin: 0 auto 0 auto;
+}
+#div_datosUsuario{
+	margin-left: 20px;
+	line-height: 30px;
+	margin-top: 10px;
+}
+#div_datosPregunta{
+	float:left;	
+	margin-left: 20px;
+	line-height: 30px;
+}
+#div_camposPregunta{
+	float:left;
+	margin-left: 5px;
+	line-height: 30px;
+	width: 250px;
+}
+#div_seleccionaTag{
+	float:right;
+	margin-right: 39px;
+}
+#div_botonConfirmaPregunta{
+	float:left;
+	margin: 30px 0 20px 300px;/* arriba, dcha,abajo, izda */
+}
+#cuadropregunta{
+ 	margin:10px auto 0 auto; 
+    padding: 20px 0 150px 0;
+    clear:both;
+    width:800px;
+    height: 180px;
+    background-image: url('../imagenes/fondocuadroinsertapregunta.png') ; 
+    background-repeat: no-repeat;
+ }
+ #etiquetaPregunta{
+ 	font-family:"Arial Black" ;
+ 	font-size:14px; 
+ 	color:#000000;
+ 	vertical-align: top
+ }
+ #cuerpo{
+ 	margin-left:10px;
+ 	float:left;
+ 	width: 700px;
+ }
+ #tituloPregunta{
+ 	width: 400px;
+ 	margin-left: 10px;
+ }
+ div.error {  
+  border : 2px solid red;
+  padding : 10px;
+  margin: 10px;
+  width: 300px;
 }
