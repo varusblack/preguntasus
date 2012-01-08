@@ -5,7 +5,7 @@
 		<?php 
 			if($estaLogueado){
 		?>
-				<a href="preguntar.php" class="enlaceNavegacion separado">Preguntar</a>
+				<a href="./procesado/preparaPreguntar.php" class="enlaceNavegacion separado">Preguntar</a>
 				
 		<?php
 		if($esAdmin){
