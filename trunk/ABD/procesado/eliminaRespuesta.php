@@ -11,7 +11,6 @@ $idpregunta= $_SESSION['codigoPregunta'];
 if (isset($eliminaRespuesta)) {// si está creada en la sesion
   	realizaEliminacion($eliminaRespuesta);  
 } 
-echo $idpregunta;
 Header("Location:../preguntaRespuesta.php?idsolicitado=".$idpregunta);
 exit();
 
