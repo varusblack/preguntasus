@@ -13,6 +13,9 @@
         <?php if (stripos($_SERVER['REQUEST_URI'], 'preguntaRespuesta') !== FALSE) { ?>
         	<script type="text/javascript" src="./includes/styles/js/validaFormularioRespuesta.js"></script>
         <?php } ?>
+        <?php if (stripos($_SERVER['REQUEST_URI'], 'preparaPreguntar') !== FALSE) { ?>
+        	<script type="text/javascript" src="./includes/styles/js/validaFormularioPregunta.js"></script>
+        <?php } ?>         
         <?php if (stripos($_SERVER['REQUEST_URI'], 'buscar') !== FALSE) { ?>
         	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
         <?php } ?>        
