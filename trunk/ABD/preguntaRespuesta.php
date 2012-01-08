@@ -11,14 +11,14 @@ session_start();
 $nuevaRespuesta=$_SESSION['nuevaRespuesta'];
 
 $accedeUsuario=unserialize($_SESSION['usuario']);
-$tipoUsuario=$accedeUsuario->tipousuario; 
 $errores=$_SESSION['errores'];
+$tipoUsuario=$accedeUsuario->tipousuario; 
 $conexion=crearConexion();
 $elemento= new Elemento();
-
 $idelemento=$_REQUEST['idsolicitado']; // Para cuando se pulse la pregunta en index.php 
 
 $elemento= encontrarElementoPorId($idelemento,$conexion);
+insertarVisita($elemento,$accedeUsuario,$conexion);
 
 if(!isset($nuevaRespuesta)){
 	$nuevaRespuesta['respuesta']="";
@@ -31,7 +31,6 @@ if (!empty($errores)) {
     	echo $errores . "<br/>"; 
     echo "</div>";
   }
-
 ?>
 
 <body>
@@ -70,7 +69,7 @@ if (!empty($errores)) {
 				if ($tipoUsuario==1){ //Si es administrador				
 					?>
 					<td>
-						<a href="./procesado/preparaModificaRespuesta.php?cuerpo=<?echo$res->cuerpo;?>&cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>						
+						<a href="./procesado/preparaModificaRespuesta.php?cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>						
 					</td>						 	
 					<td>
 						<a href="./procesado/preparaEliminaRespuesta.php?cod=<?echo $res->id?>&codigoPregunta=<?echo $idelemento?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>						
