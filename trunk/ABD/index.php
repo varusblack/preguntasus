@@ -1,5 +1,7 @@
 <?php
 	require_once ("./includes/styles/templates/cabecera.php");
+	
+	
 ?> 
 <div id="contenedor_cuerpo">
 	<div id="preguntas">
@@ -41,14 +43,35 @@
 		?>		
 	</div>
 	<div id="columna">
+	<form id="buscarPalabrasIndex" name="buscarPalabrasIndex" method="post" action="./procesado/buscarPreguntas.php">
 		<div id="cuadro_busqueda">
-			<label for="buscar">Buscar:</label>
-			<input type="text" id="buscar" name="buscar"/>
+			<div id="textoBuscarIndex">
+				<label for="buscar">Buscar:</label>
+				<input type="text" id="palabrasIndex" name="palabras"/>				
+			</div>
+			<div id="botonSubmitIndex">
+				<input id="botonBuscarIndex" type="submit" name="buscar" value="Buscar"/>
+			</div>
 		</div>
+	</form>
+	
+	<form id="buscarTagIndex" name="buscarTagIndex" method="post" action="./procesado/buscarPreguntas.php">
+		<input type="hidden" id="tag" value="" name="tag" />
+		<input type="hidden" id="buscar" value="buscar" name="buscar" />
 		<div id="etiquetas_mas_frecuentes">
-
-		</div>
+			<?php 
+			$conexion = crearConexion();
+			$tags = obtenerTodosLosTags($conexion);
+			cerrarConexion($conexion);		
+			foreach($tags as $tg){ ?>
+				<button onclick="buscarPorTag(<?php echo $tg->id; ?>)"><?php echo $tg->tag; ?></button><br>
+			<?php }	
+			?>
+		</div>		
+	</form>
+	
 	</div>
+		
 </div>
 <?php
 	require_once ("./includes/styles/templates/pie.php");

@@ -7,7 +7,10 @@
         <!-- Importacion de css -->
         <link type="text/css" rel="stylesheet" href="/abd/includes/styles/css/preguntasus.css" />
         <!-- Importacion de javascript -->
-        <?php if (stripos($_SERVER['REQUEST_URI'], 'index') !== FALSE) { ?>
+        <?php 
+        $patron = "#^/(abd|ABD)/$#"; ?>
+        <?php if (stripos($_SERVER['REQUEST_URI'], 'index') !== FALSE
+			|| preg_match($patron, $_SERVER['REQUEST_URI']) > 0) { ?>
         	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
         <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'preguntaRespuesta') !== FALSE) { ?>
