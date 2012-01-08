@@ -15,8 +15,8 @@ function obtenerTagsDeElemento(Elemento $elemento,$conexion){
 function insertarTagDeElemento(Elemento $elemento,Tag $tag, $conexion) {
 	try {
 		$idElemento = $elemento ->id;
-		$idTag = $tag->id;
-		$SQL = "INSERT INTO tagsdeelementos(idelemento,idtag) VALUES ('$idElemento','$idtag')";
+		$idTag = $tag ->id;
+		$SQL = "INSERT INTO tagsdeelementos(idelemento,idtag) VALUES ('$idElemento','$idTag')";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
 		Header("Location: error.php");
