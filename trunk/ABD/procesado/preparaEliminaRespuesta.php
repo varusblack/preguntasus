@@ -9,7 +9,7 @@ require_once ("../accesosBD/accesosUsuario.php");
 require_once ("../entidades/Elemento.php");
 require_once ("../entidades/Usuario.php");
 
-session_start();
+//session_start();
 $idElemento=$_REQUEST['cod'];
 $eliminaRespuesta=$_SESSION['eliminaRespuesta'];
 
@@ -35,10 +35,12 @@ cerrarConexion($conexion);
 	<div id="cuadroeliminacion">
 		<h2 class="rotulos">Confirme La Eliminacion De La Respuesta Seleccionada</h2>
 		<div id="div_datoUsuario">
-			<label class="autor" id="label_eliminaRespuesta">Email Del Autor :  </label><?php echo $usuario->email;?>		
+			<label id="label_emailEliminaRespuesta" for="email">Email Del Autor :</label>
+			<label id="label_EmailElimina"><?php echo $usuario->email;?></label>		
 		</div>
-		<div id="div_respuesta">
-			<label class="respuesta" id="label_eliminaRespuesta">Contenido De La Respuesta: </label><?php echo $elemento->cuerpo;?>
+		<div id="div_respuestaElimina">
+			<label id="label_contenidoEliminaRespuesta" for="contenido">Contenido De La Respuesta: </label>
+			<label id="label_contenidoElimina"><?php echo $elemento->cuerpo;?></label>
 		</div>		
 		<div id="div_botonConfirmar">
 			<input type="submit" value="Confirmar" />

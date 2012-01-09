@@ -9,7 +9,7 @@ if (isset($formulario)) {// si el formulario contiene datos
   $formulario["cuerpo"] = $_REQUEST["cuerpo"];
   $_SESSION["formularioPregunta"] = $formulario;
   
-} else //por motivos de Seguridad, evita que se acceda directamente a esta pagina sin tener el formulario en sesion
+} else 
 		Header("Location:preparaPreguntar.php");
   		$errores = validar($formulario);
 if (count($errores) > 0) {
@@ -18,8 +18,7 @@ if (count($errores) > 0) {
 } else{
    		Header("Location:creaPregunta.php");
   }
-function validar($formulario) {
-  
+function validar($formulario) {  
   if (!(isset($formulario['titulo']) && strlen($formulario['titulo'])>0))  // Modo resumido: if (empty($formulario['nombre']))
     $errores[] = 'El campo <b>Titulo</b> no puede ser vacio';
   
