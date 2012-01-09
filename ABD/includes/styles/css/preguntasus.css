@@ -332,28 +332,61 @@ div.inputRecuadroLogin{
     background-image: url('../imagenes/fondocuadroeliminarespuesta.png') ; 
     background-repeat: no-repeat;
   }
+  
  .rotulos{
  	text-align: center;
  	color: #FF0000;
  }
- .rotuloRespuestas{
+ #div_datoUsuario,
+ #div_respuestaElimina{
  	
  }
- #contenidoCampos{
- 	line-height: 0px;
- 	font-family: "Arial Narrow";
- 	font-size:20px;
+ #label_emailEliminaRespuesta,
+ #label_contenidoEliminaRespuesta{
+ 	display: block;
+  float: left;
+  text-align: left;
+  width: 18em;
+  padding-right: 0.5em;
+  font-family: "Arial Black";
+  font-size:14px;
  }
- #nombreCampos{
- 	float:left;
- 	clear:left;
- 	margin-left: 40px;
- 	line-height: 8px;
+ #div_titulo,
+ #div_cuerpo,
+ #div_numerorespuestas{
+ 	margin-bottom: 0.5em;
+ 	margin-left: 1px;
+  }
+  #div_titulo{
+  	margin-top: 10px;
+  }
+ #label_titulo,
+ #label_cuerpo,
+ #label_numeror{
+  display: block;
+  float: left;
+  text-align: left;
+  width: 22em;
+  padding-right: 0.5em;
+  font-family: "Arial Black";
+  font-size:14px;
  }
+ #contenidoTitulo,
+ #contenidoCuerpo,
+ #contenidoNumeroRespuesta{
+ 	font-family: "Arial Black";
+  	font-size:13px;
+ 	
+ }
+ #recuadroPregunta{
+ 	margin:0 40px 0 40px; /* arriba, dcha,abajo, izda */ 	
+ }
+ 
  #respuesta{ 	
  	float:left;
  	clear:left;
  	margin-left: 40px;
+ 	margin-top:0px;
  	font-family: "Arial Narrow";
  	font-size:20px;
  }
@@ -368,11 +401,7 @@ div.inputRecuadroLogin{
  }
  #div_botonConfirmar{
 	float:left;
-	padding: 50px 0 5px 350px;/* arriba, dcha,abajo, izda */
-}
-#div_botonModificar{	
-	float:right;
-	padding: 10px 300px 5px 20px;	
+	padding: 50px 0 5px 350px;
 }
 #cuadroModificacion{
  	margin:40px auto 0 auto; 
@@ -396,16 +425,21 @@ div.inputRecuadroLogin{
  	vertical-align: top
  	}
  #text_modificaRespuesta{
- 	margin:100px 0px 0px 100px;
- }
- 		
+ 	margin:5px 0px 0px 45px;/* arriba, dcha,abajo, izda */
+ } 	
+ #div_botonModificar{		
+	margin: 20px 250px 20px 250px;/* arriba, dcha,abajo, izda */	
+}	
+#botonModificar{
+	text-align: center;
+	margin-left: 60px;
+}
  #div_datoUsuario{
  	padding: 10px 0 0 40px; 	
  }
  #div_modifica_respuesta{ 	
- 	margin-top: 100px;
+ 	margin-top: 5px;
 }
-
 #content{
 	float:left;
     border:2px solid #a1a1a1;
