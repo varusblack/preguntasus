@@ -1,6 +1,6 @@
 <?php
 require_once ("./includes/styles/templates/cabecera.php");
-session_start();
+//session_start();
 /*
  * 
  * Se crea una variable nuevaRespuesta y errores en la sesión actual 
@@ -8,21 +8,17 @@ session_start();
  * para evita que se rellene o almacene contenido anterior 
  */
 
-$nuevaRespuesta=$_SESSION['nuevaRespuesta'];
-
-$accedeUsuario=unserialize($_SESSION['usuario']);
-$errores=$_SESSION['errores'];
-$tipoUsuario=$accedeUsuario->tipousuario; 
+//$nuevaRespuesta=$_SESSION['nuevaRespuesta'];
+//$errores=$_SESSION['errores'];
 $conexion=crearConexion();
 $elemento= new Elemento();
 $idelemento=$_REQUEST['idsolicitado']; // Para cuando se pulse la pregunta en index.php 
-
 $elemento= encontrarElementoPorId($idelemento,$conexion);
-
-if ($tipoUsuario!=""){// solo se actualizará las visitas de usuarios logueados
+if (isset($_SESSION['usuario'])){
+	$accedeUsuario=unserialize($_SESSION['usuario']);
+	$tipoUsuario=$accedeUsuario->tipousuario;
 	insertarVisita($elemento,$accedeUsuario,$conexion);
-}
-
+} 
 if(!isset($nuevaRespuesta)){
 	$nuevaRespuesta['respuesta']="";
 	$nuevaRespuesta['elemento']=$elemento;
@@ -39,16 +35,21 @@ if (!empty($errores)) {
 <body>
 <div class="container">
 	<div id="content">
-		<div id="nombreCampos">
-			<h3 class="rotuloRespuestas">Titulo:</h3>
-			<h3 class="rotuloRespuestas">Contenido:</h3>
-			<h3 class="rotuloRespuestas"> Numero De Respuestas Publicadas :<?print(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));?></h3>
+		<fieldset id="recuadroPregunta" >
+		<div id="div_titulo">
+			<label id="label_titulo" for="titulo">Titulo:</label>
+			<label id="contenidoTitulo" for="titulo"><?echo($elemento->titulo);?></label>
 		</div>
-		<div id="contenidoCampos">				
-			<h5 class="contenidoRespuesta"> <?print($elemento->cuerpo);?></h5>
-			<h5 class="contenidoRespuesta"> <?echo($elemento->titulo);?></h5>		
+		<div id="div_cuerpo">
+			<label id="label_cuerpo" for="cuerpo">Contenido:</label>
+			<label id="contenidoCuerpo" for="cuerpo"><?echo($elemento->cuerpo);?></label>
 		</div>
-		<div id="respuesta">			
+		<div id="div_numerorespuestas">				
+			<label id="label_numeror" for="numerorespuestas">Numero de Respuestas Publicadas:</label>
+			<label id="contenidoNumeroRespuesta" for="numero"><?echo(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));?></label>
+		</div>
+		</fieldset>
+		<div id="respuesta">	
 			<h5>
 			 <?			
 			$respuestas=array();
@@ -58,10 +59,13 @@ if (!empty($errores)) {
 			?>
 			<table>
 				<tr align="left" >
-				<?if ($tipoUsuario!=""){?>
+				<?if (isset($_SESSION['usuario'])){// Si existe el usuario logado
+					if($tipoUsuario==1){ //Si es administrador	
+				?>
 					<th>Modifica</th>
 					<th>Elimina</th>
-			  <?}?>
+			  <?}
+			  }?>
 					<th>Contenido De La Respuesta</th>
 				</tr>
 			<?
@@ -69,15 +73,17 @@ if (!empty($errores)) {
 				?>
 				<tr align="left" >
 				<?
-				if ($tipoUsuario==1){ //Si es administrador				
+				if (isset($_SESSION['usuario'])){// Si existe el usuario logado
+					if($tipoUsuario==1){ //Si es administrador				
 					?>
 					<td>
-						<a href="./procesado/preparaModificaRespuesta.php?cod=<?echo $res->id?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>						
+						<a href="./procesado/preparaModificaRespuesta.php?cod=<?echo $res->id?>&codigoPregunta=<?echo $idelemento?>"><img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>						
 					</td>						 	
 					<td>
 						<a href="./procesado/preparaEliminaRespuesta.php?cod=<?echo $res->id?>&codigoPregunta=<?echo $idelemento?>"><img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>						
 					</td>
 					<?
+					}
 				}
 				?>
 				<td><?echo "R.N. ".$cont." :  ".$res->cuerpo;?></td> 
@@ -85,10 +91,7 @@ if (!empty($errores)) {
 				$cont++;
 				?>
 				</tr>
-				<?
-			}
-			
-			?>						
+				<?}?>						
 			</h5>
 			</table>			
 		</div>
@@ -99,7 +102,8 @@ if (!empty($errores)) {
 				
 			<?
 }
-if (($tipoUsuario!="")){
+
+if (isset($_SESSION['usuario'])){// Si existe el usuario logado
 ?>
 		<div id=div_formularioRespuesta>
 		<form  id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="post" onsubmit="return validaRes()">
