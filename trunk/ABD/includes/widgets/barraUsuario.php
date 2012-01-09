@@ -10,6 +10,12 @@
 				$preguntasSesionUser = count(encontrarElementosDeUsuario($usuario,$conexion));
 				$respuestasSesionUser = count(encontrarRespuestasDeUsuario($usuario,$conexion));
 				cerrarConexion($conexion);
+                                
+                                if(file_exists($_SERVER["DOCUMENT_ROOT"]. '/abd/fotosPerfil/'.$usuario->id.'.jpg')){
+                                    ?>
+                <img src="/abd/muestraFoto.php?id=<? echo $usuario->id;?>&tam=40" /> 
+                <?php
+                                }
             	?>	
             	<a href="perfil.php"><?php echo $usuario->email; ?></a>
                 <label for="puntos">Puntos:</label>

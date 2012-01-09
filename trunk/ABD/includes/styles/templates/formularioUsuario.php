@@ -24,6 +24,7 @@
     </div>
     <input type="text" id="nombre" name="nombre" value="<?php echo $nombre; ?>" />
 </div>
+
 <div class="campo">
     <div class="labels">
         <label for="apellidos">Apellidos:</label>
@@ -36,5 +37,11 @@
         <label for="fechaNacimiento">Fecha de nacimiento:</label>
     </div>
     <input type="text" id="fechaNacimiento" name="fechaNacimiento"  value="<?php echo $fechaNacimiento; ?>"/>
+</div>
+<div class="campo">
+    <div class="labels">
+        <label for="fotoPerfil">Foto de perfil:</label>
+    </div>
+    <input type="file" id="fotoPerfil" name="fotoPerfil" />
 </div>
 

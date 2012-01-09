@@ -6,8 +6,10 @@ require ($_SERVER["DOCUMENT_ROOT"] . '/abd/entidades/Usuario.php');
 require ($_SERVER["DOCUMENT_ROOT"] . '/abd/includes/funciones/emails.php');
 
 $conexion = crearConexion();
-$nuevoUsuario = new Usuario();
-include $_SERVER["DOCUMENT_ROOT"] . "/abd/includes/templantes/validaCamposUsuario.php";
+$usuario = unserialize($_SESSION["usuario"]);
+$nuevoUsuario = obtenerUsuarioPorId($usuario->id, $conexion);
+
+include $_SERVER["DOCUMENT_ROOT"] . "/abd/includes/styles/templates/validaCamposUsuario.php";
 if (count($erroresArray) != 0) {
 
     $datosArray = array();
@@ -21,37 +23,41 @@ if (count($erroresArray) != 0) {
 
 
 
-    header("Location: /abd/registrarse.php");
+    header("Location: /abd/perfil.php");
     exit();
 } else {
 
-    $conexion = crearConexion();
-    $nuevoUsuario = new Usuario();
 
+    $nuevoUsuario->id=$usuario->id;
     $nuevoUsuario->email = $_POST["email"];
-    $nuevoUsuario->password = $_POST["pass1"];
+    if ($_POST["pass1"] != '') {
+        $nuevoUsuario->password = $_POST["pass1"];
+    } else {
+        $nuevoUsuario->password = $usuario->password;
+    }
     $nuevoUsuario->nombre = $_POST["nombre"];
     $nuevoUsuario->apellidos = $_POST["apellidos"];
     $nuevoUsuario->fechanacimiento = $_POST["fechaNacimiento"];
 
-    $nuevoIdUsuario = insertarUsuario($nuevoUsuario, $conexion);
+    $nuevoIdUsuario = modificarUsuario($nuevoUsuario, $conexion);
 
-    if (isset($_FILES["fotoPerfil"]["size"])) {
+    if (isset($_FILES["fotoPerfil"])) {
         move_uploaded_file($_FILES["fotoPerfil"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"] . '/abd/fotosPerfil/' . $nuevoIdUsuario . '.jpg');
     }
 
-
+    $nuevoUsuario = obtenerUsuarioPorId($usuario->id, $conexion);
+    $_SESSION["usuario"] = serialize($nuevoUsuario);
     cerrarConexion($conexion);
     require_once ($_SERVER["DOCUMENT_ROOT"] . "/abd/includes/styles/templates/cabecera.php");
 
-    // $ruta = $_SERVER['REQUEST_URI'];
-    // if ($ruta == '/ABD/') {
-    // require_once ("./includes/widgets/login.php");
-    // }
+// $ruta = $_SERVER['REQUEST_URI'];
+// if ($ruta == '/ABD/') {
+// require_once ("./includes/widgets/login.php");
+// }
     ?>
     <div id="contenedor_cuerpo">
         <div id="cuadroRegistrarse">
-            <p>El usuario se ha creado correctamente</p>
+            <p>El usuario se ha modificado correctamente</p>
             <p><a href="/abd/">Volver a la página princial</a></p>
         </div>    
     </div>
