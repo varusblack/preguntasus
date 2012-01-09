@@ -30,8 +30,10 @@ require_once ("./includes/styles/templates/cabecera.php");
         $apellidos="";
         $fechaNacimiento="";
     }
+    $_SESSION["errores"]=null;
+    $_SESSION["datos"]=null;
     ?>
-    <form name="datos" method="post" action="./procesado/procesaRegistro.php" onsubmit="return comprobarRegistrarse();">
+    <form name="datos" method="post" action="./procesado/procesaRegistro.php" enctype="multipart/form-data" onsubmit="return comprobarRegistrarse();">
         <div id="cuadroRegistrarse">
             <?php
                 include_once './includes/styles/templates/formularioUsuario.php';

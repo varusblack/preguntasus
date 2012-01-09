@@ -76,20 +76,16 @@ function modificarUsuario(Usuario $usuario, $conexion) {
         $idUsuario = $usuario->id;
         $email = $usuario->email;
         $password = $usuario->password;
-        $preguntasRealizadas = $usuario->preguntasrealizadas;
-        $preguntasRespondidas = $usuario->preguntasrespondidas;
-        $puntos = $usuario->puntos;
         $nombre = $usuario->nombre;
         $apellidos = $usuario->apellidos;
-        $fechaNacimiento = $usuario->fechanacimiento;
+        $fechaNacimiento = fecha2mysql($usuario->fechanacimiento);
 
-        $SQL = "UPDATE usuario SET email=$email,password=$password," .
-                "preguntasrealizadas=$preguntasRealizadas,preguntasrespondidas=$preguntasRespondidas" .
-                "puntos=$puntos,nombre=$nombre,apellidos=$apellidos,fechanacimiento=$fechaNacimiento" .
+        $SQL = "UPDATE usuario SET email='$email',password='$password'," .
+                "nombre='$nombre',apellidos='$apellidos',fechanacimiento='$fechaNacimiento'" .
                 "WHERE id=$idUsuario";
         $conexion->exec($SQL);
     } catch (PDOException $e) {
-        Header("Location: error.php");
+        echo $e;
         die();
     }
 }

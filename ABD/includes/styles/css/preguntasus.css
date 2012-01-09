@@ -199,9 +199,8 @@ html, body {
     margin:40px auto 0 auto;
     padding-top: 20px;
     clear:both;
-    width:400px;
-    height: 225px;
-    background-image: url('../imagenes/fondocuadroregistrarse.png') ; 
+    width:500px;
+    
     background-repeat: no-repeat;
     padding-left: 5px;
 }
@@ -383,6 +382,7 @@ div.inputRecuadroLogin{
     height: 150px;
     background-image: url('../imagenes/fondocuadroeliminarespuesta.png') ; 
     background-repeat: no-repeat;
+}
  #label_eliminaRespuesta{
  	font-family:"Arial Black" ;
  	font-size:14px; 
