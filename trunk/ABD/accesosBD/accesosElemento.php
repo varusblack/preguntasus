@@ -165,7 +165,8 @@ function modificarElemento(Elemento $elemento, $conexion) {
 		"idrespuesta=$idRespuesta WHERE id=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		print_r($e);
+		//Header("Location: error.php");
 		die();
 	}
 }
