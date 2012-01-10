@@ -556,3 +556,8 @@ th{
 #respuesta{
     width: 100%;
 }
+
+#cuadroTag{
+	margin:0 auto 0 auto;
+	background-color: silver;
+}

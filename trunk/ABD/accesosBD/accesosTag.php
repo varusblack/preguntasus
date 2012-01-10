@@ -21,6 +21,17 @@
 		}
 	}
 	
+	function obtenerTagPorNombre($tag,$conexion){
+		try{
+			$SQL = "SELECT * FROM tag WHERE tag.tag=$tag";
+			$stmt = $conexion->query($SQL);
+			return creaUnicoTag($stmt);
+		}catch(PDOException $e){
+			Header("Location: error.php");	
+			die();		
+		}
+	}
+	
 	function insertarTag(Tag $tag,$conexion){
 		try{
 			$nombre = $tag->tag;

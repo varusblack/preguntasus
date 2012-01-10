@@ -44,4 +44,24 @@
     </div>
     <input type="file" id="fotoPerfil" name="fotoPerfil" />
 </div>
+<?php 
+	if($usRecuperado->tipousuario){ ?>
+		<div class="campo">
+			<div class="labels">
+				<label for="tipoUsuario">Tipo de usuario:</label>
+			</div>
+			<?php
+				if($usuarioLogueado->tipousuario){
+					$esAdmin = "checked";
+					$noAdmin = NULL;
+				}else{
+					$esAdmin = NULL;
+					$noAdmin = "checked";
+				}
+			?>
+			Administrador<input type=radio name="tipoUsuario" value="1" <?php echo $esAdmin; ?>>
+			U. Normal<input type=radio name="tipoUsuario" value="1" <?php echo $noAdmin; ?>> 
+		</div>
+<?php }
+?>
 
