@@ -31,6 +31,18 @@ function encontrarElementosOrdenadosPorFechaDecreciente($conexion){
 	}
 }
 
+function encontrarPreguntas($conexion){
+	try {
+		$SQL = "SELECT * FROM elemento WHERE idrespuesta IS NULL";
+ 		$stmt = $conexion->query($SQL);
+		return creaElementos($stmt);
+	} catch(PDOException $e) {
+		Header("Location: error.php");
+		die();
+	}
+}
+
+
 function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 	try {
 		$idUsuario = $usuario -> id;
