@@ -37,5 +37,6 @@ if($numeroDeRespuestas<1){
 				<span class="tag"><?php echo $tag3->tag; ?></span>
 			<?php }?>
 		</div>
+                
 	</div>
 </div>
