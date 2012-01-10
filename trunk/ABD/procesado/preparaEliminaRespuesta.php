@@ -36,11 +36,11 @@ cerrarConexion($conexion);
 		<h2 class="rotulos">Confirme La Eliminacion De La Respuesta Seleccionada</h2>
 		<div id="div_datoUsuario">
 			<label id="label_emailEliminaRespuesta" for="email">Email Del Autor :</label>
-			<label id="label_EmailElimina"><?php echo $usuario->email;?></label>		
+			<span id="label_EmailElimina"><?php echo $usuario->email;?></span>		
 		</div>
 		<div id="div_respuestaElimina">
 			<label id="label_contenidoEliminaRespuesta" for="contenido">Contenido De La Respuesta: </label>
-			<label id="label_contenidoElimina"><?php echo $elemento->cuerpo;?></label>
+			<span id="label_contenidoElimina"><?php echo $elemento->cuerpo;?></span>
 		</div>		
 		<div id="div_botonConfirmar">
 			<input type="submit" value="Confirmar" />

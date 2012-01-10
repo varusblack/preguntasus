@@ -257,7 +257,7 @@ div.pregunta {
     margin-bottom: 5px;
     width: 500px;
     height: 120px;
-    background-image: url('../imagenes/pregunta.png');
+  	background-color: #99ccff;
 }
 /*Pregunta respondida con fondo
 */
@@ -266,7 +266,7 @@ div.preguntaRespondida {
     margin-bottom: 5px;
     width: 500px;
     height: 120px;
-    background-image: url('../imagenes/preguntaRespondida.png');
+    background-color: #99ff99;
 }
 
 div.usuarioPregunta{
@@ -350,13 +350,19 @@ div.inputRecuadroLogin{
  }
  #div_datoUsuario,
  #div_respuestaElimina{
- 	
+  margin-left: 10px;
+ }
+ #div_respuestaElimina{
+ 	margin-top: 20px;
+ }
+ #emailCuadroPregunta{
+ 	margin-left: 60px;
  }
  #label_emailEliminaRespuesta,
  #label_contenidoEliminaRespuesta{
- 	display: block;
+  display: block;
+  margin-left:30px;
   float: left;
-  text-align: left;
   width: 18em;
   padding-right: 0.5em;
   font-family: "Arial Black";
@@ -449,7 +455,7 @@ div.inputRecuadroLogin{
 	margin-left: 60px;
 }
  #div_datoUsuario{
- 	padding: 10px 0 0 40px; 	
+ 	margin-left: 10px;	
  }
  #div_modifica_respuesta{ 	
  	margin-top: 5px;
@@ -496,13 +502,13 @@ th{
 }
 #div_camposPregunta{
 	float:left;
-	margin-left: 5px;
+	margin-left: 30px;
 	line-height: 30px;
-	width: 600px;
+	width: 400px;
 }
 #div_seleccionaTag{
 	float:right;
-	margin-right: 39px;
+	margin-right: 60px;
 }
 #div_botonConfirmaPregunta{
 	float:left;
@@ -517,7 +523,7 @@ th{
     background-image: url('../imagenes/fondocuadroinsertapregunta.png') ; 
     background-repeat: no-repeat;
  }
- #etiquetaPregunta{
+ .etiquetaPregunta{
  	font-family:"Arial Black" ;
  	font-size:14px; 
  	color:#000000;
@@ -529,7 +535,8 @@ th{
  	width: 700px;
  }
  #tituloPregunta{
- 	width: 400px;
+ 	float: left;
+ 	width: 500px;
  	margin-right: 10px;
  }
  div.error {  
