@@ -22,17 +22,19 @@ if (isset($errores) && count($errores)>0) {
 	<div id="cuadropregunta">
 		<h2 class="rotulos">Introduzca Los Datos Necesarios Para La Nueva Pregunta</h2>
 		<div id="div_datosUsuario">
-			<label class="autor" id="etiquetaPregunta">Email Del Autor :</label><?php echo $usuario->email;?>		
+			<label class="etiquetaPregunta">Email Del Autor :</label>
+			<span id="emailCuadroPregunta"><?php echo $usuario->email;?></span>		
 		</div>
 		<div id="div_datosPregunta">
-			<label for="titulo" id="etiquetaPregunta">Titulo:</label><br />
-			<label for="cuerpo" id="etiquetaPregunta">Cuerpo De La Pregunta</label><br />
+			<label for="titulo" class="etiquetaPregunta">Titulo:</label><br />
+			<label for="cuerpo" class="etiquetaPregunta">Cuerpo De La Pregunta</label><br />
 		</div>
 		<div id ="div_camposPregunta">
-			<input id="tituloPregunta" name="titulo" type="text" </input><br />
+			<input id="tituloPregunta" name="titulo" type="text"/><br />
+			<input />
 		</div>
 		<div id="div_seleccionaTag">
-			<label id="etiquetaPregunta">Selecciona Etiqueta</label>
+			<label class="etiquetaPregunta">Selecciona Etiqueta</label>
 				<select id="tag" name="tag">
 					<option></option>
 					<?php
