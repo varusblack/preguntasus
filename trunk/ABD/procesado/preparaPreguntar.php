@@ -1,14 +1,16 @@
 <?php
 require_once ("../includes/styles/templates/cabecera.php");
 
-
+if (!isset($_SESSION["formularioPregunta"])) { // si la variable formulario existe y esta vacia, ES LA 1ª VEZ QUE ENTRAMOS
 $usuario=unserialize($_SESSION['usuario']);
 $formularioPregunta = $_SESSION['formularioPregunta']; // se crea una variable formulario 
 $errores = $_SESSION['errores']; //  y errores dentro de la sesion
+unset($_SESSION["formularioPregunta"]);
+unset($_SESSION["errores"]);
 
-if (!isset($formularioPregunta)) { // si la variable formulario existe y esta vacia, ES LA 1ª VEZ QUE ENTRAMOS
+
   $formularioPregunta['titulo'] = ""; 
-  $_SESSION['formularioPregunta'] = $formularioPregunta;
+
 }
 if (isset($errores) && count($errores)>0) {
 	 echo "<div id=\"div_errores\" class=\"error\">";    
