@@ -25,7 +25,15 @@ require_once ("./includes/funciones/fechas.php" );
         $_SESSION["errores"] = null;
         $_SESSION["datos"] = null;
     } else {
-        $usuarioLogueado = $usuario;
+    	$usRecuperado = unserialize($_SESSION["usuario"]);
+    	if(isset($_REQUEST["id"]) && $usRecuperado->tipousuario){
+			$conexion = crearConexion();
+			$usuarioLogueado = obtenerUsuarioPorId($_REQUEST["id"],$conexion);
+			cerrarConexion($conexion);			
+    	}else{
+	    	$usuarioLogueado = $usuario;	
+    	}
+        
         $email = $usuarioLogueado->email;
         $nombre = $usuarioLogueado->nombre;
         $apellidos = $usuarioLogueado->apellidos;
