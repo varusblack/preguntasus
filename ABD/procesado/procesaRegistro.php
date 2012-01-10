@@ -7,7 +7,7 @@ require ($_SERVER["DOCUMENT_ROOT"] . '/abd/includes/funciones/emails.php');
 
 $conexion = crearConexion();
 $nuevoUsuario = new Usuario();
-include $_SERVER["DOCUMENT_ROOT"] . "/abd/includes/styles/templantes/validaCamposUsuario.php";
+include $_SERVER["DOCUMENT_ROOT"] . "/abd/includes/stylestemplantes/validaCamposUsuario.php";
 if (count($erroresArray) != 0) {
 
     $datosArray = array();
