@@ -27,7 +27,7 @@ function modificaRespuesta($formulario){
 	$elemento = new Elemento();	
 	$elemento=encontrarElementoPorId($formulario["id"],$conexion);
 	$elemento->cuerpo=$formulario["respuestaModificada"];
-	//modificarElemento($elemento,$conexion);
+	modificarElemento($elemento,$conexion);
    	cerrarConexion($conexion);
 }
 function validar($formulario) {
