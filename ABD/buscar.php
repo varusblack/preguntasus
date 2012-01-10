@@ -22,6 +22,7 @@ require_once ("./includes/styles/templates/cabecera.php");
 				print("$error");
 				print("</div>");
 			}
+			unset($_SESSION["erroresBuscarPregunta"]);
 		}
 	?>
 	</div>

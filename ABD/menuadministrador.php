@@ -4,7 +4,7 @@
 	<div id="contenedor_cuerpo">
 		
 		<a href="administrarusuarios.php">Administrar usuarios</a>
-		<a href="administratags.php">Administrar tags</a>
+		<a href="administrartags.php">Administrar tags</a>
 		<a href="administrarpreguntas.php">Administrar preguntas</a>
 		
 	</div>

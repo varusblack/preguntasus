@@ -38,6 +38,7 @@ if (count($erroresArray) != 0) {
     $nuevoUsuario->nombre = $_POST["nombre"];
     $nuevoUsuario->apellidos = $_POST["apellidos"];
     $nuevoUsuario->fechanacimiento = $_POST["fechaNacimiento"];
+	$nuevoUsuario->tipousuario = $_POST["tipoUsuario"];
 
      modificarUsuario($nuevoUsuario, $conexion);
 
