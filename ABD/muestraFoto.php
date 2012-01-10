@@ -1,6 +1,10 @@
 <?
+if(file_exists($_SERVER["DOCUMENT_ROOT"]. '/abd/fotosPerfil/'.$_GET["id"].'.jpg')){
+ $nombre= $_SERVER["DOCUMENT_ROOT"]. '/abd/fotosPerfil/'.$_GET["id"].'.jpg';
+}else{
+  $nombre= $_SERVER["DOCUMENT_ROOT"]. '/abd/fotosPerfil/0.jpg';  
+}
 
-$nombre= $_SERVER["DOCUMENT_ROOT"]. '/abd/fotosPerfil/'.$_GET["id"].'.jpg';
 $tam = $_GET["tam"];
 
 $datos = getimagesize($nombre);
