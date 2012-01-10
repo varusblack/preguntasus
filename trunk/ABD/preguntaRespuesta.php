@@ -48,16 +48,19 @@ if (!empty($errores)) {
 			<label id="label_numeror" for="numerorespuestas">Numero de Respuestas Publicadas:</label>
 			<label id="contenidoNumeroRespuesta" for="numero"><?echo(obtenerNumeroDeRespuestasDeElemento($elemento,$conexion));?></label>
 		</div>
+                    <div id="votosPregunta">				
+			<label id="label_numeror" for="numerorespuestas">Número de votos:</label>
+                        <label id="contenidoNumeroRespuesta" for="numero"><?echo(obtenerNumeroDeVotosDeElemento($elemento, $conexion));?><a href="#" onclick="votar(<?echo $res->id;?>)"> Votar</a></label>
+		</div>
 		</fieldset>
 		<div id="respuesta">	
-			<h5>
-			 <?			
+			<?			
 			$respuestas=array();
 			$respuestas=encontrarRespuestas($elemento,$conexion);					
 			$elementoRespuesta=new Elemento();
 			$cont=1;
 			?>
-			<table>
+			<table width="90%">
 				<tr align="left" >
 				<?if (isset($_SESSION['usuario'])){// Si existe el usuario logado
 					if($tipoUsuario==1){ //Si es administrador	
@@ -66,7 +69,8 @@ if (!empty($errores)) {
 					<th>Elimina</th>
 			  <?}
 			  }?>
-					<th>Contenido De La Respuesta</th>
+					<th>Votos</th>
+                                        <th width="90%">Contenido De La Respuesta</th>
 				</tr>
 			<?
 			foreach ($respuestas as $res){
@@ -86,13 +90,20 @@ if (!empty($errores)) {
 					}
 				}
 				?>
+                                        <td>
+                                            <?php
+                                            $votos=obtenerNumeroDeVotosDeElemento($res, $conexion);
+                                            echo $votos;
+                                            ?>
+                                            <a href="#" onclick="votar(<?echo $res->id;?>)">Votar<a>
+                                        </td>
 				<td><?echo "R.N. ".$cont." :  ".$res->cuerpo;?></td> 
 				<?
 				$cont++;
 				?>
 				</tr>
 				<?}?>						
-			</h5>
+			
 			</table>			
 		</div>
 		<?
