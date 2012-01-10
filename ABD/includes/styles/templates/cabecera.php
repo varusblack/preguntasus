@@ -11,25 +11,25 @@
         $patron = "#^/(abd|ABD)/$#"; ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'index') !== FALSE
 			|| preg_match($patron, $_SERVER['REQUEST_URI']) > 0) { ?>
-        	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
+        	<script type="text/javascript" src="/ABD/includes/styles/js/preguntas.js"></script>
         <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'preguntaRespuesta') !== FALSE) { ?>
-        	<script type="text/javascript" src="./includes/styles/js/validaFormularioRespuesta.js"></script>
+        	<script type="text/javascript" src="/ABD/includes/styles/js/validaFormularioRespuesta.js"></script>
         <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'preparaPreguntar') !== FALSE) { ?>
-        	<script type="text/javascript" src="./includes/styles/js/validaFormularioPregunta.js"></script>
+        	<script type="text/javascript" src="/ABD/includes/styles/js/validaFormularioPregunta.js"></script>
         <?php } ?>         
         <?php if (stripos($_SERVER['REQUEST_URI'], 'buscar') !== FALSE) { ?>
-        	<script type="text/javascript" src="./includes/styles/js/preguntas.js"></script>
+        	<script type="text/javascript" src="/ABD/includes/styles/js/preguntas.js"></script>
         <?php } ?>        
         <?php if (stripos($_SERVER['REQUEST_URI'], 'registrarse') !== FALSE) { ?>
-            <script type="text/javascript" src="./includes/styles/js/registrarse.js"></script>
+            <script type="text/javascript" src="/ABD/includes/styles/js/registrarse.js"></script>
         <?php } ?>
             <?php if (stripos($_SERVER['REQUEST_URI'], 'perfil') !== FALSE) { ?>
-            <script type="text/javascript" src="./includes/styles/js/registrarse.js"></script>
+            <script type="text/javascript" src="/ABD/includes/styles/js/registrarse.js"></script>
         <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'login') !== FALSE) { ?>
-        	<script type="text/javascript" src="./includes/styles/js/login.js"></script>
+        	<script type="text/javascript" src="/ABD/includes/styles/js/login.js"></script>
         <?php } ?>
     </head>
     <body>

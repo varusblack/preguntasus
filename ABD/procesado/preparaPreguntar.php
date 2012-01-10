@@ -1,16 +1,14 @@
 <?php
 require_once ("../includes/styles/templates/cabecera.php");
-
-if (!isset($_SESSION["formularioPregunta"])) { // si la variable formulario existe y esta vacia, ES LA 1ª VEZ QUE ENTRAMOS
 $usuario=unserialize($_SESSION['usuario']);
-$formularioPregunta = $_SESSION['formularioPregunta']; // se crea una variable formulario 
-$errores = $_SESSION['errores']; //  y errores dentro de la sesion
-unset($_SESSION["formularioPregunta"]);
-unset($_SESSION["errores"]);
-
-
-  $formularioPregunta['titulo'] = ""; 
-
+$formularioPregunta="";
+if (isset($_SESSION["formularioPregunta"])) { // si la variable formulario existe y esta vacia, ES LA 1ª VEZ QUE ENTRAMOS
+	$formularioPregunta = $_SESSION['formularioPregunta']; // se crea una variable formulario 
+	$errores = $_SESSION['errores']; //  y errores dentro de la sesion
+	unset($_SESSION["formularioPregunta"]);
+	unset($_SESSION["errores"]);
+ 	$formularioPregunta['titulo'] = "";
+	
 }
 if (isset($errores) && count($errores)>0) {
 	 echo "<div id=\"div_errores\" class=\"error\">";    
@@ -48,7 +46,7 @@ if (isset($errores) && count($errores)>0) {
 				</select>
 		</div>
 		<div id="div_respuesta">
-			<textarea class="cuerpo" id="cuerpo" name="cuerpo" tabindex="101" rows="5" cols="83" ></textarea>
+			<textarea class="cuerpo" id="cuerpoPregunta" name="cuerpo" tabindex="101" rows="5" cols="83" ></textarea>
 		</div>		
 		<div id="div_botonConfirmaPregunta">
 			<button  id="submit" type="submit" >Aceptar Nueva Pregunta</button>
@@ -58,6 +56,4 @@ if (isset($errores) && count($errores)>0) {
 
 <?php
 	require_once ("../includes/styles/templates/pie.php");
-?>
-
 ?>
