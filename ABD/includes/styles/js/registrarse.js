@@ -50,12 +50,13 @@ function comprobarRegistrarse(){
         resultado=false;
         document.getElementById("fechaNacimiento");
     }
-     if(resultado && validafecha(document.getElementById("fechaNacimiento").value)){
+  /*   if(resultado && validafecha(document.getElementById("fechaNacimiento").value)){
         alert("La fecha de nacimiento no puede estar en blanco");
         resultado=false;
         document.getElementById("fechaNacimiento");
-    }
+    }*/
     
     return resultado;
 }
 
+ 
