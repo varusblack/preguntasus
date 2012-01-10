@@ -161,12 +161,11 @@ function modificarElemento(Elemento $elemento, $conexion) {
 		$titulo = $elemento -> titulo;
 		$cuerpo = $elemento ->cuerpo;
 		$idRespuesta = $elemento -> idrespuesta;
-		$SQL = "UPDATE elemento SET idautor=$idAutor,titulo=$titulo,cuerpo=$cuerpo,".
+		$SQL = "UPDATE elemento SET idautor=$idAutor,titulo='$titulo',cuerpo='$cuerpo',".
 		"idrespuesta=$idRespuesta WHERE id=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		print_r($e);
-		//Header("Location: error.php");
+		Header("Location: error.php");
 		die();
 	}
 }
