@@ -1,24 +1,20 @@
 <?php
 require_once ("../accesosBD/conexionesBD.php");
-	require_once ("../accesosBD/accesosElemento.php");
-	require_once ("../accesosBD/accesosTag.php");
-	require_once ("../accesosBD/accesosTagsDeElementos.php");
-	require_once ("../accesosBD/accesosUsuario.php");
-	require_once ("../entidades/Elemento.php");
-	require_once ("../entidades/Usuario.php");
-	require_once ("../entidades/Tag.php");
+require_once ("../accesosBD/accesosElemento.php");
+require_once ("../accesosBD/accesosTag.php");
+require_once ("../accesosBD/accesosTagsDeElementos.php");
+require_once ("../accesosBD/accesosUsuario.php");
+require_once ("../entidades/Elemento.php");
+require_once ("../entidades/Usuario.php");
+require_once ("../entidades/Tag.php");
 session_start();
 
-//$formulario = $_SESSION["formularioPregunta"];
 
-//if (isset($formulario)) {// si el formulario contiene datos
-  $formulario["titulo"] = $_POST["titulo"];  
-  $formulario["tag"] = $_POST["tag"];
-  $formulario["cuerpo"] = $_POST["cuerpo"];
-  $_SESSION["formularioPregunta"] = $formulario;  
-//} else 
-		//Header("Location:preparaPreguntar.php");
-	$errores = validar($formulario);
+$formulario["titulo"] = $_POST["titulo"];  
+$formulario["tag"] = $_POST["tag"];
+$formulario["cuerpo"] = $_POST["cuerpo"];
+$_SESSION["formularioPregunta"] = $formulario;  
+$errores = validar($formulario);
 if (count($errores) > 0) {
 	$_SESSION["formularioPregunta"] = $formulario;  
    	$_SESSION["errores"] = $errores;

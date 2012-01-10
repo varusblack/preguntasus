@@ -404,8 +404,11 @@ div.inputRecuadroLogin{
  #div_formularioRespuesta{
  	float:left;
  	float:left;
- 	margin-left: 250px;
- 	
+ 	margin-left: 250px; 	
+ }
+
+ #cuerpoPregunta{
+ 	margin-left: 50px;
  }
  #div_botones{
  	margin: 20px 0 0 150px;/* arriba, dcha,abajo, izda */
@@ -495,7 +498,7 @@ th{
 	float:left;
 	margin-left: 5px;
 	line-height: 30px;
-	width: 250px;
+	width: 600px;
 }
 #div_seleccionaTag{
 	float:right;
@@ -527,7 +530,7 @@ th{
  }
  #tituloPregunta{
  	width: 400px;
- 	margin-left: 10px;
+ 	margin-right: 10px;
  }
  div.error {  
   border : 2px solid red;

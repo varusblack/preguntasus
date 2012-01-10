@@ -9,9 +9,9 @@ require_once ("../accesosBD/accesosUsuario.php");
 require_once ("../entidades/Elemento.php");
 require_once ("../entidades/Usuario.php");
 
-//session_start();
+
 $idElemento=$_REQUEST['cod'];
-$eliminaRespuesta=$_SESSION['eliminaRespuesta'];
+//$eliminaRespuesta=$_SESSION['eliminaRespuesta'];
 
 $conexion=crearConexion();
 $elemento=new Elemento();
