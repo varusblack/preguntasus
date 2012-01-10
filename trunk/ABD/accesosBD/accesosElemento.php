@@ -149,7 +149,7 @@ function insertarElemento(Elemento $elemento, $conexion) {
 		"('$idAutor','$titulo','$cuerpo','$idRespuesta',NOW())";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		echo $e;
 		die();
 	}
 }
