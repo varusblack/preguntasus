@@ -32,7 +32,7 @@ require_once ("./includes/funciones/fechas.php" );
         $fechaNacimiento = mysql2fecha($usuarioLogueado->fechanacimiento);
     }
     ?>
-    <form name="datos" method="post" action="./procesado/modificarPerfil.php" onsubmit="return comprobarRegistrarse();">
+    <form name="datos" method="post" action="./procesado/modificarPerfil.php"  enctype="multipart/form-data" onsubmit="return comprobarRegistrarse();">
         <div id="cuadroRegistrarse">
             <div class="campo">
                 <div class="labels">
