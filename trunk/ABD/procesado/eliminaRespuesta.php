@@ -7,13 +7,11 @@ session_start();
 $eliminaRespuesta =$_SESSION['eliminaRespuesta'];
 $idpregunta= $_SESSION['codigoPregunta']; 
 
-// Control que evite acceder directamente a esta página
-if (isset($eliminaRespuesta)) {// si está creada en la sesion
+if (isset($eliminaRespuesta)) {
   	realizaEliminacion($eliminaRespuesta);  
 } 
 Header("Location:../preguntaRespuesta.php?idsolicitado=".$idpregunta);
 exit();
-
 
 function realizaEliminacion($eliminaRespuesta){
 	$elemento=new Elemento();

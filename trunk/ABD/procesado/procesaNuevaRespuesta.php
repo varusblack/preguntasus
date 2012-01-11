@@ -8,8 +8,6 @@ session_start();
 
 $nuevaRespuesta = trim($_REQUEST['mi-respuesta']); 
 $idpreguntarespondida= $_REQUEST['idelemento']; 
-	
-
 $errores = valida($nuevaRespuesta);
 
 if (!empty($errores)) {

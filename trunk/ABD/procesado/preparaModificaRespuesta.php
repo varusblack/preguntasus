@@ -1,9 +1,6 @@
 <?php
 require_once ("../includes/styles/templates/cabecera.php");
 
-//$formulario = $_SESSION['formularioRespuesta']; // se crea una variable formulario y errores dentro de la sesion
-//$errores = $_SESSION['errores'];
-
 if (!isset($formularioModificaRespuesta)) { 
   	$formularioModificaRespuesta['respuesta'] = ""; 
 	$idElemento=$_REQUEST['cod'];
@@ -38,12 +35,11 @@ cerrarConexion($conexion);
 			<textarea id="text_modificaRespuesta" name="respuestaModificada" tabindex="101" rows="5" cols="80" ><?php echo $elemento->cuerpo;?></textarea>
 		</div>		
 		<div id="div_botonModificar">
-			<input id="botonModificar" type="submit" value="Modificar" name="botonModificar"/>
+			<input id="botonModificar" type="submit" value="Modificar" name="botonModificar" />
 		</div>
 	</div>
 </form>
 
 <?php
 	require_once ("../includes/styles/templates/pie.php");
-?>
 ?>

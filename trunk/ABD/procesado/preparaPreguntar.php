@@ -18,7 +18,7 @@ if (isset($errores) && count($errores)>0) {
     echo "</div>";
   }
 ?>
-<form id="nuevaPregunta" action="nuevaPregunta.php" method="post" onsubmit="return validaPregunta()">
+<form id="nuevaPregunta" action="nuevaPregunta.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="return validaPregunta()">
 	<div id="cuadropregunta">
 		<h2 class="rotulos">Introduzca Los Datos Necesarios Para La Nueva Pregunta</h2>
 		<div id="div_datosUsuario">
@@ -28,13 +28,13 @@ if (isset($errores) && count($errores)>0) {
 		<div id="div_datosPregunta">
 			<label for="titulo" class="etiquetaPregunta">Titulo:</label><br />
 			<label for="cuerpo" class="etiquetaPregunta">Cuerpo De La Pregunta</label><br />
+			<label for="ta" class="etiquetaPregunta">Selecciona Etiqueta</label>
 		</div>
 		<div id ="div_camposPregunta">
 			<input id="tituloPregunta" name="titulo" type="text"/><br />
 			<input />
 		</div>
-		<div id="div_seleccionaTag">
-			<label class="etiquetaPregunta">Selecciona Etiqueta</label>
+		<div id="div_seleccionaTag">			
 				<select id="tag" name="tag">
 					<option></option>
 					<?php
@@ -42,7 +42,7 @@ if (isset($errores) && count($errores)>0) {
 						$arrayTags = obtenerTodosLosTags($conexion);
  						cerrarConexion($conexion);
 						foreach($arrayTags as $tg){
-							echo "<option value='$tg->id'>".$tg->tag."</option><br>";
+							echo "<option value='$tg->id'>".$tg->tag."</option><br />";
 						}					
 					?>
 				</select>

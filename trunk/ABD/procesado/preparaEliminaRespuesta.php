@@ -1,8 +1,5 @@
 <?php
-
 require_once ("../includes/styles/templates/cabecera.php");
-//require_once ("../includes/widgets/login.php");
-//require_once ("../includes/widgets/barranavegacion.php");
 require_once ("../accesosBD/conexionesBD.php");
 require_once ("../accesosBD/accesosElemento.php");
 require_once ("../accesosBD/accesosUsuario.php");
@@ -11,13 +8,9 @@ require_once ("../entidades/Usuario.php");
 
 
 $idElemento=$_REQUEST['cod'];
-//$eliminaRespuesta=$_SESSION['eliminaRespuesta'];
-
 $conexion=crearConexion();
 $elemento=new Elemento();
 $usuario=new Usuario();
-
-
 $elemento=encontrarElementoPorId($idElemento,$conexion);
 $idautor=$elemento->idautor;
 $usuario=obtenerUsuarioPorId($idautor,$conexion);
@@ -25,10 +18,8 @@ $usuario=obtenerUsuarioPorId($idautor,$conexion);
 if(!isset($eliminarespuesta)){
 	$eliminaRespuesta['elemento']=$elemento;
 	$_SESSION['eliminaRespuesta']=$eliminaRespuesta;
-	$_SESSION['codigoPregunta']= $_REQUEST['codigoPregunta'];
-	
+	$_SESSION['codigoPregunta']= $_REQUEST['codigoPregunta'];	
 }
-
 cerrarConexion($conexion);
 ?>
 <form id="eliminaRespuesta" name="Confirmar" method="post" action="eliminaRespuesta.php">
