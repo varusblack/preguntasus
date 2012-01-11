@@ -14,7 +14,9 @@
         	<script type="text/javascript" src="/ABD/includes/styles/js/preguntas.js"></script>
         <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'preguntaRespuesta') !== FALSE) { ?>
-        	<script type="text/javascript" src="/ABD/includes/styles/js/validaFormularioRespuesta.js"></script>
+        	<script type="text/javascript" src="/ABD/includes/styles/js/validaFormularioRespuesta.js" ></script>
+                <script type="text/javascript" src="/ABD/includes/styles/js/votar.js" ></script>
+                <script type="text/javascript" src="/ABD/includes/styles/js/inicializaAjax.js" ></script>
         <?php } ?>
         <?php if (stripos($_SERVER['REQUEST_URI'], 'preparaPreguntar') !== FALSE) { ?>
         	<script type="text/javascript" src="/ABD/includes/styles/js/validaFormularioPregunta.js"></script>

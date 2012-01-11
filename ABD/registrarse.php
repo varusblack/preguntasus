@@ -1,5 +1,5 @@
 <?php
-require_once ("./includes/styles/templates/cabecera.php");
+require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/styles/templates/cabecera.php");
 
 ?>
 

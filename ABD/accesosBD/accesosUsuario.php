@@ -101,6 +101,17 @@ function borrarUsuario(Usuario $usuario, $conexion) {
     }
 }
 
+function incrementaPuntosUsuario(Usuario $usuario, $conexion) {
+    try {
+        $idUsuario = $usuario->id;
+        $SQL = "UPDATE usuario SET puntos=puntos+1 WHERE id='$idUsuario'";
+        $conexion->exec($SQL);
+    } catch (PDOException $e) {
+        echo $e;
+        die();
+    }
+}
+
 function creaUsuarios($stmt) {
     $resultado = array();
     foreach ($stmt as $row) {
