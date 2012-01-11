@@ -5,12 +5,12 @@
 		<?php 
 			if($estaLogueado){
 		?>
-				<a href="./procesado/preparaPreguntar.php" class="enlaceNavegacion separado">Preguntar</a>
+				<a href="/abd/procesado/preparaPreguntar.php" class="enlaceNavegacion separado">Preguntar</a>
 				
 		<?php
 		if($esAdmin){
 			?>
-			<a href="menuadministrador.php" class="enlaceNavegacion separado">Menú administrador</a>
+			<a href="/abd/menuadministrador.php" class="enlaceNavegacion separado">Menú administrador</a>
 		<?php
 		}
 			}

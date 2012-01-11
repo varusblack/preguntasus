@@ -4,7 +4,6 @@
 	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Tag.php" );
 	
     session_start();
-	unset($_SESSION["error"]);
 	
 	$creacion = $_POST["crear"];
 	
@@ -12,11 +11,10 @@
 		$conexion = crearConexion();
 		$nombreTag = $_POST["nombreTag"];
 		$tagExistente = obtenerTagPorNombre($nombreTag,$conexion);
-		
 		if(strlen($nombreTag)<1){
 			$_SESSION["error"] = "El nombre del tag no puedeser vacío";
 		}else{
-			if($tagAInsertar ==NULL){
+			if($tagExistente->id == null){
 				$nuevoTag = new Tag();
 				$nuevoTag->tag = $nombreTag;
 				insertarTag($nuevoTag,$conexion);
@@ -26,6 +24,7 @@
 			}
 			
 		}
+		cerrarConexion($conexion);
 		Header("Location:/abd/administrartags.php");
 		exit();
 		

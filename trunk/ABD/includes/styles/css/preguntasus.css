@@ -197,7 +197,7 @@ html, body {
 #inputsBusqueda div.inputBusqueda{
     padding-bottom:9px;
 }
-#palabras{
+#palabras,#tag{
     width: 230px;
 }
 #botonBuscar{
@@ -529,6 +529,10 @@ th{
  	color:#000000;
  	vertical-align: top
  }
+.label_preguntaRespuesta{
+	font-weight: bold;
+} 
+ 
  #cuerpo{
  	margin-left:10px;
  	float:left;
@@ -556,7 +560,6 @@ th{
 #respuesta{
     width: 100%;
 }
-
 #cuadroTag{
 	margin:0 auto 0 auto;
 	background-color: silver;
