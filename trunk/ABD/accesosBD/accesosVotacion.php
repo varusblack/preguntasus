@@ -8,7 +8,7 @@
 		// $stmt = $conexion->query($SQL);
 		// return creaElementos($stmt);
 	// } catch(PDOException $e) {
-		// Header("Location: error.php");
+		// Header("Location: /abd/error.php");
 		// die();
 	// }
 // }
@@ -19,7 +19,7 @@ function obtenerVotacionPorId($id, $conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -31,7 +31,7 @@ function obtenerNumeroDeVotosDeElemento(Elemento $elemento, $conexion){
 		$stmt = $conexion->query($SQL);
 		return creaUnicoDatoVotacion($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -43,7 +43,7 @@ function insertarVotacion(Votacion $votacion, $conexion) {
 		$SQL = "INSERT INTO votacion(idelemento,idusuario) VALUES ('$idElemento','$idusuario')";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -57,7 +57,7 @@ function insertarVotacion(Votacion $votacion, $conexion) {
 		// $SQL = "UPDATE votacion SET idelemento=$idElemento,idusuario=$idusuario WHERE id=$idVotacion";
 		// $conexion -> exec($SQL);
 	// } catch(PDOException $e) {
-		// Header("Location: error.php");
+		// Header("Location: /abd/error.php");
 		// die();
 	// }
 // }
@@ -68,7 +68,7 @@ function borrarElementoYVotos(Elemento $elemento, $conexion) {
 		$SQL = "DELETE FROM voto WHERE idelemento=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -79,7 +79,7 @@ function borrarTodosLosVotosDeUsuario(Usuario $usuario, $conexion){
 		$SQL = "DELETE FROM voto WHERE idusuario=$idUsuario";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -92,7 +92,7 @@ function borrarUnicoVoto(Elemento $elemento, Usuario $usuario, $conexion){
 		$SQL = "DELETE FROM voto WHERE idelemento=$idElemento AND idusuario=$idUsuario";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }

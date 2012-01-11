@@ -9,7 +9,7 @@ function crearConexion() {
 		$conexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		$conexion -> query('SET NAMES utf8');
 	} catch(PDOException $e) {
-            Header("Location:error.php");
+        Header("Location: /abd/error.php");
 		die();
 	}
  	return $conexion;
