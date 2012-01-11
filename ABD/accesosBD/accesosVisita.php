@@ -37,12 +37,26 @@ function obtenerNumeroDeVisitasDeElemento(Elemento $elemento,$conexion){
 	}
 }
 
+function usuarioHaVisitadoElemento(Usuario $usuario,Elemento $elemento,$conexion){
+    try {
+		$SQL = "SELECT count(*) as cuenta FROM visita WHERE idElemento=$elemento->id AND idUsuario=$usuario->id";
+		$stmt = $conexion->query($SQL);
+		$dato= $stmt->fetch(PDO::FETCH_ASSOC);
+                return $dato["cuenta"]>0;
+	} catch(PDOException $e) {
+		echo $e;
+		die();
+	}
+}
+
 function insertarVisita(Elemento $elemento, Usuario $usuario, $conexion) {
 	try {
+            if(!usuarioHaVisitadoElemento($usuario, $elemento, $conexion)){
 		$idElemento = $elemento -> id;
 		$idusuario = $usuario -> id;
 		$SQL = "INSERT INTO visita(idelemento,idusuario) VALUES ('$idElemento','$idusuario')";
 		$conexion -> exec($SQL);
+            }
 	} catch(PDOException $e) {
 		Header("Location: /abd/error.php");
 		die();
