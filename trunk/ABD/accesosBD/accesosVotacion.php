@@ -8,7 +8,7 @@
 		// $stmt = $conexion->query($SQL);
 		// return creaElementos($stmt);
 	// } catch(PDOException $e) {
-		// Header("Location: /abd/error.php");
+		// Header("Location: error.php");
 		// die();
 	// }
 // }
@@ -36,6 +36,19 @@ function obtenerNumeroDeVotosDeElemento(Elemento $elemento, $conexion){
 	}
 }
 
+function obtenerVotosUsuario(Usuario $usuario, $conexion){
+	try {
+		$idUsuario = $usuario ->id;
+		$SQL = "SELECT COUNT(*) AS cuenta FROM votacion WHERE idusuario=$idUsuario";
+		$stmt = $conexion->query($SQL);
+		$resultado= creaUnicoDatoVotacion($stmt);
+                return $resultado["cuenta"];
+	} catch(PDOException $e) {
+		Header("Location: error.php");
+		die();
+	}
+}
+
 function insertarVotacion(Votacion $votacion, $conexion) {
 	try {
 		$idElemento = $votacion ->idelemento;
@@ -57,7 +70,7 @@ function insertarVotacion(Votacion $votacion, $conexion) {
 		// $SQL = "UPDATE votacion SET idelemento=$idElemento,idusuario=$idusuario WHERE id=$idVotacion";
 		// $conexion -> exec($SQL);
 	// } catch(PDOException $e) {
-		// Header("Location: /abd/error.php");
+		// Header("Location: error.php");
 		// die();
 	// }
 // }
@@ -116,5 +129,17 @@ function creaUnicoDatoVotacion($stmt) {
 		$dato = $row["cuenta"];
 	}
 	return $dato;
+}
+
+function usuarioHaVotadoAElemento(Elemento $elemento,Usuario $usuario,$conexion){
+    try {
+		$SQL = "SELECT count(*) as cuenta FROM votacion WHERE idElemento=$elemento->id AND idUsuario=$usuario->id";
+		$stmt = $conexion->query($SQL);
+		$dato= creaUnicoDatoVotacion($stmt);
+                return $dato["cuenta"]>0;
+	} catch(PDOException $e) {
+		echo $e;
+		die();
+	}
 }
 ?>
