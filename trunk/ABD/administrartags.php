@@ -52,8 +52,10 @@
 		
 		<div id="cuadroTag">
 			<form id="crearTag" name="crearTag" method="post" action="/abd/procesado/creaTag.php" onsubmit="">
-				<label for="nombreTag" id="label_nombreTag">Nombre del tag:</label>
-				<input type="text" id="nombreTag" name="nombreTag" />
+				<div id="datosCreacionTag">
+					<label for="nombreTag" id="label_nombreTag">Nombre del tag:</label>
+					<input type="text" id="nombreTag" name="nombreTag" />
+				</div>
 				<div id="botonCrearTag">
 					<input type="submit" name="crear" value="Crear" />
 				</div>
