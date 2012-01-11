@@ -8,7 +8,7 @@
 		// $stmt = $conexion->query($SQL);
 		// return creaElementos($stmt);
 	// } catch(PDOException $e) {
-		// Header("Location: error.php");
+		// Header("Location: /abd/error.php");
 		// die();
 	// }
 // }
@@ -20,7 +20,7 @@ function obtenerVisitaPorId($id, $conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -32,7 +32,7 @@ function obtenerNumeroDeVisitasDeElemento(Elemento $elemento,$conexion){
 		$stmt = $conexion->query($SQL);
 		return creaUnicoDatoVisita($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -44,7 +44,7 @@ function insertarVisita(Elemento $elemento, Usuario $usuario, $conexion) {
 		$SQL = "INSERT INTO visita(idelemento,idusuario) VALUES ('$idElemento','$idusuario')";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -58,7 +58,7 @@ function insertarVisita(Elemento $elemento, Usuario $usuario, $conexion) {
 		// $SQL = "UPDATE visita SET idelemento=$idElemento,idusuario=$idusuario WHERE id=$idVisita";
 		// $conexion -> exec($SQL);
 	// } catch(PDOException $e) {
-		// Header("Location: error.php");
+		// Header("Location: /abd/error.php");
 		// die();
 	// }
 // }
@@ -69,7 +69,7 @@ function borrarElementoYVisitas(Elemento $elemento, $conexion) {
 		$SQL = "DELETE FROM visita WHERE idelemento=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -80,7 +80,7 @@ function borrarTodasLasVisitasDeUsuario(Usuario $usuario, $conexion){
 		$SQL = "DELETE FROM visita WHERE idusuario=$idUsuario";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -93,7 +93,7 @@ function borrarUnicaVisita(Elemento $elemento, Usuario $usuario, $conexion){
 		$SQL = "DELETE FROM visita WHERE idelemento=$idElemento AND idusuario=$idUsuario";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }

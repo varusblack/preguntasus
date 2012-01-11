@@ -8,7 +8,7 @@ function obtenerTodosLosUsuarios($conexion) {
         $stmt = $conexion->query($SQL);
         return creaUsuarios($stmt);
     } catch (PDOException $e) {
-        Header("Location: error.php");
+        Header("Location: /abd/error.php");
         die();
     }
 }
@@ -19,7 +19,7 @@ function obtenerUsuarioPorId($id, $conexion) {
         $stmt = $conexion->query($SQL);
         return creaUnicoUsuario($stmt);
     } catch (PDOException $e) {
-        Header("Location: error.php");
+        Header("Location: /abd/error.php");
         die();
     }
 }
@@ -31,7 +31,7 @@ function obtenerUsuarioPorEmailYPass($email, $pass, $conexion) {
         return creaUnicoUsuario($stmt);
     } catch (PDOException $e) {
         echo $e;
-        //Header("Location: error.php");
+        //Header("Location: /abd/error.php");
         //die();
     }
 }
@@ -44,7 +44,7 @@ function existeUsuarioConEmail($email, $conexion) {
         return $dato["cuenta"] > 0;
     } catch (PDOException $e) {
         echo $e;
-        //Header("Location: error.php");
+        //Header("Location: /abd/error.php");
         //die();
     }
 }
@@ -64,7 +64,7 @@ function insertarUsuario(Usuario $usuario, $conexion) {
         $var = $conexion->lastInsertId('elemento');
         return($var);
     } catch (PDOException $e) {
-        //Header("Location: error.php");
+        //Header("Location: /abd/error.php");
         echo $e;
         echo $SQL;
         die();
@@ -96,7 +96,7 @@ function borrarUsuario(Usuario $usuario, $conexion) {
         $SQL = "DELETE FROM usuario WHERE id=$idUsuario";
         $conexion->exec($SQL);
     } catch (PDOException $e) {
-        Header("Location: error.php");
+        Header("Location: /abd/error.php");
         die();
     }
 }

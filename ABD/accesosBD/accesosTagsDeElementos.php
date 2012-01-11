@@ -7,7 +7,7 @@ function obtenerTagsDeElemento(Elemento $elemento,$conexion){
 		$stmt = $conexion->query($SQL);
         return creaListadoTags($stmt);			
 	}catch (PDOException $e){
-		Header("Location: error.php"); 		
+		Header("Location: /abd/error.php"); 		
 		die();
 	}
 }
@@ -19,7 +19,7 @@ function insertarTagDeElemento(Elemento $elemento,Tag $tag, $conexion) {
 		$SQL = "INSERT INTO tagsdeelementos(idelemento,idtag) VALUES ('$idElemento','$idTag')";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -31,7 +31,7 @@ function borrarElementoYTags(Elemento $elemento,$conexion){
 		$SQL = "DELETE FROM tagsdeelementos WHERE idelemento=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -43,7 +43,7 @@ function borrarTagDeElemento(Elemento $elemento,Tag $tag, $conexion) {
 		$SQL = "DELETE FROM tagsdeelementos WHERE idelemento=$idElemento AND idtag=$idTag";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }

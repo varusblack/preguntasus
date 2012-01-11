@@ -5,7 +5,7 @@
 			$stmt = $conexion->query($SQL);                        
 			return creaTags($stmt);
     	}catch (PDOException $e){
-   			Header("Location: error.php"); 		
+   			Header("Location: /abd/error.php"); 		
 			die();
     	}
     }
@@ -16,18 +16,18 @@
 			$stmt = $conexion->query($SQL);
 			return creaUnicoTag($stmt);
 		}catch(PDOException $e){
-			Header("Location: error.php");	
+			Header("Location: /abd/error.php");	
 			die();		
 		}
 	}
 	
 	function obtenerTagPorNombre($tag,$conexion){
 		try{
-			$SQL = "SELECT * FROM tag WHERE tag.tag=$tag";
+			$SQL = "SELECT * FROM tag WHERE tag='$tag'";
 			$stmt = $conexion->query($SQL);
 			return creaUnicoTag($stmt);
 		}catch(PDOException $e){
-			Header("Location: error.php");	
+			Header("Location: /abd/error.php");	
 			die();		
 		}
 	}
@@ -35,10 +35,10 @@
 	function insertarTag(Tag $tag,$conexion){
 		try{
 			$nombre = $tag->tag;
-			$SQL = "INSERT INTO tag (tag) VALUES ($nombre)";
+			$SQL = "INSERT INTO tag (tag) VALUES ('$nombre')";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
-			Header("Location: error.php");	
+			Header("Location: /abd/error.php");	
 			die();		
 		}
 	}
@@ -50,7 +50,7 @@
 			$SQL = "UPDATE tag SET tag=$nombre WHERE id=$id";
 			$conexion -> exec($SQL);
 		}catch(PDOException $e){
-			Header("Location: error.php");
+			Header("Location: /abd/error.php");
 			die();			
 		}
 	}
@@ -61,7 +61,7 @@
 			$SQL="DELETE FROM tag WHERE id=$idTag";
 			$conexion->exec($SQL);
 		}catch(PDOException $e){
-			Header("Location: error.php");
+			Header("Location: /abd/error.php");
 			die();
 		}
 	}

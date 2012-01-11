@@ -5,6 +5,7 @@ function encontrarTodosLosElementos($conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -15,7 +16,7 @@ function encontrarElementoPorId($id, $conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaUnicoElemento($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -26,7 +27,7 @@ function encontrarElementosOrdenadosPorFechaDecreciente($conexion){
  		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -37,7 +38,7 @@ function encontrarPreguntas($conexion){
  		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -50,7 +51,7 @@ function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -62,7 +63,7 @@ function encontrarRespuestasDeUsuario(Usuario $usuario,$conexion){
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -74,7 +75,7 @@ function encontrarRespuestas(Elemento $elemento, $conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -86,7 +87,7 @@ function obtenerNumeroDeRespuestasDeElemento(Elemento $elemento,$conexion){
 		$stmt = $conexion->query($SQL);
 		return creaUnicoDatoDeElemento($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -98,7 +99,7 @@ function encontrarElementosPorTag(Tag $tag, $conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -111,7 +112,7 @@ function encontrarElementosPorPalabras($cadena, $conexion) {
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -129,7 +130,7 @@ function encontrarElementosPorPalabrasYTag($cadena,Tag $tag, $conexion){
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
 		echo $e;
-		//Header("Location: error.php");
+		//Header("Location: /abd/error.php");
 		die();
 	} 
 }
@@ -146,7 +147,7 @@ function insertarPregunta(Elemento $elemento, $conexion) {
 		return($var);
 		//return( mysql_insert_id($conexion -> exec($SQL)));
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -177,7 +178,7 @@ function modificarElemento(Elemento $elemento, $conexion) {
 		"idrespuesta=$idRespuesta WHERE id=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
@@ -188,7 +189,7 @@ function borrarElemento(Elemento $elemento, $conexion) {
 		$SQL = "DELETE FROM elemento WHERE id=$idElemento";
 		$conexion -> exec($SQL);
 	} catch(PDOException $e) {
-		Header("Location: error.php");
+		Header("Location: /abd/error.php");
 		die();
 	}
 }
