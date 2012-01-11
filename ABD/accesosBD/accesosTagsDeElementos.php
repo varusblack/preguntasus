@@ -1,4 +1,6 @@
 <?php
+
+// Función que dado un elemento devuelve un array de los tags asociados a este
 function obtenerTagsDeElemento(Elemento $elemento,$conexion){
 	try{
 		$idElemento = $elemento ->id;
@@ -12,6 +14,7 @@ function obtenerTagsDeElemento(Elemento $elemento,$conexion){
 	}
 }
 
+// Función que dados un elemento y un tag inserta la relación entre ambos
 function insertarTagDeElemento(Elemento $elemento,Tag $tag, $conexion) {
 	try {
 		$idElemento = $elemento ->id;
@@ -24,7 +27,7 @@ function insertarTagDeElemento(Elemento $elemento,Tag $tag, $conexion) {
 	}
 }
 
-
+// Función que dado un elemento elimina las relaciones entre este y cualquier tag
 function borrarElementoYTags(Elemento $elemento,$conexion){
 	try {
 		$idElemento = $elemento ->id;
@@ -36,6 +39,7 @@ function borrarElementoYTags(Elemento $elemento,$conexion){
 	}
 }
 
+// Función que dado un elemento y un tag elimina la relación entre ambos
 function borrarTagDeElemento(Elemento $elemento,Tag $tag, $conexion) {
 	try {
 		$idElemento = $elemento ->id;
@@ -48,6 +52,8 @@ function borrarTagDeElemento(Elemento $elemento,Tag $tag, $conexion) {
 	}
 }
 
+// Función que recorre el PDOStatement pasado como parámetro y devuelve
+// un array de tags
 function creaListadoTags($stmt) {
     $resultado = array();		
 	foreach($stmt as $row){

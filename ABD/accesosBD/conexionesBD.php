@@ -1,4 +1,6 @@
 <?php
+
+// Función que crea una conexión con la base de datos
 function crearConexion() {
 	$host = "localhost";
 	$usuario = "root";
@@ -16,6 +18,7 @@ function crearConexion() {
 
 }
 
+// Función que destruye una conexión con la base de datos
 function cerrarConexion($conexion) {
 	$conexion = null;
 }
