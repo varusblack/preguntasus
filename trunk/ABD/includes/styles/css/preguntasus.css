@@ -493,7 +493,7 @@ th{
 #div_datosUsuario{
 	margin-left: 20px;
 	line-height: 30px;
-	margin-top: 10px;
+	margin-top: 5px;
 }
 #div_datosPregunta{
 	float:left;	
@@ -507,12 +507,13 @@ th{
 	width: 400px;
 }
 #div_seleccionaTag{
-	float:right;
-	margin-right: 60px;
+	float:left;
+	margin-left: 30px;
+	line-height: 30px;
 }
 #div_botonConfirmaPregunta{
 	float:left;
-	margin: 30px 0 20px 300px;/* arriba, dcha,abajo, izda */
+	margin: 5px 0 20px 300px;/* arriba, dcha,abajo, izda */
 }
 #cuadropregunta{
  	margin:10px auto 0 auto; 
@@ -527,12 +528,11 @@ th{
  	font-family:"Arial Black" ;
  	font-size:14px; 
  	color:#000000;
- 	vertical-align: top
  }
 .label_preguntaRespuesta{
 	font-weight: bold;
 } 
- 
+
  #cuerpo{
  	margin-left:10px;
  	float:left;
