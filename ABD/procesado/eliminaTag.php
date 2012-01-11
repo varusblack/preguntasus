@@ -10,7 +10,7 @@
 	if($usuarioEnSesion->tipousuario){
 		$idTagABorrar = $_GET["id"];
 		$conexion = crearConexion();
-		$tag = obtenerTagPorId($id,$conexion);
+		$tag = obtenerTagPorId($idTagABorrar,$conexion);
 		borrarTag($tag,$conexion);
 		cerrarConexion($conexion);
 		$_SESSION["mensaje"]="Tag borrado satisfactoriamente";

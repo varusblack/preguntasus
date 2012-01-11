@@ -2,10 +2,19 @@
 	require_once ("./includes/styles/templates/cabecera.php");
 ?>
 	<div id="contenedor_cuerpo">
+		<div id="enlaceAdministrarUsuarios" class="enlaceAdministracion">
+			<a href="administrarusuarios.php">Administrar usuarios</a>
+		</div>
 		
-		<a href="administrarusuarios.php">Administrar usuarios</a>
-		<a href="administrartags.php">Administrar tags</a>
-		<a href="administrarpreguntas.php">Administrar preguntas</a>
+		<div id="enlaceAdministrarTags" class="enlaceAdministracion">
+			<a href="administrartags.php">Administrar tags</a>
+		</div>
+		
+		<div id="enlaceAdministrarPreguntas" class="enlaceAdministracion">
+			<a href="administrarpreguntas.php">Administrar preguntas</a>
+		</div>
+		
+		
 		
 	</div>
 

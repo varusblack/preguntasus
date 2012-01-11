@@ -4,12 +4,22 @@
 	<div id="contenedor_cuerpo">
 		
 		<div id="mensajesAdministracion">
-		<?php 
-		if(isset($_SESSION["mensaje"])){
-			echo $_SESSION["mensaje"];
-			unset($_SESSION["mensaje"]);
-		}
-		?>
+			<?php 
+			if(isset($_SESSION["mensajes"])){
+				echo $_SESSION["mensajes"];
+				unset($_SESSION["mensajes"]);
+			}
+			?>
+		</div>
+		
+		<div id="erroresTag" class="errores">
+			<?php 
+			if(isset($_SESSION["error"])){
+				echo $_SESSION["error"];
+				unset($_SESSION["error"]);
+			}
+			?>
+		</div>
 		
 		<table id="tabla">
 			<tr>
@@ -38,14 +48,7 @@
 			
 		</table>
 		
-		<div id="erroresTag" class="errores">
-		<?php 
-		if(isset($_SESSION["error"])){
-			echo $_SESSION["error"];
-			unset($_SESSION["error"]);
-		}
-		?>
-		</div>
+		
 		
 		<div id="cuadroTag">
 			<form id="crearTag" name="crearTag" method="post" action="/abd/procesado/creaTag.php" onsubmit="">
