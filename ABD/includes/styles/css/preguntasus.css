@@ -11,6 +11,7 @@
  Syntax recommendation http://www.w3.org/TR/REC-CSS2/
 */
 
+/*GENERAL*/
 root {
     display: block;
 }
@@ -21,8 +22,45 @@ html, body {
     margin: 0px;
     font-family: sans-serif;
 }
+#contenedor_cuerpo {
+    width: 960px;
+    margin: 0 auto 0 auto;
+}
+div.errores{
+    margin:0 auto 0 auto;
+    text-align: left;
+    color: red;
 
-/* BARRA SUPERIOR DE LOGIN */
+}
+div.campo div{
+    float:left;
+    width:50%;
+}
+.rotulos{
+	text-align: center;
+	color: #FF0000;
+}
+table{
+	margin:25px auto 25px auto;
+	text-align: center;
+}
+th{
+	background-color: #3399cc;
+	border-style: groove;
+	border-color: #003366;
+	border-width: thin;
+}
+tr{
+	background-color: #ffff99;
+}
+td{
+	border-width: thin;
+	border-style: groove;
+	border-color: #ffcc99;
+}
+
+/* BARRA SUPERIOR DE LOGIN, BARRA DE USUARIO */
+
 #login {
     width: 100%;
     background-image: url('/abd/includes/styles/imagenes/fondocabecera.png');
@@ -38,13 +76,26 @@ html, body {
     width: 960px;
     margin: 0 auto 0 auto;
 }
-
+#barraUsuario {
+    width: 100%;
+    background-image: url('/abd/includes/styles/imagenes/fondocabecera.png');
+    background-repeat: repeat-x;
+    border: 0px;
+    padding: 5px 0 0 0;
+    margin: 0px;
+    height: 60px;
+    color: white;
+    vertical-align: middle;
+}
+#barraUsuario-content {
+    width: 960px;
+    margin: 0 auto 0 auto;
+}
 #logo {
     float: left;
     width: 25%;
     min-width: 170px;
-    /*background-image: url('../imagenes/logoPreguntas.png');*/
-    background-image: url('../imagenes/iconos/Que.gif');
+    background-image: url('/abd/includes/styles/imagenes/iconos/Que.gif');
     background-repeat: no-repeat;
     background-position: left;
     height: 100%;
@@ -86,22 +137,15 @@ html, body {
 	padding-bottom:5px;
 }
 
-/* OTROS CSS */
 
+/*PIE DE PÁGINA*/
 #nombreProyecto {
     float: left;
     width: 49%;
     text-align: left;
 }
-
-
-#contenedor_cuerpo {
-    width: 960px;
-    margin: 0 auto 0 auto;
-}
-
 #pie {
-    background-image: url('../imagenes/fondopie.png');
+    background-image: url('/abd/includes/styles/imagenes/fondopie.png');
     color: white;
     vertical-align: middle;
     height: 70px;
@@ -127,6 +171,7 @@ html, body {
     height: 100%;
 }
 
+/*INDEX*/
 #preguntas {
     float: left;
 }
@@ -139,7 +184,7 @@ html, body {
 }
 #cuadro_busqueda{
 	height:40px;
-    background-image: url('../imagenes/fondocolumna.png');
+    background-image: url('/abd/includes/styles/imagenes/fondocolumna.png');
 }
 #textoBuscarIndex{
 	padding-left:10px;
@@ -154,7 +199,20 @@ html, body {
 #palabrasIndex{
 	width: 180px;
 }
+#botonBuscarIndex{
+	float:right;
+}
+#etiquetas_mas_frecuentes{
+	margin-top:50px;
+	padding-top:10px;
+	background-image: url('/abd/includes/styles/imagenes/fondoTags.png');
+	text-align: center;
+}
+.botonEnlaceTag{
+	margin-bottom: 3px;
+}
 
+/*BARRA NAVEGACIÓN*/
 #barraNavegacion {
     margin:0 auto 0 auto;
     margin-top:7px;
@@ -164,20 +222,23 @@ html, body {
     font-size: medium;
     font-style: normal;
     height: 31px;
-    background-image: url('../imagenes/fondobarranavegacion1.png');
+    background-image: url('/abd/includes/styles/imagenes/fondobarranavegacion1.png');
     background-repeat: repeat-x;
     width:960px;
 }
 #barraNavegacion a.separado {
     padding-left: 2em;
 }
+
+/*BUSCAR*/
+
 #cuadroBusqueda {
     margin:0 auto 0 auto;
     clear:both;
     margin-top:20px;
     width:400px;
     height: 120px;
-    background-image: url('../imagenes/fondocuadrobusqueda.png');
+    background-image: url('/abd/includes/styles/imagenes/fondocuadrobusqueda.png');
 }
 #labelsBusqueda{
     padding-top:10px;
@@ -206,6 +267,9 @@ html, body {
     clear:both;
 }
 
+
+/*REGISTRARSE, PERFIL*/
+
 #cuadroRegistrarse{
     margin:40px auto 0 auto;
     padding-top: 20px;
@@ -215,60 +279,18 @@ html, body {
     background-repeat: no-repeat;
     padding-left: 5px;
 }
-
-#labelsRegistrarse{
-    padding-top:10px;
-    padding-left:10px;
-    text-align :right;
-    float:left;
-    clear: left;
-}
-#campo{
-    margin:10px 0 10px 0;
-}
-div.campo div{
-    float:left;
-    width:50%;
-}
-
-#inputsRegistrarse{
-    padding-top:10px;
-    padding-right:10px;
-    float:right;
-    clear:right;
-}
-#inputsRegistrarse div.separado{
-    padding-top:5px;
-}
-#inputsRegistrarse input{
-    width: 200px;
+div.cuadroRegistrarse p{
+    margin: 0 auto 0 10px;
+    text-align: center;
 }
 #botonRegistrarse{
     text-align:center;
     padding-top:20px;
     clear:both;
 }
-div.cuadroRegistrarse p{
-    margin: 0 auto 0 10px;
-    text-align: center;
-}
-div.pregunta {
-    margin-top: 25px;
-    margin-bottom: 5px;
-    width: 500px;
-    height: 120px;
-  	background-color: #99ccff;
-}
-/*Pregunta respondida con fondo
-*/
-div.preguntaRespondida {
-    margin-top: 25px;
-    margin-bottom: 5px;
-    width: 500px;
-    height: 120px;
-    background-color: #99ff99;
-}
 
+
+/*PREGUNTAS*/
 div.usuarioPregunta{
     padding-left:5px;
     padding-top:5px;
@@ -300,25 +322,103 @@ div.estadisticasPregunta{
 label.respuestas, label.visitas{
     padding-left:10px;
 }
-div.errores{
-    margin:0 auto 0 auto;
-    text-align: left;
-    color: red;
+/*Pregunta sin responder*/
+div.pregunta {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    width: 500px;
+    height: 120px;
+  	background-image: url('/abd/includes/styles/imagenes/fondoPregunta.png');
+  	background-repeat: no-repeat;
+}
+/*Pregunta respondida con fondo*/
+div.preguntaRespondida {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    width: 500px;
+    height: 120px;
+    background-image: url('/abd/includes/styles/imagenes/fondoPreguntaRespondida.png');
+  	background-repeat: no-repeat;
+}
 
+/*ADMINISTRACIÓN*/
+/*Menú administrador*/
+.enlaceAdministracion{
+	margin:15px auto 0 auto;
+	text-align: center;
 }
-#recuadroLogin{
-	margin:0 auto 0 auto;
-    width: 270px;
-    text-align: center;
-    clear: both;
-    height: 115px;
-    background-image: url('../imagenes/fondorecuadrologin.png');
+/*Administración de tags*/
+#cuadroTag{
+	height:80px;
+	width:330px;
+	text-align:center;
+	margin:30px auto 0 auto;
+	background-image: url('/abd/includes/styles/imagenes/fondoCuadroCrearTag.png');
 }
-#emailLogin{
-	padding-top: 10px;
+#datosCreacionTag{
+	padding-top:9px;
 }
-#passLogin{	
-	margin-top: 30px;
+
+#datosCreacionTag label{
+	float:left;
+	padding-left:13px;
+}
+
+#botonCrearTag{
+	clear:both;
+	margin-top:10px;
+	
+}
+
+/*PREPARAR ELIMINACIÓN DE RESPUESTA*/
+#cuadroeliminacion{
+ 	margin:40px auto 0 auto; 
+    padding: 20px 0 150px 0;
+    clear:both;
+    width:760px;
+    height: 200px;
+    background-image: url('/abd/includes/styles/imagenes/fondocuadroeliminarespuesta.png') ; 
+    background-repeat: no-repeat;
+}
+#div_datoUsuario,
+#div_respuestaElimina{
+	margin-left: 10px;
+}
+#label_emailEliminaRespuesta,
+#label_contenidoEliminaRespuesta{
+	display: block;
+	margin-left:30px;
+	float: left;
+	width: 18em;
+	padding-right: 0.5em;
+	font-family: "Arial Black";
+	font-size:14px;
+}
+
+/*OTROS*/
+
+#campo{
+    margin:10px 0 10px 0;
+}
+#labelsRegistrarse{
+    padding-top:10px;
+    padding-left:10px;
+    text-align :right;
+    float:left;
+    clear: left;
+}
+
+#inputsRegistrarse{
+    padding-top:10px;
+    padding-right:10px;
+    float:right;
+    clear:right;
+}
+#inputsRegistrarse div.separado{
+    padding-top:5px;
+}
+#inputsRegistrarse input{
+    width: 200px;
 }
 div.labelRecuadroLogin{
 	padding-left:10px;
@@ -328,46 +428,18 @@ div.inputRecuadroLogin{
 	padding-right:10px;
 	float:right;
 }
-#botonLogin{
-	text-align:center;
-    padding-top:20px;
-    clear:both;
-    padding-bottom:10px;
+
+#div_datoUsuario,
+#div_respuestaElimina{
+	margin-left: 10px;
 }
-#cuadroeliminacion{
- 	margin:40px auto 0 auto; 
-    padding: 20px 0 150px 0;
-    clear:both;
-    width:760px;
-    height: 200px;
-    background-image: url('../imagenes/fondocuadroeliminarespuesta.png') ; 
-    background-repeat: no-repeat;
-  }
-  
- .rotulos{
- 	text-align: center;
- 	color: #FF0000;
- }
- #div_datoUsuario,
- #div_respuestaElimina{
-  margin-left: 10px;
- }
  #div_respuestaElimina{
  	margin-top: 20px;
  }
  #emailCuadroPregunta{
  	margin-left: 60px;
  }
- #label_emailEliminaRespuesta,
- #label_contenidoEliminaRespuesta{
-  display: block;
-  margin-left:30px;
-  float: left;
-  width: 18em;
-  padding-right: 0.5em;
-  font-family: "Arial Black";
-  font-size:14px;
- }
+
  #div_titulo,
  #div_cuerpo,
  #div_numerorespuestas{
@@ -475,21 +547,9 @@ th{
 	background-color: #f0f8ff;
 }
 
-#barraUsuario {
-    width: 100%;
-    background-image: url('/abd/includes/styles/imagenes/fondocabecera.png');
-    background-repeat: repeat-x;
-    border: 0px;
-    padding: 5px 0 0 0;
-    margin: 0px;
-    height: 60px;
-    color: white;
-    vertical-align: middle;
-}
-#barraUsuario-content {
-    width: 960px;
-    margin: 0 auto 0 auto;
-}
+
+
+
 #div_datosUsuario{
 	margin-left: 20px;
 	line-height: 30px;
@@ -521,7 +581,7 @@ th{
     clear:both;
     width:800px;
     height: 180px;
-    background-image: url('../imagenes/fondocuadroinsertapregunta.png') ; 
+    background-image: url('/abd/includes/styles/imagenes/fondocuadroinsertapregunta.png') ; 
     background-repeat: no-repeat;
  }
  .etiquetaPregunta{
@@ -550,17 +610,9 @@ th{
   width: 300px;
 }
 
-#botonBuscarIndex{
-	float:right;
-}
 
-#buscarTagIndex{
-	padding-top: 50px;
-}
 #respuesta{
     width: 100%;
 }
-#cuadroTag{
-	margin:0 auto 0 auto;
-	background-color: silver;
-}
+
+

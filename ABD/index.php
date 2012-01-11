@@ -64,7 +64,7 @@
 			$tags = obtenerTodosLosTags($conexion);
 			cerrarConexion($conexion);		
 			foreach($tags as $tg){ ?>
-				<button onclick="buscarPorTag(<?php echo $tg->id; ?>)"><?php echo $tg->tag; ?></button><br>
+				<button class="botonEnlaceTag" onclick="buscarPorTag(<?php echo $tg->id; ?>)"><?php echo $tg->tag; ?></button><br>
 			<?php }	
 			?>
 		</div>		
