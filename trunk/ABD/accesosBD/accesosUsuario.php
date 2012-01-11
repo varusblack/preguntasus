@@ -2,6 +2,7 @@
 
 require_once($_SERVER["DOCUMENT_ROOT"] . '/abd/includes/funciones/fechas.php');
 
+// Función que devuelve un array de todos los usuarios
 function obtenerTodosLosUsuarios($conexion) {
     try {
         $SQL = "SELECT * FROM usuario";
@@ -13,6 +14,7 @@ function obtenerTodosLosUsuarios($conexion) {
     }
 }
 
+// Función que dado un id devuelve un único usuario
 function obtenerUsuarioPorId($id, $conexion) {
     try {
         $SQL = "SELECT * FROM usuario WHERE id=$id";
@@ -24,6 +26,7 @@ function obtenerUsuarioPorId($id, $conexion) {
     }
 }
 
+// Función que dado un email y una contraseña devuelve un único usuario
 function obtenerUsuarioPorEmailYPass($email, $pass, $conexion) {
     try {
         $SQL = "SELECT * FROM usuario WHERE email='$email' AND password='$pass'";
@@ -36,6 +39,8 @@ function obtenerUsuarioPorEmailYPass($email, $pass, $conexion) {
     }
 }
 
+// Función que dado un email devuelve true si existe un usuario con tal email
+// y false en caso contrario
 function existeUsuarioConEmail($email, $conexion) {
     try {
         $SQL = "SELECT count(*) as cuenta FROM usuario WHERE email='$email'";
@@ -49,6 +54,7 @@ function existeUsuarioConEmail($email, $conexion) {
     }
 }
 
+// Función que inserta un usuario en la base de datos y devuelve el id de este
 function insertarUsuario(Usuario $usuario, $conexion) {
     try {
         $email = $usuario->email;
@@ -64,13 +70,12 @@ function insertarUsuario(Usuario $usuario, $conexion) {
         $var = $conexion->lastInsertId('elemento');
         return($var);
     } catch (PDOException $e) {
-        //Header("Location: /abd/error.php");
-        echo $e;
-        echo $SQL;
+        Header("Location: /abd/error.php");
         die();
     }
 }
 
+// Función que actualiza un usuario en la base de datos
 function modificarUsuario(Usuario $usuario, $conexion) {
     try {
         $idUsuario = $usuario->id;
@@ -79,10 +84,11 @@ function modificarUsuario(Usuario $usuario, $conexion) {
         $nombre = $usuario->nombre;
         $apellidos = $usuario->apellidos;
         $fechaNacimiento = fecha2mysql($usuario->fechanacimiento);
+		$tipoUsuario = $usuario->tipousuario;
 
         $SQL = "UPDATE usuario SET email='$email',password='$password'," .
-                "nombre='$nombre',apellidos='$apellidos',fechanacimiento='$fechaNacimiento'" .
-                "WHERE id=$idUsuario";
+                "nombre='$nombre',apellidos='$apellidos',fechanacimiento='$fechaNacimiento'," .
+                "tipoUsuario=$tipoUsuario WHERE id=$idUsuario";
         $conexion->exec($SQL);
     } catch (PDOException $e) {
         echo $e;
@@ -90,6 +96,7 @@ function modificarUsuario(Usuario $usuario, $conexion) {
     }
 }
 
+// Función que elimina un usuario de la base de datos
 function borrarUsuario(Usuario $usuario, $conexion) {
     try {
         $idUsuario = $usuario->id;
@@ -101,6 +108,7 @@ function borrarUsuario(Usuario $usuario, $conexion) {
     }
 }
 
+// Función que dado un usuario incrementa sus puntos en una unidad
 function incrementaPuntosUsuario(Usuario $usuario, $conexion) {
     try {
         $idUsuario = $usuario->id;
@@ -112,6 +120,8 @@ function incrementaPuntosUsuario(Usuario $usuario, $conexion) {
     }
 }
 
+// Función que recorre el PDOStatement pasado como parámetro y devuelve
+// un array de usuarios
 function creaUsuarios($stmt) {
     $resultado = array();
     foreach ($stmt as $row) {
@@ -131,6 +141,8 @@ function creaUsuarios($stmt) {
     return $resultado;
 }
 
+// Función que recorre el PDOStatement pasado como parámetro y devuelve
+// un único usuario
 function creaUnicoUsuario($stmt) {
     $objeto = new Usuario();
     foreach ($stmt as $row) {

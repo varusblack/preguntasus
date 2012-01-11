@@ -13,17 +13,19 @@
 	// }
 // }
 
-function obtenerVotacionPorId($id, $conexion) {
-	try {
-		$SQL = "SELECT * FROM votacion WHERE id=$id";
-		$stmt = $conexion->query($SQL);
-		return creaElementos($stmt);
-	} catch(PDOException $e) {
-		Header("Location: /abd/error.php");
-		die();
-	}
-}
+// Veo que carece de sentido
+// function obtenerVotacionPorId($id, $conexion) {
+	// try {
+		// $SQL = "SELECT * FROM votacion WHERE id=$id";
+		// $stmt = $conexion->query($SQL);
+		// return creaElementos($stmt);
+	// } catch(PDOException $e) {
+		// Header("Location: /abd/error.php");
+		// die();
+	// }
+// }
 
+// Función que dado un elemento devuelve el número de veces que ha sido votado
 function obtenerNumeroDeVotosDeElemento(Elemento $elemento, $conexion){
 	try {
 		$idElemento = $elemento ->id;
@@ -36,6 +38,7 @@ function obtenerNumeroDeVotosDeElemento(Elemento $elemento, $conexion){
 	}
 }
 
+// Función que dado un usuario devuelve el número de veces que ha votado
 function obtenerVotosUsuario(Usuario $usuario, $conexion){
 	try {
 		$idUsuario = $usuario ->id;
@@ -49,6 +52,7 @@ function obtenerVotosUsuario(Usuario $usuario, $conexion){
 	}
 }
 
+// Función que 
 function insertarVotacion(Votacion $votacion, $conexion) {
 	try {
 		$idElemento = $votacion ->idelemento;

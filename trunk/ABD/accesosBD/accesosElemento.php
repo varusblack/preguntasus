@@ -1,4 +1,6 @@
 <?php
+
+// Función que devuelve un array de todos los elementos
 function encontrarTodosLosElementos($conexion) {
 	try {
 		$SQL = "SELECT * FROM elemento";
@@ -10,6 +12,7 @@ function encontrarTodosLosElementos($conexion) {
 	}
 }
 
+// Función que dado un id devuelve un único elemento
 function encontrarElementoPorId($id, $conexion) {
 	try {
 		$SQL = "SELECT * FROM elemento WHERE id=$id";
@@ -21,6 +24,7 @@ function encontrarElementoPorId($id, $conexion) {
 	}
 }
 
+// Función que devuelve un array de todas las preguntas por fecha decreciente
 function encontrarElementosOrdenadosPorFechaDecreciente($conexion){
 	try {
 		$SQL = "SELECT * FROM elemento WHERE idrespuesta IS NULL ORDER BY fechapregunta DESC";
@@ -32,6 +36,7 @@ function encontrarElementosOrdenadosPorFechaDecreciente($conexion){
 	}
 }
 
+// Función que devuelve un array de todas las preguntas
 function encontrarPreguntas($conexion){
 	try {
 		$SQL = "SELECT * FROM elemento WHERE idrespuesta IS NULL";
@@ -43,7 +48,8 @@ function encontrarPreguntas($conexion){
 	}
 }
 
-
+// Función que dado un usuario devuelve un array de todos los elementos
+// de los que es autor
 function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 	try {
 		$idUsuario = $usuario -> id;
@@ -56,6 +62,8 @@ function encontrarElementosDeUsuario(Usuario $usuario, $conexion) {
 	}
 }
 
+// Función que dado un usuario devuelve un array de todas las respuestas
+// de los que es autor
 function encontrarRespuestasDeUsuario(Usuario $usuario,$conexion){
 	try {
 		$idUsuario = $usuario -> id;
@@ -68,6 +76,7 @@ function encontrarRespuestasDeUsuario(Usuario $usuario,$conexion){
 	}
 }
 
+// Función que devuelve un array de todas las respuestas
 function encontrarRespuestas(Elemento $elemento, $conexion) {
 	try {
 		$idRespuesta = $elemento -> id;
@@ -80,6 +89,7 @@ function encontrarRespuestas(Elemento $elemento, $conexion) {
 	}
 }
 
+// Función que dado una pregunta devuelve el número de respuestas que tiene 
 function obtenerNumeroDeRespuestasDeElemento(Elemento $elemento,$conexion){
 	try {
 		$idRespuesta = $elemento -> id;
@@ -92,6 +102,8 @@ function obtenerNumeroDeRespuestasDeElemento(Elemento $elemento,$conexion){
 	}
 }
 
+// Función que dado un tag devuelve un array de todas los elementos
+// con dicho tag
 function encontrarElementosPorTag(Tag $tag, $conexion) {
 	try {
 		$idTag = $tag->id;
@@ -103,7 +115,8 @@ function encontrarElementosPorTag(Tag $tag, $conexion) {
 		die();
 	}
 }
-
+// Función que dada una cadena de caracteres devuelve un array de todas los elementos
+// que cuyo titulo contiene toda o parte de la cadena de caracteres
 function encontrarElementosPorPalabras($cadena, $conexion) {
 	try {
 		$cadmins = strtolower($cadena);
@@ -117,6 +130,8 @@ function encontrarElementosPorPalabras($cadena, $conexion) {
 	}
 }
 
+// Función que dado un tag y una cadena de caracteres devuelve un array de todas los elementos
+// con dicho tag y que cuyo titulo contiene toda o parte de la cadena de caracteres
 function encontrarElementosPorPalabrasYTag($cadena,Tag $tag, $conexion){
 	try {
 		$cadmins = strtolower($cadena);
@@ -129,11 +144,12 @@ function encontrarElementosPorPalabrasYTag($cadena,Tag $tag, $conexion){
 		$stmt = $conexion->query($SQL);
 		return creaElementos($stmt);
 	} catch(PDOException $e) {
-		echo $e;
-		//Header("Location: /abd/error.php");
+		Header("Location: /abd/error.php");
 		die();
 	} 
 }
+
+// Función que inserta una pregunta en la base de datos devolviendo el id de esta
 function insertarPregunta(Elemento $elemento, $conexion) {
 	try {
 		$idAutor = $elemento -> idautor;
@@ -152,6 +168,7 @@ function insertarPregunta(Elemento $elemento, $conexion) {
 	}
 }
 
+// Función que inserta un elemento en la base de datos
 function insertarElemento(Elemento $elemento, $conexion) {
 	try {
 		$idAutor = $elemento -> idautor;
@@ -167,6 +184,7 @@ function insertarElemento(Elemento $elemento, $conexion) {
 	}
 }
 
+// Función que actualiza un elemento en la base de datos
 function modificarElemento(Elemento $elemento, $conexion) {
 	try {
 		$idElemento = $elemento ->id;
@@ -183,6 +201,7 @@ function modificarElemento(Elemento $elemento, $conexion) {
 	}
 }
 
+// Función que elimina un elemento de la base de datos
 function borrarElemento(Elemento $elemento, $conexion) {
 	try {
 		$idElemento = $elemento -> id;
@@ -194,6 +213,8 @@ function borrarElemento(Elemento $elemento, $conexion) {
 	}
 }
 
+// Función que recorre el PDOStatement pasado como parámetro y devuelve
+// un array de elementos
 function creaElementos($stmt) {
 	$resultado = array();
 	foreach($stmt as $row){
@@ -209,6 +230,8 @@ function creaElementos($stmt) {
 	return $resultado;
 }
 
+// Función que recorre el PDOStatement pasado como parámetro y devuelve
+// un único elemento
 function creaUnicoElemento($stmt) {
 	$objeto = new Elemento();
 	foreach($stmt as $row){
@@ -222,6 +245,8 @@ function creaUnicoElemento($stmt) {
 	return $objeto;
 }
 
+// Función que recorre el PDOStatement pasado como parámetro y devuelve
+// un único dato
 function creaUnicoDatoDeElemento($stmt) {
 	$dato = NULL;
 	foreach($stmt as $row){
