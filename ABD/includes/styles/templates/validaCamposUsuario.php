@@ -1,4 +1,5 @@
 <?php
+
 // Comprobaciones de los datos del usuario
 
 
@@ -29,27 +30,35 @@ if ($_POST["fechaNacimiento"] == "") {
     }
 }
 if (existeUsuarioConEmail($_POST["email"], $conexion)) {
-    if ($_POST["submit"] != "Editar perfil") {
-        $erroresArray[] = "Ya existe un usuario con ese email";
+    if (!$usuario->tipo) {
+        if ($_POST["submit"] != "Editar perfil") {
+            $erroresArray[] = "Ya existe un usuario con ese email";
+        } else {
+
+            if ($_POST["email"] != $usuario->email) {
+                $erroresArray[] = "Ya existe un usuario con ese email";
+            }
+        }
     } else {
-        if ($_POST["email"] != $usuario->email) {
+
+        if ($_POST["email"] != $_POST["antiguoemail"]) {
             $erroresArray[] = "Ya existe un usuario con ese email";
         }
     }
-}
 
 
-if ($_FILES["fotoPerfil"]["size"]>0) {
-    if ($_FILES["fotoPerfil"]["size"] > 1048576) {
-        $erroresArray[] = "La foto de perfil es demasiado grande";
+
+    if ($_FILES["fotoPerfil"]["size"] > 0) {
+        if ($_FILES["fotoPerfil"]["size"] > 1048576) {
+            $erroresArray[] = "La foto de perfil es demasiado grande";
+        }
+
+
+        if ($_FILES["fotoPerfil"]["type"] != "image/jpeg") {
+            $erroresArray[] = "La extensión de la foto de perfil no es válida";
+        }
+        if (!getimagesize($_FILES["fotoPerfil"]["tmp_name"])) {
+            $erroresArray[] = "El archivo con la foto de perfil parace no ser válido";
+        }
     }
-
-
-    if ($_FILES["fotoPerfil"]["type"] != "image/jpeg") {
-        $erroresArray[] = "La extensión de la foto de perfil no es válida";
-    }
-    if (!getimagesize($_FILES["fotoPerfil"]["tmp_name"])) {
-        $erroresArray[] = "El archivo con la foto de perfil parace no ser válido";
-    }
-}
 ?>
