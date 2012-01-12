@@ -33,7 +33,7 @@ require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/styles/templates/cabecer
     $_SESSION["errores"]=null;
     $_SESSION["datos"]=null;
     ?>
-    <form name="datos" method="post" action="./procesado/procesaRegistro.php" enctype="multipart/form-data" onsubmit="return comprobarRegistrarse();">
+    <form method="post" action="./procesado/procesaRegistro.php" enctype="multipart/form-data" onsubmit="return comprobarRegistrarse();">
         <div id="cuadroRegistrarse">
             <?php
                 include_once './includes/styles/templates/formularioUsuario.php';

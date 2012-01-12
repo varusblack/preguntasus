@@ -27,7 +27,7 @@
 	?>
 	</div>
 	
-	<form id="buscarPreguntas" name="buscarPreguntas" action="./procesado/buscarPreguntas.php" method="post" onsubmit="return comprobarCamposVacios()">
+	<form id="buscarPreguntas"  action="./procesado/buscarPreguntas.php" method="post" onsubmit="return comprobarCamposVacios()">
 		<div id="cuadroBusqueda">
 			<div id="labelsBusqueda">
 				<div class="labelBusqueda">
@@ -49,7 +49,7 @@
 							$arrayTags = obtenerTodosLosTags($conexion);
  							cerrarConexion($conexion);
 							foreach($arrayTags as $tg){
-								echo "<option value='$tg->id'>".$tg->tag."</option><br>";
+								echo "<option value='$tg->id'>".$tg->tag."</option>";
 							}					
 						?>
 					</select>
