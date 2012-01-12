@@ -19,6 +19,7 @@
 	  }
 ?>
 	<form id="nuevaPregunta" action="nuevaPregunta.php" method="post" enctype="application/x-www-form-urlencoded" onsubmit="return validaPregunta()">
+            <fieldset>
 		<div id="cuadropregunta">
 			<h2 class="rotulos">Introduzca Los Datos Necesarios Para La Nueva Pregunta</h2>
 			<div id="div_datosUsuario">
@@ -26,13 +27,11 @@
 				<span id="emailCuadroPregunta"><?php echo $usuario->email;?></span>		
 			</div>
 			<div id="div_datosPregunta">
-				<label for="titulo" class="etiquetaPregunta">Titulo:</label><br />
-				<label for="cuerpo" class="etiquetaPregunta">Cuerpo De La Pregunta</label><br />
-				<label for="ta" class="etiquetaPregunta">Selecciona Etiqueta</label>
+				<label for="tituloPregunta" class="etiquetaPregunta">Titulo:</label><br />
+				<label for="tag" class="etiquetaPregunta">Selecciona Etiqueta</label>
 			</div>
 			<div id ="div_camposPregunta">
 				<input id="tituloPregunta" name="titulo" type="text"/><br />
-				<input />
 			</div>
 			<div id="div_seleccionaTag">			
 					<select id="tag" name="tag">
@@ -42,7 +41,7 @@
 							$arrayTags = obtenerTodosLosTags($conexion);
 	 						cerrarConexion($conexion);
 							foreach($arrayTags as $tg){
-								echo "<option value='$tg->id'>".$tg->tag."</option><br />";
+								echo "<option value='$tg->id'>".$tg->tag."</option>";
 							}					
 						?>
 					</select>
@@ -54,6 +53,7 @@
 				<button  id="submit" type="submit" >Aceptar Nueva Pregunta</button>
 			</div>
 		</div>	
+            </fieldset>
 	</form>
 
 <?php
