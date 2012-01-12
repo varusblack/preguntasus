@@ -495,6 +495,7 @@ div.inputRecuadroLogin{
 	float:left;
 	padding: 50px 0 5px 350px;
 }
+/* Eliminacion de una Respuesta */
 #cuadroModificacion{
  	margin:40px auto 0 auto; 
     padding: 20px 0 150px 0;
@@ -510,6 +511,10 @@ div.inputRecuadroLogin{
  	color:#000000;
  	vertical-align: top
  	}
+ /*
+  * Pantalla que modifica una determinada respuesta
+  * Realizado por el administrador o usuario logado.
+  */
  #label_modificaRespuesta{
  	font-family:"Arial Black" ;
  	font-size:14px; 
@@ -532,6 +537,11 @@ div.inputRecuadroLogin{
  #div_modifica_respuesta{ 	
  	margin-top: 5px;
 }
+
+/*
+ * Pantalla de Respuestas de la pregunta 
+ * valido para usuario no logado, logado y administrador
+ */
 #content{
 	float:left;
     border:2px solid #a1a1a1;
@@ -546,10 +556,6 @@ th{
 	border-style:solid;	
 	background-color: #f0f8ff;
 }
-
-
-
-
 #div_datosUsuario{
 	margin-left: 20px;
 	line-height: 30px;
@@ -571,10 +577,10 @@ th{
 	margin-left: 30px;
 	line-height: 30px;
 }
-#div_botonConfirmaPregunta{
-	float:left;
-	margin: 5px 0 20px 300px;/* arriba, dcha,abajo, izda */
-}
+/*
+ * Pantalla que introduce una nueva pregunta
+ * Valido para usuarios logados o administrador
+ */
 #cuadropregunta{
  	margin:10px auto 0 auto; 
     padding: 20px 0 150px 0;
@@ -589,10 +595,13 @@ th{
  	font-size:14px; 
  	color:#000000;
  }
+#div_botonConfirmaPregunta{
+	float:left;
+	margin: 5px 0 20px 300px;/* arriba, dcha,abajo, izda */
+} 
 .label_preguntaRespuesta{
 	font-weight: bold;
-} 
-
+}
  #cuerpo{
  	margin-left:10px;
  	float:left;
