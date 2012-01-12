@@ -5,16 +5,19 @@
         </div>
 <!--  Datos para el login  -->
         <div id="user-box">
-            <fieldset>
-            	<form id="formLogin" name="formLogin" method="post" action="./procesado/login.php">
+            
+
+            	<form id="formLogin" method="post" action="./procesado/login.php">
+                    <fieldset>
 	                <label for="email">Email:</label>
 	                <input type="text" id="email" name="email" /> 
 	                <label for="pass">Contraseña: </label>
 	                <input type="password" id="pass" name="pass" />
-	                <input type="submit" value="Login" />            		
+	                <input type="submit" value="Login" />    
+                    </fieldset>                        
             	</form>
-            </fieldset>
-            <a href="/abd/registrarse.php">Registrarse</a>
+                    
+                       <a href="/abd/registrarse.php">Registrarse</a>
         </div>
     </div>
 </div>

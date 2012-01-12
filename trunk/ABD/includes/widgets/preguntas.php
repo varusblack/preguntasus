@@ -7,7 +7,7 @@ if($numeroDeRespuestas<1){
 ?>
 	<div class="usuarioPregunta">
 		<div class="fotoUsuarioPregunta">
-			<img src="/abd/muestraFoto.php?id=<? echo $usuario->id;?>&tam=100" /> 
+			<img src="/abd/muestraFoto.php?id=<? echo $usuario->id;?>&amp;tam=100" alt="fotoPerfil" />
 		</div>
 		<div class="nombreUsuario">
 			<?php echo $usuario->email; ?>

@@ -41,19 +41,22 @@
 		?>		
 	</div>
 	<div id="columna">
-	<form id="buscarPalabrasIndex" name="buscarPalabrasIndex" method="post" action="./procesado/buscarPreguntas.php">
+	<form id="buscarPalabrasIndex" method="post" action="./procesado/buscarPreguntas.php">
+            <fieldset>
 		<div id="cuadro_busqueda">
 			<div id="textoBuscarIndex">
-				<label for="buscar">Buscar:</label>
+				<label for="buscarIndex">Buscar:</label>
 				<input type="text" id="palabrasIndex" name="palabras"/>				
 			</div>
 			<div id="botonSubmitIndex">
 				<input id="botonBuscarIndex" type="submit" name="buscar" value="Buscar"/>
 			</div>
 		</div>
+            </fieldset>
 	</form>
 	
-	<form id="buscarTagIndex" name="buscarTagIndex" method="post" action="./procesado/buscarPreguntas.php">
+	<form id="buscarTagIndex" method="post" action="./procesado/buscarPreguntas.php">
+            <fieldset>
 		<input type="hidden" id="tag" value="" name="tag" />
 		<input type="hidden" id="buscar" value="buscar" name="buscar" />
 		<div id="etiquetas_mas_frecuentes">
@@ -62,10 +65,11 @@
 			$tags = obtenerTodosLosTags($conexion);
 			cerrarConexion($conexion);		
 			foreach($tags as $tg){ ?>
-				<button class="botonEnlaceTag" onclick="buscarPorTag(<?php echo $tg->id; ?>)"><?php echo $tg->tag; ?></button><br>
+				<button class="botonEnlaceTag" onclick="buscarPorTag(<?php echo $tg->id; ?>)"><?php echo $tg->tag; ?></button><br />
 			<?php }	
 			?>
 		</div>		
+            </fieldset>
 	</form>
 	
 	</div>
