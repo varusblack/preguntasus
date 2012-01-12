@@ -54,6 +54,18 @@ function existeUsuarioConEmail($email, $conexion) {
     }
 }
 
+// Función que devuelve un array de usuarios ordenados por orden decreciente según sus puntos.
+function obtenerUsuariosPorPuntos($conexion){
+	try {
+        $SQL = "SELECT * FROM usuario ORDER BY puntos DESC";
+        $stmt = $conexion->query($SQL);
+        return creaUsuarios($stmt);
+    } catch (PDOException $e) {
+        Header("Location: /abd/error.php");
+        die();
+    }
+}
+
 // Función que inserta un usuario en la base de datos y devuelve el id de este
 function insertarUsuario(Usuario $usuario, $conexion) {
     try {
@@ -133,7 +145,7 @@ function creaUsuarios($stmt) {
         $objeto->preguntasrespondidas = $row["preguntasrespondidas"];
         $objeto->puntos = $row["puntos"];
         $objeto->nombre = $row["nombre"];
-        $objeto->apelldios = $row["apellidos"];
+        $objeto->apellidos = $row["apellidos"];
         $objeto->fechanacimiento = $row["fechanacimiento"];
         $objeto->tipousuario = $row["tipoUsuario"];
         $resultado[$row["id"]] = $objeto;

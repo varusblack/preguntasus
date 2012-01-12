@@ -1,6 +1,6 @@
 <?php
 require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/styles/templates/cabecera.php");
-require_once ($_SERVER["DOCUMENT_ROOT"]. "abd/includes/funciones/fechas.php" );
+require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/funciones/fechas.php" );
 ?>
 
 <div id="contenedor_cuerpo">
