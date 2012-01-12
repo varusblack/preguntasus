@@ -14,7 +14,7 @@
 ?>
 <!-- Imagen del usuario logeado -->
 				<div id="imagenUserBox">
-	                <img src="/abd/muestraFoto.php?id=<? echo $usuario->id;?>&tam=40" /> 
+	                <img src="/abd/muestraFoto.php?id=<? echo $usuario->id;?>&amp;tam=40" alt="fotoPerfil" />
 				</div>
 
 <!-- Estadísticas del usuario logeado -->
