@@ -12,17 +12,19 @@
 				cerrarConexion($conexion);
                                 
 ?>
+<!-- Imagen del usuario logeado -->
 				<div id="imagenUserBox">
 	                <img src="/abd/muestraFoto.php?id=<? echo $usuario->id;?>&tam=40" /> 
 				</div>
 
+<!-- Estadísticas del usuario logeado -->
 				<div id="camposUserBox">
 	            	<a href="/abd/perfil.php"><?php echo $usuario->email; ?></a>
-	                <label for="puntos">Puntos:</label>
+	                <span>Puntos:</span>
 	                <span id="puntosUsuario"><?php echo $usuario->puntos;?></span> 
-	                <label for="numPreguntasUsuario">Preguntas realizadas: </label>
+	                <span>Preguntas realizadas: </span>
 	                <span id="numPreguntasUsuario"><?php echo $preguntasSesionUser;?></span> 
-	                <label for="numRespuestasUsuario">Preguntas respondidas: </label>
+	                <span>Preguntas respondidas: </span>
 	                <span id="numRespuestasUsuario"><?php echo $respuestasSesionUser;?></span>
 	                <a href="/ABD/procesado/logout.php">Logout</a>
 				</div>	

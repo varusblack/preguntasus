@@ -3,6 +3,7 @@
         <div id="logo">
             <h1>PREGUNTAS US</h1>
         </div>
+<!--  Datos para el login  -->
         <div id="user-box">
             <fieldset>
             	<form id="formLogin" name="formLogin" method="post" action="./procesado/login.php">
@@ -17,3 +18,14 @@
         </div>
     </div>
 </div>
+<?php if(isset($_SESSION["erroresLogin"])){?>
+	<div class="errores">
+		<?php 
+		$errores = $_SESSION["erroresLogin"];
+		foreach ($errores as $error){
+			echo $error."<br>";
+		} ?>
+	</div>
+<?php	
+	unset($_SESSION["erroresLogin"]);
+}?>

@@ -35,7 +35,7 @@
 					}
                 $contador++;
 				}						
-				require("./includes/widgets/preguntas.php");
+				require($_SERVER["DOCUMENT_ROOT"]."/abd/includes/widgets/preguntas.php");
 			}				
 			cerrarConexion($conexion);		
 		?>		
@@ -72,7 +72,7 @@
 		
 </div>
 <?php
-	require_once ("./includes/styles/templates/pie.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/pie.php");
 ?>
 
 

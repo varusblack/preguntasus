@@ -73,7 +73,7 @@ function insertarUsuario(Usuario $usuario, $conexion) {
         $password = $usuario->password;
         $nombre = $usuario->nombre;
         $apellidos = $usuario->apellidos;
-        $fechaNacimiento = fecha2mysql($usuario->fechanacimiento);
+        $fechaNacimiento = fecha2sql($usuario->fechanacimiento);
 
         $SQL = "INSERT INTO usuario (email,password,fecharegistro,preguntasrealizadas," .
                 "preguntasrespondidas,puntos,nombre,apellidos,fechanacimiento,tipousuario)" .
@@ -95,7 +95,7 @@ function modificarUsuario(Usuario $usuario, $conexion) {
         $password = $usuario->password;
         $nombre = $usuario->nombre;
         $apellidos = $usuario->apellidos;
-        $fechaNacimiento = fecha2mysql($usuario->fechanacimiento);
+        $fechaNacimiento = fecha2sql($usuario->fechanacimiento);
 		$tipoUsuario = $usuario->tipousuario;
 
         $SQL = "UPDATE usuario SET email='$email',password='$password'," .
