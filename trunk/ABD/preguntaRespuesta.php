@@ -1,10 +1,9 @@
 <?php
 require_once ("./includes/styles/templates/cabecera.php");
-//session_start();
 /*
  * 
  * Se crea una variable nuevaRespuesta y errores en la sesión actual 
- * Con el isset si es la primera vez que entramos en preguntaRespuesta.php, inicializamos la variable a vacio
+ * Con el isset, si es la primera vez que entramos en preguntaRespuesta.php, inicializamos la variable a vacio
  * para evita que se rellene o almacene contenido anterior 
  */
 
@@ -14,6 +13,7 @@ $conexion = crearConexion();
 $elemento = new Elemento();
 $idelemento = $_REQUEST['idsolicitado']; // Para cuando se pulse la pregunta en index.php 
 $elemento = encontrarElementoPorId($idelemento, $conexion);
+
 if (isset($_SESSION['usuario'])) {
     $accedeUsuario = unserialize($_SESSION['usuario']);
     $tipoUsuario = $accedeUsuario->tipousuario;
@@ -26,7 +26,7 @@ if (!isset($nuevaRespuesta)) {
 }
 
 if (!empty($errores)) {
-    echo "<div id=\"div_errores\" class=\"error\">";
+    echo "<div id='div_errores' class='error'>";
     echo $errores . "<br/>";
     echo "</div>";
 }

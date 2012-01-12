@@ -37,7 +37,7 @@ require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/funciones/fechas.php" );
         $email = $usuarioLogueado->email;
         $nombre = $usuarioLogueado->nombre;
         $apellidos = $usuarioLogueado->apellidos;
-        $fechaNacimiento = mysql2fecha($usuarioLogueado->fechanacimiento);
+        $fechaNacimiento = sql2fecha($usuarioLogueado->fechanacimiento);
     }
     ?>
     <form name="datos" method="post" action="./procesado/modificarPerfil.php"  enctype="multipart/form-data" onsubmit="return comprobarRegistrarse();">
@@ -51,7 +51,7 @@ require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/funciones/fechas.php" );
 
             </div>
             <?php
-            include_once './includes/styles/templates/formularioUsuario.php';
+            require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/styles/templates/formularioUsuario.php");
             ?>
             <div id="botonRegistrarse">
                 <input id="submit" type="submit" name="submit" value="Editar perfil"/>
@@ -63,5 +63,5 @@ require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/funciones/fechas.php" );
     </div>
 </div>
 <?php
-require_once ("./includes/styles/templates/pie.php");
+require_once ($_SERVER["DOCUMENT_ROOT"]. "/abd/includes/styles/templates/pie.php");
 ?>
