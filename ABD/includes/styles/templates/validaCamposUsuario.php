@@ -37,7 +37,9 @@ if (existeUsuarioConEmail($_POST["email"], $conexion)) {
         }
     }
 }
-if (isset($_FILES["fotoPerfil"])) {
+
+
+if ($_FILES["fotoPerfil"]["size"]>0) {
     if ($_FILES["fotoPerfil"]["size"] > 1048576) {
         $erroresArray[] = "La foto de perfil es demasiado grande";
     }

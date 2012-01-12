@@ -1,7 +1,7 @@
 		<div id="pie">
 		    <div id="contenedor_pie">
 		        <div id="nombreProyecto">
-		        	<a href="/ABD/includes/presentacionYexplicacion/presentacion.html"  target="*" title="Pagina Descriptiva de la Aplicacion">Pagina Descriptiva de la Aplicacion Web</a>
+		        	<a href="/ABD/includes/presentacionYexplicacion/presentacion.html"  title="Pagina Descriptiva de la Aplicacion">Pagina Descriptiva de la Aplicacion Web</a>
 		            <p>Trabajo para la asignatura
 		                <br/>
 		                Ampliación de Base de Datos</p>

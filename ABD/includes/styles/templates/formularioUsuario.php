@@ -47,10 +47,10 @@
 <?php 
 // Si el usuario que está visitando la página es administrador se dará la posibilidad
 // de editar el rol del usuario cuyo perfil esta siendo visitado
-	if($usRecuperado->tipousuario){ ?>
+	if(@$usRecuperado->tipousuario){ ?>
 		<div class="campo">
 			<div class="labels">
-				<label for="tipoUsuario">Tipo de usuario:</label>
+				<label for="tipoUsuario1" >Tipo de usuario:</label>
 			</div>
 			<?php
 				if($usuarioLogueado->tipousuario){
@@ -61,8 +61,8 @@
 					$noAdmin = "checked";
 				}
 			?>
-			Administrador<input type=radio name="tipoUsuario" value="1" <?php echo $esAdmin; ?>>
-			U. Normal<input type=radio name="tipoUsuario" value="1" <?php echo $noAdmin; ?>> 
+			Administrador<input id="tipoUsuario1" type=radio name="tipoUsuario" value="1" <?php echo $esAdmin; ?>>
+			U. Normal<input id="tipoUsuario2" type=radio name="tipoUsuario" value="1" <?php echo $noAdmin; ?>> 
 		</div>
 <?php }
 ?>
