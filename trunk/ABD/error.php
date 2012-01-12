@@ -7,7 +7,7 @@
 	<body>	
 	
 	<h2>Ups!</h2>
-	<p>Ocurrió un problema de comunicación con la datos. Pulse <a href="index.php">aquí</a> para volver a la página principal.</p>
+	<p>Ocurrió un problema de comunicación con la base de datos. Pulse <a href="index.php">aquí</a> para volver a la página principal.</p>
 
 	</body>
 </html>

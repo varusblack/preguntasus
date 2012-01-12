@@ -1,7 +1,5 @@
 <?php
-	require_once ("./includes/styles/templates/cabecera.php");
-	
-	
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/cabecera.php");
 ?> 
 <div id="contenedor_cuerpo">
 	<div id="preguntas">
@@ -35,7 +33,7 @@
 					if ($contador > 3) {
 						break;
 					}
-                                        $contador++;
+                $contador++;
 				}						
 				require("./includes/widgets/preguntas.php");
 			}				

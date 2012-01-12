@@ -1,8 +1,8 @@
 <div id="barraNavegacion">
 	<div id="contenedorBarraNavegacion">
 		<a href="/abd/index.php" class="enlaceNavegacion">Página principal</a>
-		<a href="buscar.php?haBuscado=false" class="enlaceNavegacion separado">Buscar preguntas</a>
-                <a href="clasificacion.php" class="enlaceNavegacion separado">Clasificación</a>	
+		<a href="/abd/buscar.php?haBuscado=false" class="enlaceNavegacion separado">Buscar preguntas</a>
+        <a href="/abd/clasificacion.php" class="enlaceNavegacion separado">Clasificación</a>	
 		<?php 
 			if($estaLogueado){
 		?>
