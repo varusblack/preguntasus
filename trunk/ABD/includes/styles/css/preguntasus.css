@@ -58,6 +58,10 @@ td{
 	border-style: groove;
 	border-color: #ffcc99;
 }
+fieldset{
+	padding: 0 0 0 0;
+	border: none;
+}
 
 /* BARRA SUPERIOR DE LOGIN, BARRA DE USUARIO */
 
