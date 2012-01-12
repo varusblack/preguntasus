@@ -41,7 +41,6 @@ if (count($erroresArray) != 0) {
 
      modificarUsuario($nuevoUsuario, $conexion);
 
-    print_r($_FILES);
     if (isset($_FILES["fotoPerfil"]["size"])) {
         move_uploaded_file($_FILES["fotoPerfil"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"] . '/abd/fotosPerfil/' . $nuevoUsuario->id . '.jpg');
     }
