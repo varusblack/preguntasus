@@ -61,4 +61,5 @@ if (existeUsuarioConEmail($_POST["email"], $conexion)) {
             $erroresArray[] = "El archivo con la foto de perfil parace no ser válido";
         }
     }
+}
 ?>
