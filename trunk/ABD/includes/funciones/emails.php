@@ -1,5 +1,7 @@
 <?php
 
+// Función que dada una cadena de caracteres devuelve true si
+// coincide con el patrón de un correo electrónico
 function valida_email($email) {
 
     $resultado = false;

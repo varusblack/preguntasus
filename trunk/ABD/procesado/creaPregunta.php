@@ -1,12 +1,12 @@
 <?php
-	require_once ("../accesosBD/conexionesBD.php");
-	require_once ("../accesosBD/accesosElemento.php");
-	require_once ("../accesosBD/accesosTag.php");
-	require_once ("../accesosBD/accesosTagsDeElementos.php");
-	require_once ("../accesosBD/accesosUsuario.php");
-	require_once ("../entidades/Elemento.php");
-	require_once ("../entidades/Usuario.php");
-	require_once ("../entidades/Tag.php");
+    require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/conexionesBD.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosElemento.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosTag.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosTagsDeElementos.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosUsuario.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Elemento.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Usuario.php" );
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Tag.php");
 	
   	//Recuperacion de los datos de la sesion
 	session_start();
@@ -30,6 +30,6 @@
 	insertarTagDeElemento($elemento,$tag,$conexion);	
 	
 	cerrarConexion($conexion);
-	Header("Location:../index.php"); 
+	Header("Location:/abd/index.php"); 
 	exit();
 ?>

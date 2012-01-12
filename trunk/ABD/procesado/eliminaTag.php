@@ -7,6 +7,7 @@
 	session_start();
 	
 	$usuarioEnSesion = unserialize($_SESSION["usuario"]);
+// 	Si el usuario logeado no es administrador se interrumpirá el proceso de eliminación de tag
 	if($usuarioEnSesion->tipousuario){
 		$idTagABorrar = $_GET["id"];
 		$conexion = crearConexion();

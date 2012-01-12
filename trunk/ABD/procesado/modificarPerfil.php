@@ -10,6 +10,8 @@ $usuario = unserialize($_SESSION["usuario"]);
 $nuevoUsuario = obtenerUsuarioPorId($usuario->id, $conexion);
 
 include $_SERVER["DOCUMENT_ROOT"] . "/abd/includes/styles/templates/validaCamposUsuario.php";
+
+// Si hay errores se interrumpirá el proceso de modificación de perfil. En caso contrario continua
 if (count($erroresArray) != 0) {
 
     $datosArray = array();
@@ -21,13 +23,10 @@ if (count($erroresArray) != 0) {
     $_SESSION["errores"] = $erroresArray;
     $_SESSION["datos"] = $datosArray;
 
-
-
     header("Location: /abd/perfil.php");
     exit();
+    
 } else {
-
-
     $nuevoUsuario->id=$usuario->id;
     $nuevoUsuario->email = $_POST["email"];
     if ($_POST["pass1"] != '') {
@@ -52,17 +51,13 @@ if (count($erroresArray) != 0) {
     cerrarConexion($conexion);
     require_once ($_SERVER["DOCUMENT_ROOT"] . "/abd/includes/styles/templates/cabecera.php");
 
-// $ruta = $_SERVER['REQUEST_URI'];
-// if ($ruta == '/ABD/') {
-// require_once ("./includes/widgets/login.php");
-// }
     ?>
-    <div id="contenedor_cuerpo">
-        <div id="cuadroRegistrarse">
-            <p>El usuario se ha modificado correctamente</p>
-            <p><a href="/abd/">Volver a la página princial</a></p>
-        </div>    
-    </div>
+	    <div id="contenedor_cuerpo">
+	        <div id="cuadroRegistrarse">
+	            <p>El usuario se ha modificado correctamente</p>
+	            <p><a href="/abd/">Volver a la página princial</a></p>
+	        </div>    
+	    </div>
 
     <?php
     require_once ($_SERVER["DOCUMENT_ROOT"] . "/abd/includes/styles/templates/pie.php");

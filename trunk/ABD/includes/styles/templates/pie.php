@@ -1,4 +1,3 @@
-
 		<div id="pie">
 		    <div id="contenedor_pie">
 		        <div id="nombreProyecto">

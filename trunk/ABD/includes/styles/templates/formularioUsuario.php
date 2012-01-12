@@ -45,6 +45,8 @@
     <input type="file" id="fotoPerfil" name="fotoPerfil" />
 </div>
 <?php 
+// Si el usuario que está visitando la página es administrador se dará la posibilidad
+// de editar el rol del usuario cuyo perfil esta siendo visitado
 	if($usRecuperado->tipousuario){ ?>
 		<div class="campo">
 			<div class="labels">

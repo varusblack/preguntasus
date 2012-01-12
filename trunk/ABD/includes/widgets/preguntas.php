@@ -1,4 +1,4 @@
-<?php 
+<?php
 if($numeroDeRespuestas<1){
 	echo "<div class='pregunta'>";
 }else{

@@ -1,4 +1,6 @@
 <?php
+// Comprobaciones de los datos del usuario
+
 
 $erroresArray = array();
 if ($_POST["email"] == "") {

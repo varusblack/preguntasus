@@ -5,6 +5,7 @@
 	session_start();
 	
 	$usuarioEnSesion = unserialize($_SESSION["usuario"]);
+// 	Si el usuario no es administrador se interrumpirá el proceso de eliminación de usuario
 	if($usuarioEnSesion->tipousuario){
 		$idUsuarioABorrar = $_GET["id"];
 		$conexion = crearConexion();

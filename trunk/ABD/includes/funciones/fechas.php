@@ -1,14 +1,18 @@
 <?php
 
-function mysql2fecha($fecha) {
+// Función que dada una fecha en formato SQL la devuelve en la forma habitual
+function sql2fecha($fecha) {
     return date("d/m/Y", strtotime($fecha));
 }
 
-function fecha2mysql($fecha) {
+// Función que dada una fecha en la forma habitual la devuelve en formato SQL
+function fecha2sql($fecha) {
     $res = substr($fecha, 6, 4) . "/" . substr($fecha, 3, 2) . "/" . substr($fecha, 0, 2);
     return $res;
 }
 
+// Función que dada una fecha de la forma habitual devuelve true si cumple los
+// requisitos para ser válida, false en caso contrario
 function validafecha($fecha) {
     $dia = substr($fecha, 0, 2);
     $mes = substr($fecha, 3, 2);
@@ -51,6 +55,7 @@ function validafecha($fecha) {
     return true;
 }
 
+// Función que dado un año devuelve true si es bisiesto, false en caso contrario
 function esBisiesto($anno){
     $resultado=false;
     if($anno%4){
