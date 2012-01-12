@@ -22,7 +22,7 @@ function usuarioHaVisitadoElemento(Usuario $usuario,Elemento $elemento,$conexion
 		$dato= $stmt->fetch(PDO::FETCH_ASSOC);
         return $dato["cuenta"]>0;
 	} catch(PDOException $e) {
-		echo $e;
+		Header("Location: /abd/error.php");
 		die();
 	}
 }

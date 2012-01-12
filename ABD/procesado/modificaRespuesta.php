@@ -20,7 +20,7 @@
 	   	Header("Location:/abd/procesado/preparaModificaRespuesta.php?idsolicitado=".$idpregunta);
 	} else{
 		modificaRespuesta($formulario);
-		Header("Location:/abd/procesado/preguntaRespuesta.php?idsolicitado=".$idpregunta);
+		Header("Location:/abd/preguntaRespuesta.php?idsolicitado=".$idpregunta);
 		exit();
 	}
 	
@@ -28,13 +28,14 @@
 		$conexion=crearConexion();	
 		$elemento = new Elemento();	
 		$elemento=encontrarElementoPorId($formulario["id"],$conexion);
+		echo "RRRRRRRRRRRRRRRRRRR";
 		$elemento->cuerpo=$formulario["respuestaModificada"];
 		modificarElemento($elemento,$conexion);
 	   	cerrarConexion($conexion);
 	}
 	function validar($formulario) {
 	  if (!(isset($formulario['respuestaModificada']) && strlen($formulario['respuestaModificada'])>0))  // Modo resumido: if (empty($formulario['nombre']))
-	    $errores = 'El campo <b>Respuesta no Puede Estar Vacio</b> no puede ser vacío';
+	   $errores = 'El campo <b>Respuesta no Puede Estar Vacio</b> no puede ser vacío';
 	   return $errores;    
 	}
 ?>
