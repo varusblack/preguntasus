@@ -32,7 +32,6 @@ if (!empty($errores)) {
 }
 ?>
 
-<body>
     <div class="container">
         <div id="content">
             <fieldset id="recuadroPregunta" >
@@ -81,7 +80,7 @@ if (!empty($errores)) {
                             <? }
                         } ?>
                         <th>Votos</th>
-                        <th width="90%">Contenido De La Respuesta</th>
+                        <th>Contenido De La Respuesta</th>
                     </tr>
                     <?
                     foreach ($respuestas as $res) {
@@ -135,24 +134,25 @@ if (!empty($errores)) {
 
             if (isset($_SESSION['usuario'])) {// Si existe el usuario logado
                 ?>
-                <div id=div_formularioRespuesta>
+                <div id="div_formularioRespuesta">
                     <form  id="mi_respuesta" action="./procesado/procesaNuevaRespuesta.php" method="post" onsubmit="return validaRes()">
+                        <fieldset>
                         <h3 class="rotulo">Nueva Respuesta Aportada</h3>
                         <textarea name="mi-respuesta" id="mi-respuesta" tabindex="101" rows="5" cols="92" ></textarea>
                         <input type="hidden" name ="idelemento" value="<? echo $idelemento ?>" />
                         <div id="div_botones">
                             <button  id="submit" type="submit" >Publicar Mi Respuesta</button>
                             <button id="reset" type="reset">Limpiar Respuesta</button>
-                            <button id="cancelar" type="button" onClick="location.href='./index.php'" />Cancelar</button>
+                            <button id="cancelar" type="button" onclick="location.href='./index.php'" >Cancelar</button>
 
                         </div>
+                        </fieldset>
                     </form>
                 </div>
             <? } ?>
         </div>
     </div>
-</body>
 
 <?
-require_once ("./includes/styles/templates/pie.php");
+require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/pie.php");
 ?>
