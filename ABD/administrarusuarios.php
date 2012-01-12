@@ -39,11 +39,11 @@
 							}
 							?></td>
 						<td><a href="/abd/perfil.php?id=<?php echo $usuario->id;?>">
-							<img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>
+							<img  src="./includes/styles/imagenes/iconos/editar.jpg" alt="editar" /></a>
 						</td>
 						<td> 
 							<a href="/abd/procesado/eliminaUsuario.php?id=<?php echo $usuario->id; ?>" onclick="return confirm('¿Está seguro de querer borrar este usuario?')">
-							<img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>
+							<img  src="./includes/styles/imagenes/iconos/eliminar.png" alt="eliminar"/></a>
 							</td>
 					</tr>					
 					

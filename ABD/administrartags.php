@@ -34,11 +34,11 @@
 					<tr>
 						<td><?php echo $tag->tag;?></td>
 						<td><?php ?>
-							<img  src="./includes/styles/imagenes/iconos/editar.jpg" />
+							<img  src="./includes/styles/imagenes/iconos/editar.jpg" alt="editar" />
 						</td>
 						<td>
 							<a href="/abd/procesado/eliminaTag.php?id=<?php echo $tag->id; ?>" onclick="return confirm('¿Está seguro de querer borrar este tag?')">
-							<img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>
+							<img  src="./includes/styles/imagenes/iconos/eliminar.png" alt="eliminar" /></a>
 						</td>
 					</tr>
 					
@@ -51,7 +51,7 @@
 		
 		
 		<div id="cuadroTag">
-			<form id="crearTag" name="crearTag" method="post" action="/abd/procesado/creaTag.php" onsubmit="">
+			<form id="crearTag" method="post" action="/abd/procesado/creaTag.php" onsubmit="">
 				<div id="datosCreacionTag">
 					<label for="nombreTag" id="label_nombreTag">Nombre del tag:</label>
 					<input type="text" id="nombreTag" name="nombreTag" />
