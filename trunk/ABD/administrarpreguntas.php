@@ -19,15 +19,15 @@
 					$usuarioAutor = obtenerUsuarioPorId($elemento->idautor,$conexion);
 					?>
 					<tr>
-						<td><?php echo $elemento->titulo;?> </a></td>
+						<td><?php echo $elemento->titulo;?></td>
 						<td><?php echo $usuarioAutor->email;?></td>
 						<td><?php echo $elemento->fechapregunta;?></td>
-						<td><a href="./procesado/preparaModificaRespuesta.php?cod=<?echo $elemento->id;?>&codigoPregunta=<?echo $elemento->id;?>">
-							<img  src="./includes/styles/imagenes/iconos/editar.jpg" /></a>
+						<td><a href="./procesado/preparaModificaRespuesta.php?cod=<?echo $elemento->id;?>&amp;codigoPregunta=<?echo $elemento->id;?>">
+							<img  src="./includes/styles/imagenes/iconos/editar.jpg" alt="editar"/></a>
 						</td>
 						<td>
-							<a href="./procesado/preparaEliminaRespuesta.php?cod=<?echo $elemento->id;?>&codigoPregunta=<?echo $elemento->id;?>">
-								<img  src="./includes/styles/imagenes/iconos/eliminar.png" /></a>
+							<a href="./procesado/preparaEliminaRespuesta.php?cod=<?echo $elemento->id;?>&amp;codigoPregunta=<?echo $elemento->id;?>">
+								<img  src="./includes/styles/imagenes/iconos/eliminar.png" alt="eliminar"/></a>
 						</td>
 					</tr>
 					
