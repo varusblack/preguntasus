@@ -8,6 +8,9 @@ require ($_SERVER["DOCUMENT_ROOT"] . '/abd/includes/funciones/emails.php');
 $conexion = crearConexion();
 $nuevoUsuario = new Usuario();
 include $_SERVER["DOCUMENT_ROOT"] . "/abd/includes/styles/templates/validaCamposUsuario.php";
+
+// Si hay errores se interrumpirá el proceso de registro y se mostrarán notificaciones en pantalla.
+// En caso contrario continua.
 if (count($erroresArray) != 0) {
 
     $datosArray = array();
@@ -18,8 +21,6 @@ if (count($erroresArray) != 0) {
 
     $_SESSION["errores"] = $erroresArray;
     $_SESSION["datos"] = $datosArray;
-
-
 
     header("Location: /abd/registrarse.php");
     exit();
@@ -40,14 +41,9 @@ if (count($erroresArray) != 0) {
         move_uploaded_file($_FILES["fotoPerfil"]["tmp_name"], $_SERVER["DOCUMENT_ROOT"] . '/abd/fotosPerfil/' . $nuevoIdUsuario . '.jpg');
     }
 
-
     cerrarConexion($conexion);
     require_once ($_SERVER["DOCUMENT_ROOT"] . "/abd/includes/styles/templates/cabecera.php");
 
-    // $ruta = $_SERVER['REQUEST_URI'];
-    // if ($ruta == '/ABD/') {
-    // require_once ("./includes/widgets/login.php");
-    // }
     ?>
     <div id="contenedor_cuerpo">
         <div id="cuadroRegistrarse">

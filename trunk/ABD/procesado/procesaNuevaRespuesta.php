@@ -1,8 +1,8 @@
 <?php
-require_once ("../entidades/Elemento.php");
-require_once ("../accesosBD/conexionesBD.php");
-require_once ("../accesosBD/accesosElemento.php");
-require_once ("../entidades/Usuario.php");
+require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Elemento.php");
+require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/conexionesBD.php");
+require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/accesosBD/accesosElemento.php");
+require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/entidades/Usuario.php" );
  
 session_start();
 
@@ -18,9 +18,8 @@ if (!empty($errores)) {
 	$usuario=unserialize($_SESSION['usuario']);
 	
 	 preparaInsercion($nuevaRespuesta,$idpreguntarespondida,$usuario);
-	// actualizaVotosTag($usuario);
 		
-	Header("Location:../preguntaRespuesta.php?idsolicitado=".$idpreguntarespondida);
+	Header("Location:/abd/preguntaRespuesta.php?idsolicitado=".$idpreguntarespondida);
 	exit();	
 }
 
@@ -40,8 +39,5 @@ function preparaInsercion($nuevaRespuesta, $idpreguntarespondida,$usuario){
 	
 	insertarElemento($elemento,$conexion);
 	cerrarConexion($conexion);
-}
-function actualizaVotosRespuesta($usuario){
-	
 }
 ?>
