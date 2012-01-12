@@ -1,5 +1,5 @@
 <?php
-require_once ("./includes/styles/templates/cabecera.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/cabecera.php");
 
 	$erroresBuscarPreguntas = @$_SESSION["erroresBuscarPregunta"];
 	$haBuscado = FALSE;
@@ -121,7 +121,7 @@ require_once ("./includes/styles/templates/cabecera.php");
 								break;
 							}
 						}						
-						require("./includes/widgets/preguntas.php");
+						require($_SERVER["DOCUMENT_ROOT"]."/abd/includes/widgets/preguntas.php");
 					}				
 					cerrarConexion($conexion);
 					$_SESSION["tipobusqueda"] = NULL;
@@ -131,5 +131,5 @@ require_once ("./includes/styles/templates/cabecera.php");
 	</div>
 </div>
 <?php
-require_once ("./includes/styles/templates/pie.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/pie.php");
 ?>

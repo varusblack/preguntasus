@@ -1,6 +1,6 @@
 <?php
-	require_once ("./includes/styles/templates/cabecera.php");
-?>
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/cabecera.php");
+?> 
 	<div id="contenedor_cuerpo">
 		
 		<div id="mensajesAdministracion">
@@ -52,12 +52,9 @@
 				cerrarConexion($conexion);
 			?>
 			
-			
-			
 		</table>
-		
 	</div>
 
 <?php
-	require_once ("./includes/styles/templates/pie.php");
+	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/pie.php");
 ?>
