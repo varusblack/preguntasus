@@ -74,13 +74,4 @@
 <?php
 	require_once ($_SERVER["DOCUMENT_ROOT"]."/abd/includes/styles/templates/pie.php");
 ?>
-
-
-
-
-
-
-
-
-
 	
