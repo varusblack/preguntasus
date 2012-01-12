@@ -44,28 +44,3 @@
     </div>
     <input type="file" id="fotoPerfil" name="fotoPerfil" />
 </div>
-<?php 
-// Si el usuario que está visitando la página es administrador se dará la posibilidad
-// de editar el rol del usuario cuyo perfil esta siendo visitado
-	if(@$usRecuperado->tipousuario){ ?>
-		<div class="campo">
-			<div class="labels">
-				<label for="tipoUsuario1" >Tipo de usuario:</label>
-			</div>
-			<?php
-				if($usuarioLogueado->tipousuario){
-					$esAdmin = "checked";
-					$noAdmin = NULL;
-				}else{
-					$esAdmin = NULL;
-					$noAdmin = "checked";
-				}
-                                $emailAntiguo=$usuarioLogueado->email;
-			?>
-			Administrador<input id="tipoUsuario1" type=radio name="tipoUsuario" value="1" <?php echo $esAdmin; ?> />
-			U. Normal<input id="tipoUsuario2" type=radio name="tipoUsuario" value="0" <?php echo $noAdmin; ?> /> 
-                        <input type="hidden" name="antiguoemail" id="antiguoemail" value="<?echo $emailAntiguo;?>" />
-		</div>
-<?php }
-?>
-
